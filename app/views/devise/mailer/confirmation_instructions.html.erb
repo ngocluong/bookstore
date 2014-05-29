@@ -1,5 +1,18 @@
 <p>Welcome <%= @email %>!</p>
 
+<p>Thank you for your registration!</p>
+
+<p>We hope that you will enjoy the possibilities given by Book Store page.
+Do you have questions, or need more information? Please feel free to contact us. Thanks.</p>
+
 <p>You can confirm your account email through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p> Your Information: </p>
+<p>
+  you full name: <%= @full_name %>
+  Phone number: <%= @phone %>
+  Birthday: <%= @birthday %>
+  Creation Date: <%= @creation_date %>
+</p>
