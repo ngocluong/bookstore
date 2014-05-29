@@ -31,13 +31,6 @@ BookStore::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   ActionMailer::Base.raise_delivery_errors = true
-  ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => "gmail.com",
-    :user_name            => "claritypos@gmail.com",
-    :password             => "eastagile",
-    :authentication       => "plain"
-  }
+  config.action_mailer.delivery_method = :letter_opener
 end
 

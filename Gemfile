@@ -7,7 +7,8 @@ gem 'rails', '4.0.2'
 gem 'pg'
 
 gem 'devise'
-
+gem 'devise-async'
+gem 'sidekiq'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -33,6 +34,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'webrat'
+  gem 'letter_opener'
 end
 
 group :test do
