@@ -3,7 +3,7 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Devise.friendly_token }
     full_name { Faker::Name.name }
-    phone { Faker::PhoneNumber.phone_number }
-    sequence(:birthday) { |n| n.year.ago }
+    sequence(:phone) { |n| "#{n}#{n}#{n}-#{n}#{n}#{n}-#{n}#{n}#{n}#{n}" }
+    sequence(:birthday) { |n| n.year.ago.to_date }
   end
 end
