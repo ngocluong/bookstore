@@ -6,13 +6,8 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :full_name
-    devise_parameter_sanitizer.for(:sign_up) << :phone
-    devise_parameter_sanitizer.for(:sign_up) << :birthday
-    devise_parameter_sanitizer.for(:sign_up) << :creation_date
-    devise_parameter_sanitizer.for(:account_update) << :full_name
-    devise_parameter_sanitizer.for(:account_update) << :phone
-    devise_parameter_sanitizer.for(:account_update) << :birthday
-    devise_parameter_sanitizer.for(:account_update) << :creation_date
+    [:full_name, :phone, :birthday, :creation_date].each do |attr|
+      devise_parameter_sanitizer.for(:sign_up) << attr
+    end
   end
 end
