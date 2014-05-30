@@ -7,15 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<% if user_signed_in? %>
-  sign in as <%= current_user.full_name %>
-  <%= link_to "sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-  <% end %>
-<%= yield %>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="">East Agile</a>
+      </div>
 
+      <div class="navbar-collapse collapse">
+        <form class="navbar-form navbar-right" role="form">
+          <% if user_signed_in? %>
+            sign in as <%= current_user.full_name %>
+            <%= link_to "sign out", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+          <% end %>
+        </form>
+      </div><!--/.navbar-collapse -->
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Welcome</h1>
+      <p>East Agile Bookstore online is your place for browsing interesting books. Enjoy our store and our promise of high quality and excellent service</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </div>
 </body>
 </html>

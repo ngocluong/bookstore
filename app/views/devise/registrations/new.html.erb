@@ -19,11 +19,11 @@
     <%= f.text_field :phone %></div>
 
   <div><%= f.label :birthday %><br />
-    <%= f.text_field :birthday %></div>
+    <%= f.date_field :birthday %></div>
 
   <%= f.hidden_field :creation_date, value: Time.now %>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
