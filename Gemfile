@@ -44,7 +44,7 @@ end
 group :test do
   gem 'faker'
   gem 'shoulda-matchers'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
