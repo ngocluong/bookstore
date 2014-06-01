@@ -1,1 +1,99 @@
 @import 'bootstrap';
+
+.row{
+ 	background: #5ABCD3;
+ 	height: 17mm;
+}
+
+.page{
+	background: #3398B3;
+	height: 10mm;
+	font: normal 25pt "Roboto black";
+	color: #FFF;
+	padding-left: 20px;
+}
+
+.col-md-8{
+
+	img{
+		float: left;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	#searchpanel{
+		margin-top: 10px;
+		padding: 3px;
+		background: #FFFFFF;
+		float:left;
+		font: normal 14pt "Roboto medium";
+		color: #3398B3;
+
+		.custom{
+			background: #FFF;
+			text-stroke: #3399B3;
+			border-radius: 0px;
+			border-color: #3398B3;
+			font: normal 14pt "Roboto medium";
+			color: #3398B3;
+		}
+
+		.dropdown-menu{
+			border-color: #3398B3;
+			position: absolute;
+			border-radius: 0px;
+		}
+
+		button{
+			vertical-align: middle;
+			background-color: #5ABCD3;
+			font: normal 17pt "Roboto medium";
+			color: #BDE5ED;
+		}
+		
+		a{
+			font: normal 14pt "Roboto medium";
+			color: #3398B3;
+		}
+
+		a:hover{
+			font: normal 14pt "Roboto medium";
+			background-color: #5ABCD3;
+			color: #FFF;
+		}
+	}
+}
+
+.col-md-4{
+	height: 100%;
+	font: normal 17pt "Roboto medium";
+	color: #BDE5ED;
+}
+
+#rightpanel{
+	position:absolute;
+	left: 25%;
+	top: 25%;
+
+	a{
+		font: normal 17pt "Roboto medium";
+		color: #BDE5ED;
+	}
+} 
+
+.search {
+	background: none repeat scroll 0 0 #fff;
+	border: 0 none;
+	color: #7F7F7F;
+	float: left;
+	font: 12px 'Helvetica','Lucida Sans Unicode','Lucida Grande',sans-serif;
+	height: 22px;
+	margin: 0;
+	padding: 10px;
+	transition: background 0.3s ease-in-out 0s;
+	width: 300px;
+}
+
+
+
+

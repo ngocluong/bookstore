@@ -5,31 +5,56 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="">East Agile</a>
+
+  <div class="header">
+
+    <div class="row">
+
+      <div class="col-md-8">
+        <a href="/store/index">
+          <%= image_tag("logo.png") %>
+        </a>
+
+        <div id="searchpanel">    
+          <div class="btn-group">
+            <button type="button" class="btn custom" data-toggle="dropdown">
+              Action <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+            </ul>
+          </div>
+          
+          <input type="text" class="search">
+        
+          <button type="submit">Go</button>
+
+        </div>
       </div>
 
-      <div class="navbar-collapse collapse">
-        <form class="navbar-form navbar-right" role="form">
+      <div class="col-md-4">
+      
+        <div id="rightpanel">
+          <%= link_to "BROWSE", store_index_path %> |
           <% if user_signed_in? %>
             sign in as <%= current_user.full_name %>
-            <%= link_to "sign out", destroy_user_session_path, :method => :delete %>
+            <%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %>
           <% else %>
-            <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+            <!-- <%= link_to "SIGN IN", new_user_session_path %> -->
+            <a data-toggle="modal" data-target="#myModal" href="#">SIGN IN</a>
           <% end %>
-        </form>
-      </div><!--/.navbar-collapse -->
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Welcome</h1>
-      <p>East Agile Bookstore online is your place for browsing interesting books. Enjoy our store and our promise of high quality and excellent service</p>
+    <div class="page">
+      INDEX
+
     </div>
   </div>
 
@@ -38,5 +63,36 @@
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+        </div>
+
+        <div class="modal-body">
+          <%= form_for(:user, :url => session_path(:user)) do |f| %>
+            <div>
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+
+            <div>
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <div><%= f.label :remember_me %></div>
+
+            <div><%= f.submit "Sign in" %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
