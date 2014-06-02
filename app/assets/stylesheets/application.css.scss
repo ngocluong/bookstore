@@ -8,7 +8,7 @@
 .page{
 	background: #3398B3;
 	height: 10mm;
-	font: normal 25pt "Roboto black";
+	font: normal 25px "Roboto black";
 	color: #FFF;
 	padding-left: 20px;
 }
@@ -26,7 +26,7 @@
 		padding: 3px;
 		background: #FFFFFF;
 		float:left;
-		font: normal 14pt "Roboto medium";
+		font: normal 14px "Roboto medium";
 		color: #3398B3;
 
 		.custom{
@@ -34,7 +34,7 @@
 			text-stroke: #3399B3;
 			border-radius: 0px;
 			border-color: #3398B3;
-			font: normal 14pt "Roboto medium";
+			font: normal 14px "Roboto medium";
 			color: #3398B3;
 		}
 
@@ -47,17 +47,21 @@
 		button{
 			vertical-align: middle;
 			background-color: #5ABCD3;
-			font: normal 17pt "Roboto medium";
+			font: normal 17px "Roboto medium";
 			color: #BDE5ED;
 		}
-		
+
+		#search{
+			border: 0px;
+		}
+
 		a{
-			font: normal 14pt "Roboto medium";
+			font: normal 14px "Roboto medium";
 			color: #3398B3;
 		}
 
 		a:hover{
-			font: normal 14pt "Roboto medium";
+			font: normal 14px "Roboto medium";
 			background-color: #5ABCD3;
 			color: #FFF;
 		}
@@ -66,7 +70,7 @@
 
 .col-md-4{
 	height: 100%;
-	font: normal 17pt "Roboto medium";
+	font: normal 17px "Roboto medium";
 	color: #BDE5ED;
 }
 
@@ -76,10 +80,10 @@
 	top: 25%;
 
 	a{
-		font: normal 17pt "Roboto medium";
+		font: normal 17px "Roboto medium";
 		color: #BDE5ED;
 	}
-} 
+}
 
 .search {
 	background: none repeat scroll 0 0 #fff;

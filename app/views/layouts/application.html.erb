@@ -18,7 +18,7 @@
           <%= image_tag("logo.png") %>
         </a>
 
-        <div id="searchpanel">    
+        <div id="searchpanel">
           <div class="btn-group">
             <button type="button" class="btn custom" data-toggle="dropdown">
               Action <span class="caret"></span>
@@ -29,16 +29,16 @@
               <li><a href="#">Something else here</a></li>
             </ul>
           </div>
-          
+
           <input type="text" class="search">
-        
-          <button type="submit">Go</button>
+
+          <button id="search" type="submit">Go</button>
 
         </div>
       </div>
 
       <div class="col-md-4">
-      
+
         <div id="rightpanel">
           <%= link_to "BROWSE", store_index_path %> |
           <% if user_signed_in? %>
@@ -46,7 +46,7 @@
             <%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %>
           <% else %>
             <!-- <%= link_to "SIGN IN", new_user_session_path %> -->
-            <a data-toggle="modal" data-target="#myModal" href="#">SIGN IN</a>
+            <%= link_to 'SIGN IN', new_user_session_path, 'data-toggle' => 'modal', 'data-target' => '#myModal' %>
           <% end %>
         </div>
       </div>
@@ -68,28 +68,6 @@
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-        </div>
-
-        <div class="modal-body">
-          <%= form_for(:user, :url => session_path(:user)) do |f| %>
-            <div>
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true %>
-            </div>
-
-            <div>
-              <%= f.label :password %><br />
-              <%= f.password_field :password, autocomplete: "off" %>
-            </div>
-
-            <div><%= f.label :remember_me %></div>
-
-            <div><%= f.submit "Sign in" %></div>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>
