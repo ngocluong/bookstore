@@ -40,6 +40,7 @@ group :development, :test do
   gem 'webrat'
   gem 'letter_opener'
   gem 'byebug'
+  gem 'quiet_assets'
 end
 
 group :test do
