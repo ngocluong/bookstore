@@ -1,0 +1,21 @@
+.header
+  = image_tag("book.png")
+  h2 Please Sign in
+.Signin
+  p
+    | Only Signed in member can check out. Please sign in or sign up.
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    div
+      = f.label :email
+      br/
+      = f.email_field :email, autofocus: true, class: "bluebox"
+    div
+      = f.label :password
+      br/
+      = f.password_field :password, autocomplete: "off", class: "bluebox"
+    - if devise_mapping.rememberable?
+      div
+        = f.label :remember_me
+        = f.check_box :remember_me
+        = f.submit "Sign in"
+= render "devise/shared/links"
