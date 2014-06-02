@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title BookStore
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
+  body
+    .header
+      .row
+        .col-md-8
+          a href="/store/index"
+            = image_tag("logo.png")
+          #searchpanel
+            .btn-group
+              button.btn.custom data-toggle="dropdown" type="button"
+                | Action
+                span.caret
+              ul.dropdown-menu role="menu"
+                li
+                  a href="#"  Action
+                li
+                  a href="#"  Another action
+                li
+                  a href="#"  Something else here
+            input.search type="text"
+              button#search type="submit"  Go
+        .col-md-4
+          #rightpanel
+            = link_to "BROWSE", store_index_path
+            | \
+            - if user_signed_in?
+              | sign in as #{current_user.full_name}
+              | \#{link_to "SIGN OUT", destroy_user_session_path, :method => :delete}
+            - else
+              /! <haml:loud> link_to &amp;quot;SIGN IN&amp;quot;, new_user_session_path </haml:loud
+              = link_to 'SIGN IN', new_user_session_path, 'data-toggle' => 'modal', 'data-target' => '#myModal'
+      .page
+        | INDEX
+    .container
+      p.notice= notice
+      p.alert= alert
+      = yield
+    /! Modal
+    #myModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog
+        .modal-content
