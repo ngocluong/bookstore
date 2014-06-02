@@ -4,8 +4,8 @@ I want to signup with my details
 So that I can login
 
 Background:
-   Given I am a new user
-   Given I am on the signup page
+ Given I am a new user
+ Given I am on the signup page
 
 @truncation
 Scenario: Registration successfully
@@ -17,7 +17,7 @@ Scenario: Registration successfully
 Scenario: Missing information
   When I did not fill all the signup information
   And I press "Sign up"
-  Then I should see the following errors
+  Then I should see the following messages
     | error                    |
     | Email can't be blank     |
     | Password can't be blank  |

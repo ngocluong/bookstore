@@ -10,6 +10,13 @@ When(/^I press "(.*?)"$/) do |button_or_link|
   click_on button_or_link
 end
 
+Then(/^I should see the following messages$/) do |table|
+  table.hashes.each do |hash|
+    step "I should see \"#{hash['error']}\""
+  end
+end
+
 Then(/^I should see "(.*?)"$/) do |content|
   expect(page).to have_content content
 end
+

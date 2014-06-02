@@ -5,7 +5,7 @@ describe User do
     it { should validate_presence_of attr }
   end
 
-  context 'Validation' do
+  context 'phone number validation' do
     let(:user) { build :user }
 
     context 'valid phone number' do
