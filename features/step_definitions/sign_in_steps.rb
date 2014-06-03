@@ -4,7 +4,8 @@ Given(/^I already have an account$/) do
 end
 
 Given(/^I am on the Signin page$/) do
-  visit new_user_session_path
+  visit store_index_path
+  step "I press \"SIGN IN\""
 end
 
 When(/^I fill in the Sign in page with valid details$/) do

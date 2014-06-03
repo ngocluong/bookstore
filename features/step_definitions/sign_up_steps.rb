@@ -3,7 +3,9 @@ Given(/^I am a new user$/) do
 end
 
 Given(/^I am on the signup page$/) do
-  visit new_user_registration_path
+  visit store_index_path
+  step "I press \"SIGN IN\""
+  step "I press \"Sign up\""
 end
 
 Given(/^I fill in the Sign up form with mismatched password$/) do
