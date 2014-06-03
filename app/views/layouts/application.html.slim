@@ -28,7 +28,7 @@ html
               button#search type="submit"  Go
         .col-md-4
           #rightpanel
-            = link_to "BROWSE", store_index_path
+            = link_to "BROWSE ", store_index_path
             = render "devise/sessions/sessions"
       .page
         | INDEX
@@ -37,6 +37,14 @@ html
       p.alert= alert
       = yield
     /! Modal
-    #myModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+    #signInModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
       .modal-dialog
         .modal-content
+
+    #signUpModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog
+        .modal-content
+
+
+
+
