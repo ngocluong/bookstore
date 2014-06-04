@@ -142,17 +142,10 @@
     margin-top: 10px;
     margin-right: 100px;
   }
+}
 
-  .error{
-    color: red;
-  }
-
-  .btn-primary{
-    background-color: #5ABCD3;
-    border-color: #5ABCD3;
-    color: #FFF;
-    margin-top: 10px;
-  }
+.error{
+  color: red;
 }
 
 .col-sm-3{
@@ -160,6 +153,13 @@
 }
 
 .col-sm-9{
+  margin-top: 10px;
+}
+
+.btn-primary{
+  background-color: #5ABCD3;
+  border-color: #5ABCD3;
+  color: #FFF;
   margin-top: 10px;
 }
 
