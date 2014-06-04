@@ -10,8 +10,7 @@ html
     .header
       .row
         .col-md-8
-          a href="/store/index"
-            = image_tag("logo.png")
+          = link_to image_tag("logo.png"), store_index_path
           #searchpanel
             .btn-group
               button.btn.custom data-toggle="dropdown" type="button"
