@@ -3,7 +3,6 @@ class RegistrationsController < Devise::RegistrationsController
   respond_to :js
 
   def create
-
     super do |resource|
       @after_sign_up_path = after_sign_up_path_for(resource)
     end
