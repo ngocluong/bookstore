@@ -12,11 +12,19 @@ end
 
 Then(/^I should see the following messages$/) do |table|
   table.hashes.each do |hash|
-    step "I should see \"#{hash['error']}\""
+    step "I should see \"#{hash['message']}\""
   end
 end
 
 Then(/^I should see "(.*?)"$/) do |content|
-  expect(page).to have_content content
+  wait_until do
+    page.has_content? content
+  end
+end
+
+Then(/^I should see element "(.*?)"$/) do |element|
+  wait_until do
+    page.has_css? element
+  end
 end
 

@@ -9,7 +9,7 @@ Given(/^I am on edit user information page$/) do
   visit edit_user_registration_path
 end
 
-When(/^I fill in the Edit page with my new email address$/) do
+When(/^I change my email address$/) do
   step %{I fill in "Email" with "#{@new_user_information[:email]}"}
   step %{I fill in "Current password" with "#{@user_password}"}
   step %{I press "Update"}
@@ -31,7 +31,7 @@ Then(/^My account detail is updated$/) do
   end
 end
 
-When(/^I fill in the Edit page with my new password$/) do
+When(/^I change my password$/) do
   step %{I fill in "Password" with "#{@new_user_information[:password]}"}
   step %{I fill in "Password confirmation" with "#{@new_user_information[:password]}"}
   step %{I fill in "Current password" with "#{@user_password}"}
@@ -65,7 +65,7 @@ Then(/^I should receive an confirmation email$/) do
   expect(unread_emails_for(@new_user_information[:email]).first.subject).to eq 'Confirmation instructions'
 end
 
-When(/^I fill in the Edit page with my new details with incorrect current password$/) do
+When(/^I fill in the Edit page with my new details without correct current password$/) do
   step %{I fill in "Full name" with "#{@new_user_information[:full_name]}"}
   step %{I fill in "Phone" with "#{@new_user_information[:phone]}"}
   step %{I fill in "Birthday" with "#{@new_user_information[:birthday]}"}
@@ -80,7 +80,7 @@ When(/^I fill in the Edit page with my new details but without current password$
   step %{I press "Update"}
 end
 
-When(/^I fill in the Edit page with password not match with confirmation$/) do
+When(/^I fill in the Edit page with password mismatched with confirmation$/) do
   step %{I fill in "Password" with "#{@new_user_information[:password]}"}
   step %{I fill in "Password confirmation" with "abcd1234"}
   step %{I fill in "Current password" with "#{@user_password}"}

@@ -1,31 +1,45 @@
 Given(/^I already have an account$/) do
-  @user = create(:confirm_user)
-  @unconfirm_user = create(:user)
+  @user_password = 'abcd1234'
+  @user = create :confirm_user, password: @user_password
+  @unconfirmed_user = create :user, password: @user_password
 end
 
 Given(/^I am on the Signin page$/) do
   visit store_index_path
   step %{I press "SIGN IN"}
+  step %{I wait for Sign In form to appear}
 end
 
-When(/^I fill in the Sign in page with valid details$/) do
-  step %{I fill in "Email" with "#{@user.email}"}
-  step %{I fill in "user_password" with "#{@user.password}"}
+Then(/^I wait for Sign In form to appear$/) do
+  step %{I should see element "#{sign_in_modal_id}"}
 end
 
-When(/^I fill in the Sign in form with uncomfirmation account$/) do
-  step %{I fill in "Email" with "#{@unconfirm_user.email}"}
-  step %{I fill in "user_password" with "#{@unconfirm_user.password}"}
+Then(/^I sign in with valid details$/) do
+  within sign_in_modal_id do
+    step %{I fill in "Email" with "#{@user.email}"}
+    step %{I fill in "Password" with "#{@user_password}"}
+    step %{I press "Sign in"}
+  end
 end
 
-When(/^I fill in the Sign in form with incorrect password$/) do
-  step %{I fill in "Email" with "#{@user.email}"}
-  step %{I fill in "user_password" with "abc"}
+Then(/^I sign in with an uncomfirmed account$/) do
+  within sign_in_modal_id do
+    step %{I fill in "Email" with "#{@unconfirmed_user.email}"}
+    step %{I fill in "Password" with "#{@user_password}"}
+    step %{I press "Sign in"}
+  end
 end
 
-Then(/^I should see log out and edit information link$/) do
+Then(/^I sign in with incorrect password$/) do
+  within sign_in_modal_id do
+    step %{I fill in "Email" with "#{@user.email}"}
+    step %{I fill in "Password" with "abc"}
+    step %{I press "Sign in"}
+  end
+end
+
+Then(/^I should be logged in$/) do
   expect(page).to have_link('SIGN OUT')
   expect(page).to have_link('EDIT')
 end
-
 

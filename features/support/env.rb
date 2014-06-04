@@ -7,7 +7,7 @@
 require 'cucumber/rails'
 require 'email_spec/cucumber'
 require 'simplecov'
-SimpleCov.start 'rails'
+# SimpleCov.start 'rails'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -49,7 +49,7 @@ end
 #     DatabaseCleaner.strategy = :truncation
 #   end
 #
-Before('~@truncation') do
+Before('~@truncation, @javascript') do
   DatabaseCleaner.strategy = :truncation
 end
 #
