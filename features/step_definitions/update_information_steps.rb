@@ -9,48 +9,82 @@ Given(/^I am on edit user information page$/) do
   visit edit_user_registration_path
 end
 
-When(/^I fill in the Edit page with valid details and new email address$/) do
-  step "I fill in \"Email\" with \"#{@new_user_information[:email]}\""
-  step "I fill in \"Current password\" with \"#{@user_password}\""
+When(/^I fill in the Edit page with my new email address$/) do
+  step %{I fill in "Email" with "#{@new_user_information[:email]}"}
+  step %{I fill in "Current password" with "#{@user_password}"}
+  step %{I press "Update"}
 end
 
-Then(/^I should verify my email$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I fill in the Edit page with my new details$/) do
+  step %{I fill in "Full name" with "#{@new_user_information[:full_name]}"}
+  step %{I fill in "Phone" with "#{@new_user_information[:phone]}"}
+  step %{I fill in "Birthday" with "#{@new_user_information[:birthday]}"}
+  step %{I fill in "Current password" with "#{@user_password}"}
+  step %{I press "Update"}
 end
 
-Then(/^I should updated my email$/) do
-  @updated_user = User.find_by_id(@user.id)
-  expect(@updated_user.email).to eq(@valid_user.email)
-end
 
-When(/^I fill in the Edit page with new details$/) do
-  step "I fill in \"Full name\" with \"#{@valid_user.full_name}\""
-  step "I fill in \"Phone\" with \"#{@valid_user.phone}\""
-  step "I fill in \"Birthday\" with \"#{@valid_user.birthday}\""
-  step "I fill in \"Current password\" with \"#{@user.password}\""
-end
-
-Then(/^I should updated my details$/) do
+Then(/^My account detail is updated$/) do
   @updated_user = User.last
   [:full_name, :phone, :birthday].each do |attr|
-    expect(@updated_user.send(attr)).to eq(@valid_user.send(attr))
+    expect(@updated_user.send(attr)).to eq(@new_user_information[attr])
   end
 end
 
-When(/^I fill in the Edit page with new password$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I fill in the Edit page with my new password$/) do
+  step %{I fill in "Password" with "#{@new_user_information[:password]}"}
+  step %{I fill in "Password confirmation" with "#{@new_user_information[:password]}"}
+  step %{I fill in "Current password" with "#{@user_password}"}
+  step %{I press "Update"}
 end
 
-Then(/^I should updated my password$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I sign out$/) do
+  step %{I press "SIGN OUT"}
+  step %{I am on the Signin page}
+end
+
+Then(/^I can login with my new password$/) do
+  step %{I sign out}
+  step %{I fill in "Email" with "#{@user.email}"}
+  step %{I fill in "user_password" with "#{@new_user_information[:password]}"}
+  step %{I press "Sign in"}
+  step %{I should see the following messages}, table(%{
+     |messages              |
+     |Signed in successfully|
+   })
+  expect(page).to have_link('SIGN OUT')
 end
 
 When(/^I fill in the Edit page with invalid phone format$/) do
-  pending # express the regexp above with the code you wish you had
+  step %{I fill in "Phone" with "121-aa1-a111"}
+  step %{I fill in "Current password" with "#{@user_password}"}
+  step %{I press "Update"}
 end
 
 Then(/^I should receive an confirmation email$/) do
   expect(unread_emails_for(@new_user_information[:email]).first.subject).to eq 'Confirmation instructions'
+end
+
+When(/^I fill in the Edit page with my new details with incorrect current password$/) do
+  step %{I fill in "Full name" with "#{@new_user_information[:full_name]}"}
+  step %{I fill in "Phone" with "#{@new_user_information[:phone]}"}
+  step %{I fill in "Birthday" with "#{@new_user_information[:birthday]}"}
+  step %{I fill in "Current password" with "abcd1234"}
+  step %{I press "Update"}
+end
+
+When(/^I fill in the Edit page with my new details but without current password$/) do
+  step %{I fill in "Full name" with "#{@new_user_information[:full_name]}"}
+  step %{I fill in "Phone" with "#{@new_user_information[:phone]}"}
+  step %{I fill in "Birthday" with "#{@new_user_information[:birthday]}"}
+  step %{I press "Update"}
+end
+
+When(/^I fill in the Edit page with password not match with confirmation$/) do
+  step %{I fill in "Password" with "#{@new_user_information[:password]}"}
+  step %{I fill in "Password confirmation" with "abcd1234"}
+  step %{I fill in "Current password" with "#{@user_password}"}
+  step %{I press "Update"}
 end
 
 Then(/^I click on the confirmation link$/) do
@@ -59,5 +93,5 @@ Then(/^I click on the confirmation link$/) do
 end
 
 Then(/^My email is updated$/) do
-  expect(@user.reload.email).to eq @new_user_information[:email]
+  expect(User).to be_exists(id: @user.id, email: @new_user_information[:email])
 end

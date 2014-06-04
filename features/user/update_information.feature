@@ -7,8 +7,7 @@ Background:
   And I am on edit user information page
 
 Scenario: Edit email successfully
-  When I fill in the Edit page with valid details and new email address
-  And I press "Update"
+  When I fill in the Edit page with my new email address
   Then I should see the following messages
   |messages                                                                                                                                                                                  |
   |You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address. |
@@ -17,34 +16,40 @@ Scenario: Edit email successfully
   Then My email is updated
 
 Scenario: Edit fullname, phone, birthday successfully
-  When I fill in the Edit page with new details
-  And I press "Update"
+  When I fill in the Edit page with my new details
   Then I should see the following messages
   |messages                               |
   |You updated your account successfully. |
-  And I should updated my details
+  And My account detail is updated
 
 Scenario: Edit password successfully
-  When I fill in the Edit page with new password
-  And I press "Update"
+  When I fill in the Edit page with my new password
   Then I should see the following messages
   |messages                               |
   |You updated your account successfully. |
-  And I should updated my password
+  And I can login with my new password
 
 Scenario: Edit with invalid phone format
   When I fill in the Edit page with invalid phone format
-  And I press "Update"
   Then I should see "phone number should following format: xxx-xxx-xxxx"
 
 Scenario: Edit with incorrect current password
-  When I fill in the Edit page with invalid phone format
-  And I press "Update"
-  Then I should see "Current password is invalid"
+  When I fill in the Edit page with my new details with incorrect current password
+  Then I should see the following messages
+  |messages                               |
+  |Current password is invalid.           |
 
-Scenario: Edit without fill in Current password
+Scenario: Edit without fill in current password
+  When I fill in the Edit page with my new details but without current password
+  Then I should see the following messages
+  |messages                               |
+  |Current password can't be blank        |
 
 Scenario: Edit with new password not match with confirmation
+  When I fill in the Edit page with password not match with confirmation
+  Then I should see the following messages
+  |messages                                     |
+  |Password confirmation doesn't match Password |
 
 
 
