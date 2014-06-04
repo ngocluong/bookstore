@@ -12,6 +12,7 @@ Scenario: Log in successfully
   Then I should see the following messages
     |messages               |
     |Signed in successfully.|
+  And I should see log out and edit information link
 
 Scenario: Log in with account which is not comfirmation
   When I fill in the Sign in form with uncomfirmation account
