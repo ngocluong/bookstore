@@ -42,5 +42,5 @@ Then(/^I should be registed$/) do
 end
 
 Then(/^I should received an confirmation email$/) do
-  expect ActionMailer::Base.deliveries.last.to eq(@user.email)
+  expect(unread_emails_for(@user.email).first.subject).to eq 'Confirmation instructions'
 end
