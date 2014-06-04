@@ -18,7 +18,7 @@ end
 
 Then(/^I should updated my email$/) do
   @updated_user = User.last
-    expect(@updated_user.send(email)).to eq(@valid_user.send(email))
+  expect(@updated_user.send(email)).to eq(@valid_user.send(email))
 end
 
 When(/^I fill in the Edit page with new details$/) do
