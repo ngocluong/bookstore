@@ -1,10 +1,8 @@
 Given(/^I already logged in$/) do
-  @user = create(:confirm_user)
-  @valid_user = build(:user)
-  step "I am on the Signin page"
-  step "I fill in \"Email\" with \"#{@user.email}\""
-  step "I fill in \"user_password\" with \"#{@user.password}\""
-  step "I press \"Sign in\""
+  @user_password = 'password'
+  @user = create :confirm_user, password: @user_password
+  @new_user_information = attributes_for :user
+  login_as @user, scope: :user
 end
 
 Given(/^I am on edit user information page$/) do
@@ -12,13 +10,17 @@ Given(/^I am on edit user information page$/) do
 end
 
 When(/^I fill in the Edit page with valid details and new email address$/) do
-  step "I fill in \"Email\" with \"#{@valid_user.email}\""
-  step "I fill in \"Current password\" with \"#{@user.password}\""
+  step "I fill in \"Email\" with \"#{@new_user_information[:email]}\""
+  step "I fill in \"Current password\" with \"#{@user_password}\""
+end
+
+Then(/^I should verify my email$/) do
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^I should updated my email$/) do
-  @updated_user = User.last
-  expect(@updated_user.send(email)).to eq(@valid_user.send(email))
+  @updated_user = User.find_by_id(@user.id)
+  expect(@updated_user.email).to eq(@valid_user.email)
 end
 
 When(/^I fill in the Edit page with new details$/) do
@@ -45,4 +47,17 @@ end
 
 When(/^I fill in the Edit page with invalid phone format$/) do
   pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should receive an confirmation email$/) do
+  expect(unread_emails_for(@new_user_information[:email]).first.subject).to eq 'Confirmation instructions'
+end
+
+Then(/^I click on the confirmation link$/) do
+  open_email(@new_user_information[:email])
+  click_first_link_in_email
+end
+
+Then(/^My email is updated$/) do
+  expect(@user.reload.email).to eq @new_user_information[:email]
 end

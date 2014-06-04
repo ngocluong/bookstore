@@ -10,9 +10,11 @@ Scenario: Edit email successfully
   When I fill in the Edit page with valid details and new email address
   And I press "Update"
   Then I should see the following messages
-  |messages                               |
-  |You updated your account successfully. |
-  And I should updated my email
+  |messages                                                                                                                                                                                  |
+  |You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address. |
+  Then I should receive an confirmation email
+  And I click on the confirmation link
+  Then My email is updated
 
 Scenario: Edit fullname, phone, birthday successfully
   When I fill in the Edit page with new details
