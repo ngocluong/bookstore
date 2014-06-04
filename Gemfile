@@ -51,4 +51,5 @@ group :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'email_spec'
+  gem 'simplecov', '~> 0.7.1', require: false
 end
