@@ -42,6 +42,5 @@ Then(/^I should be registed$/) do
 end
 
 Then(/^I should received an confirmation email$/) do
-  p ActionMailer::Base.deliveries.last
   expect ActionMailer::Base.deliveries.last.to eq(@user.email)
 end
