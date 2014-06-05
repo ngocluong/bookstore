@@ -25,10 +25,7 @@ end
 
 
 Then(/^My account detail is updated$/) do
-  @updated_user = User.last
-  [:full_name, :phone, :birthday].each do |attr|
-    expect(@updated_user.send(attr)).to eq(@new_user_information[attr])
-  end
+  expect(User).to be_exists(@new_user_information.slice('full_name', 'phone', 'birthday'))
 end
 
 When(/^I change my password$/) do
@@ -52,7 +49,11 @@ Then(/^I can login with my new password$/) do
      |messages              |
      |Signed in successfully|
    })
-  expect(page).to have_link('SIGN OUT')
+  within '#rightpanel' do
+    wait_until do
+      page.has_link?('SIGN OUT') && page.has_link?('EDIT')
+    end
+  end
 end
 
 When(/^I fill in the Edit page with invalid phone format$/) do
@@ -62,6 +63,9 @@ When(/^I fill in the Edit page with invalid phone format$/) do
 end
 
 Then(/^I should receive an confirmation email$/) do
+  wait_until do
+    unread_emails_for(@new_user_information.email).present?
+  end
   expect(unread_emails_for(@new_user_information[:email]).first.subject).to eq 'Confirmation instructions'
 end
 
