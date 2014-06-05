@@ -10,19 +10,19 @@ Background:
 Scenario: Log in successfully
   When I sign in with valid details
   Then I should see the following messages
-    |messages               |
+    |message                |
     |Signed in successfully.|
   And I should be logged in
 
 Scenario: Log in with account which is not comfirmation
   When I sign in with an uncomfirmed account
   Then I should see the following messages
-    |errors                                               |
+    |message                                              |
     |You have to confirm your account before continuing.  |
 
 Scenario: Log in with incorrect email or password
   When I sign in with incorrect password
   Then I should see the following messages
-  |errors                     |
+  |message                    |
   |Invalid email or password. |
 
