@@ -82,7 +82,7 @@
   color: #BDE5ED;
 }
 
-#rightpanel{
+#right-panel{
   position:absolute;
   left: 25%;
   top: 25%;
@@ -161,6 +161,18 @@
   border-color: #5ABCD3;
   color: #FFF;
   margin-top: 10px;
+}
+
+.new_user{
+  li{
+    color: red;
+  }
+
+  h2{
+    margin-top: 0px;
+    font: normal 25px "Roboto black";
+    color: #3398B3;
+  }
 }
 
 .edit_user{

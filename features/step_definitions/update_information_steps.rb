@@ -49,7 +49,7 @@ Then(/^I can login with my new password$/) do
      |messages              |
      |Signed in successfully|
    })
-  within '#rightpanel' do
+  within '#right-panel' do
     wait_until do
       page.has_link?('SIGN OUT') && page.has_link?('EDIT')
     end

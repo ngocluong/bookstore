@@ -39,7 +39,7 @@ Then(/^I sign in with incorrect password$/) do
 end
 
 Then(/^I should be logged in$/) do
-  within '#rightpanel' do
+  within '#right-panel' do
     wait_until do
       page.has_link?('SIGN OUT') && page.has_link?('EDIT')
     end
