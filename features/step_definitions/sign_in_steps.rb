@@ -39,7 +39,9 @@ Then(/^I sign in with incorrect password$/) do
 end
 
 Then(/^I should be logged in$/) do
-  expect(page).to have_link('SIGN OUT')
-  expect(page).to have_link('EDIT')
+  within '#rightpanel' do
+    wait_until do
+      page.has_link?('SIGN OUT') && page.has_link?('EDIT')
+    end
+  end
 end
-

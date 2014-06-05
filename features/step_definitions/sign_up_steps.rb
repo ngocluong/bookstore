@@ -63,5 +63,8 @@ Then(/^I should be registed$/) do
 end
 
 Then(/^I should receive a confirmation email$/) do
+  wait_until do
+    unread_emails_for(@user.email).present?
+  end
   expect(unread_emails_for(@user.email).first.subject).to eq 'Confirmation instructions'
 end

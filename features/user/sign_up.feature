@@ -8,7 +8,6 @@ Background:
  Given I am a new user
  And I am on the signup page
 
-@truncation
 Scenario: Registration successfully
   When I sign up with valid details
   Then I should be registed

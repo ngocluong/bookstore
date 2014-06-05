@@ -24,7 +24,6 @@ end
 
 Then(/^I should see element "(.*?)"$/) do |element|
   wait_until do
-    page.has_css? element
+    page.has_selector? element, visible: true
   end
 end
-

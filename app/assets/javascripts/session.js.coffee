@@ -1,4 +1,6 @@
 $ ->
+  $('body').on 'click', '#sign_up', (event) ->
+    $('#sign-in-modal').modal('hide')
   $('body').on 'ajax:complete', 'form#new_user', (response, xhr) ->
     if xhr.status == 200
       eval(xhr.responseText)
