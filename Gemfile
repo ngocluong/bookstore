@@ -12,7 +12,6 @@ gem 'sidekiq'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails', branch: "bootstrap3"
 
 # Use Uglifier as compressor for JavaScript assets
