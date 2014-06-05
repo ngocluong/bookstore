@@ -33,6 +33,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'slim-rails'
 
+gem 'recaptcha', require: 'recaptcha/rails'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
