@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'email_spec/cucumber'
+require 'cucumber/rspec/doubles'
 require 'simplecov'
 SimpleCov.start 'rails'
 if ENV['CIRCLE_ARTIFACTS']
@@ -54,8 +55,16 @@ end
 #     DatabaseCleaner.strategy = :truncation
 #   end
 #
-Before('~@truncation, @javascript') do
+Before('@truncation, @javascript') do
   DatabaseCleaner.strategy = :truncation
+end
+
+Before('@recaptcha') do
+  Recaptcha.configuration.skip_verify_env.delete('test')
+end
+
+After('@recaptcha') do
+  Recaptcha.configuration.skip_verify_env << 'test'
 end
 #
 
