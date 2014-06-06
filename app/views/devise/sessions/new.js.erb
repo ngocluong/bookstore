@@ -1,0 +1,9 @@
+<% if flash[:show_captcha] %>
+  $('#new_user').append('<%= j(recaptcha_tags(ajax: true)) %>')
+<% end %>
+<% if flash[:recaptcha_error] %>
+  $('#new_user .error').html('Invalid captcha')
+<% else %>
+  $('#new_user .error').html('<%= flash[:alert] %>')
+<% end %>
+$('#new_user #user_password').val('')
