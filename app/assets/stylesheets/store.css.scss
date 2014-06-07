@@ -1,3 +1,189 @@
 // Place all the styles related to the Store controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'bootstrap';
+
+.row{
+  background: #5ABCD3;
+  height: 17mm;
+}
+
+.page{
+  background: #3398B3;
+  height: 10mm;
+  font: normal 25px "Roboto black";
+  color: #FFF;
+  padding-left: 20px;
+}
+
+.col-md-8{
+
+  img{
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  #searchpanel{
+    margin-top: 10px;
+    padding: 3px;
+    background: #FFFFFF;
+    float:left;
+    font: normal 14px "Roboto medium";
+    color: #3398B3;
+
+    .custom{
+      background: #FFF;
+      text-stroke: #3399B3;
+      border-radius: 0px;
+      border-color: #3398B3;
+      font: normal 14px "Roboto medium";
+      color: #3398B3;
+    }
+
+    .dropdown-menu{
+      position: absolute;
+      border-color: #3398B3;
+      border-radius: 0px;
+    }
+
+    button{
+      background-color: #5ABCD3;
+      font: normal 17px "Roboto medium";
+      color: #BDE5ED;
+    }
+
+    .search{
+      margin: 2px;
+    }
+
+    #search{
+      margin-left: 1px;
+      border: 0px;
+    }
+
+    a{
+      font: normal 14px "Roboto medium";
+      color: #3398B3;
+    }
+
+    a:hover{
+      font: normal 14px "Roboto medium";
+      background-color: #5ABCD3;
+      color: #FFF;
+    }
+  }
+}
+
+.col-md-4{
+  height: 100%;
+  font: normal 17px "Roboto medium";
+  color: #BDE5ED;
+}
+
+#right-panel{
+  position:absolute;
+  left: 25%;
+  top: 25%;
+
+  a{
+    font: normal 17px "Roboto medium";
+    color: #BDE5ED;
+  }
+}
+
+.search {
+  background: none repeat scroll 0 0 #fff;
+  border: 0 none;
+  color: #7F7F7F;
+  float: left;
+  font: 12px 'Helvetica','Lucida Sans Unicode','Lucida Grande',sans-serif;
+  height: 22px;
+  margin: 0;
+  padding: 10px;
+  transition: background 0.3s ease-in-out 0s;
+  width: 300px;
+}
+
+.modal-dialog {
+  width: 300px;
+
+  .header{
+    margin-top: 0px;
+    background-color: #5ABCD3;
+    font: normal 36px "Lobster 1.3";
+  }
+
+  h2{
+    text-align: center;
+    margin-top: 0px;
+    font: normal 36px "Lobster 1.3";
+    color: #FFF;
+  }
+
+  .sign_in{
+    margin-left: 20px;
+  }
+
+  .sign_up{
+    margin-left: 20px;
+  }
+
+  .bluebox{
+    background-color: #BDE5ED;
+    border: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 250px;
+  }
+
+  .input-group{
+    margin-top: 10px;
+    margin-right: 100px;
+  }
+}
+
+.error{
+  color: red;
+}
+
+.col-sm-3{
+  margin-top: 17px;
+}
+
+.col-sm-9{
+  margin-top: 10px;
+}
+
+.btn-primary{
+  background-color: #5ABCD3;
+  border-color: #5ABCD3;
+  color: #FFF;
+  margin-top: 10px;
+}
+
+.new_user{
+  li{
+    color: red;
+  }
+
+  h2{
+    margin-top: 0px;
+    font: normal 25px "Roboto black";
+    color: #3398B3;
+  }
+}
+
+.edit_user{
+  li{
+    color: red;
+  }
+
+  h2{
+    margin-top: 0px;
+    font: normal 25px "Roboto black";
+    color: #3398B3;
+  }
+}
+

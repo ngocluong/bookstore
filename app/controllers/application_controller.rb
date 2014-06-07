@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     [:full_name, :phone, :birthday, :creation_date].each do |attr|
       devise_parameter_sanitizer.for(:sign_up) << attr
+      devise_parameter_sanitizer.for(:account_update) << attr
     end
   end
 end

@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title BookStore
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
+  body
+    .header
+      .row
+        .col-md-8
+          = link_to image_tag("logo.png"), store_index_path
+          #searchpanel
+            .btn-group
+              button.btn.custom data-toggle="dropdown" type="button"
+                | Action
+                span.caret
+              ul.dropdown-menu role="menu"
+                li
+                  a href="#"  Action
+                li
+                  a href="#"  Another action
+                li
+                  a href="#"  Something else here
+            input.search type="text"
+              button#search type="submit"  Go
+        .col-md-4
+          #right-panel
+            = link_to "BROWSE ", store_index_path
+            = render "devise/sessions/sessions"
+      .page
+        | INDEX
+    .container
+      p.notice= notice
+      p.alert= alert
+      = yield
+    /! Modal
+    #sign-in-modal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog
+        .modal-content
+    #sign-up-modal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog
+        .modal-content
+
+
+
+
