@@ -1,7 +1,7 @@
 <% if @user.errors.any? %>
-  $('#registration .error').html('<%= escape_javascript(render('errors', user: @user)) %>')
+  $('#registration .error').html('<%= j(render('errors', user: @user)) %>')
 <% else %>
-  $('.container').html('<%= escape_javascript(render('success', path: @after_sign_up_path)) %>')
+  $('.container').html('<%= j(render('success', path: @after_sign_up_path)) %>')
   $('#sign-up-modal').modal('hide');
   $('#sign-in-modal').modal('hide');
   $('#sign-up-success .modal-body').html('<%= flash[:notice] %>')

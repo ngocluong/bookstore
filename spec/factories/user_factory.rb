@@ -13,4 +13,10 @@ FactoryGirl.define do
       user.confirm!
     end
   end
+
+  factory :locked_user, parent: :confirm_user do
+    after(:create) do |user|
+      user.update_column :failed_attempts, User::MAX_FAILED_LOGIN + 1
+    end
+  end
 end
