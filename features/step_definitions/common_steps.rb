@@ -22,6 +22,10 @@ Then(/^I should see "(.*?)"$/) do |content|
   end
 end
 
+Then(/^I should not see "(.*?)"$/) do |content|
+    !page.has_content? content
+end
+
 Then(/^I should see element "(.*?)"$/) do |element|
   wait_until do
     page.has_selector? element, visible: true

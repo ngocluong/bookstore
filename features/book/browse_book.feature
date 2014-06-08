@@ -6,5 +6,8 @@ Background:
   Given The Bookstore has books
   And I visit book listing page
 
-Scenario: browse all book
-  Then I should see all book
+Scenario: Browse all book
+  Then I should see first 10 books
+  And I should see links to other pages
+  Then I press "Next ›" 
+  And I should see next 10 books
