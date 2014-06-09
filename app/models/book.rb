@@ -9,5 +9,5 @@ class Book < ActiveRecord::Base
     message: 'must be a URL for GIF, JPG, JPEG or PNG image'
   }
 
-  PAGINATION_OPTIONS = [10, 15 , 20, 25]
+  PAGINATION_OPTIONS = [9, 12 , 15, 18]
 end
