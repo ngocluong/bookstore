@@ -21,7 +21,7 @@ table
       tr
         td = book.title
         td = book.description
-        td = image_tag(book.image_url) 
+        td = image_tag(book.image_url)
         td = book.author_name
         td = book.publisher_name
         td = book.published_date
@@ -37,7 +37,7 @@ br
 = link_to 'New Book', new_book_path
 br
 = form_tag books_path, id: 'per_page_form', :method => :get do
-  = select_tag :per_page, options_for_select(['10','15','20','25']), onchange: "$('#per_page_form').submit();" 
+  = select_tag :per_page, options_for_select(['10','15','20','25']), onchange: "$('#per_page_form').submit();"
   | books per page
 br
 = paginate @books

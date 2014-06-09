@@ -100,6 +100,12 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kaminari (0.16.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     launchy (2.4.2)
       addressable (~> 2.3)
     letter_opener (1.2.0)
@@ -234,6 +240,8 @@ DEPENDENCIES
   faker
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
+  kaminari-bootstrap
   letter_opener
   pg
   quiet_assets
