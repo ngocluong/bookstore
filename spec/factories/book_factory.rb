@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :book do
     sequence (:title) { |n| "#{n} #{Faker::Lorem.word}" }
     description { Faker::Lorem.sentence }
-    image_url "rail.jpeg"
+    image_url "default.png"
     author_name { Faker::Lorem.word }
     sequence(:publisher_name) { Faker::Lorem.word }
     sequence(:published_date)  { |n| n.year.ago.to_date }

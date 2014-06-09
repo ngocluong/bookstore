@@ -3,7 +3,7 @@ class CreateBooks < ActiveRecord::Migration
     create_table :books do |t|
       t.string :title
       t.text :description
-      t.string :image_url, default: 'book.png'
+      t.string :image_url, default: 'default.png'
       t.string :author_name, default: 'N/A'
       t.string :publisher_name, default: 'N/A'
       t.date :published_date

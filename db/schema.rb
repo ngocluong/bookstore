@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140607100927) do
   create_table "books", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "image_url",          default: "book.png"
+    t.string   "image_url",          default: "default.png"
     t.string   "author_name",        default: "N/A"
     t.string   "publisher_name",     default: "N/A"
     t.date     "published_date"
