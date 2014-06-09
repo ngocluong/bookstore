@@ -13,7 +13,7 @@
   .page-name-row{
     background: #3398B3;
     height: 10mm;
-    font: normal 25px "Roboto black";
+    font: normal 25px "Roboto";
     color: #FFF;
     padding-left: 20px;
   }
@@ -112,24 +112,44 @@
   width: 300px;
 }
 
-.modal-dialog {
+.modal-content {
   width: 350px;
+}
 
+.modal-dialog {
   .header{
-    margin-top: 0px;
+    padding-top: 5px;
     background-color: #5ABCD3;
     font: normal 36px "Lobster 1.3";
+    padding-bottom: 5px;
+  }
+
+  hr{
+    size: 2px;
   }
 
   h2{
-    text-align: center;
-    margin-top: 0px;
+    text-align: left;
     font: normal 36px "Lobster 1.3";
     color: #FFF;
   }
 
+  h3{
+    text-align: left;
+    display: inline-block;
+    margin-top: 7px;
+    font: normal 18px "Lobster 1.3";
+    color: #5ABCD3;
+  }
+
+  a{
+    color: #BDE5ED;
+  }
+
   .sign_in{
+    display: inline-block;
     margin-left: 20px;
+    margin-right: 20px;
   }
 
   .sign_up{
@@ -141,12 +161,32 @@
     border: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 270px;
+    width: 300px;
   }
 
   .input-group{
     margin-top: 10px;
-    margin-right: 100px;
+    width: 55%
+  }
+
+  .submit-btn{
+    float: right;
+    color: #fff;
+    border-radius: 0px;
+    background-color: #5ABCD3;
+  }
+
+  .sign-up-button{
+    float: right;
+    margin-bottom: 5px;
+  }
+
+  .image-button{
+    float: right;
+    background-image: url('/assets/btn-signin.png');
+    width: 80px;
+    height: 40px;
+    border: 0px;
   }
 }
 
@@ -163,8 +203,8 @@
 }
 
 .btn-primary{
-  background-color: #5ABCD3;
-  border-color: #5ABCD3;
+  background-color: #BDE5ED;
+  border: 0px;
   color: #FFF;
   margin-top: 10px;
 }
@@ -197,4 +237,42 @@
   }
 }
 
+.thumbnail {
+  height: 150px;
 
+  img {
+    display: inline;
+    width: 80px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    position: absolute;
+ }
+
+ .caption{
+  margin-left: 100px;
+
+  .star{
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+  }
+
+  h3{
+    margin-top: 0px;
+  }
+ }
+}
+
+#per_page{
+  display: inline;
+  margin-left: 5px;
+  width: 5%;
+  border-color: #3398B3;
+  border-radius: 0px;
+  display: inline-block;
+}
+
+.pagination{
+  float: right;
+}

@@ -1,18 +1,21 @@
 h1 Listing books
 - @books.each do |book|
-    .col-sm-6.col-md-4
-      .thumbnail
-        = image_tag(book.image_url)
-        .caption
-          h3 = book.title
-          p Author: #{book.author_name}
-          p Publisher: #{book.publisher_name}
-          p
-            a.btn.btn-primary href="#" role="button"  Detail
-            a.btn.btn-default href="#" role="button"  Buy
+  .col-sm-6.col-md-4
+    .thumbnail
+      = image_tag(book.image_url)
+      .caption
+        h3 = book.title
+        p Author: #{book.author_name}
+        p
+          - book.total_rating_value.times
+            img.star src="../assets/star.png"
+        p = link_to image_tag("buy-book.png"), store_index_path
+
 br
+.row
 = form_tag books_path, method: :get do
-  = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS)
-  | books per page
+  | Items/page
+  = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS), class: "form-control"
+  = paginate @books
 br
-= paginate @books
+
