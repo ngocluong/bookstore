@@ -36,8 +36,8 @@ br
 
 = link_to 'New Book', new_book_path
 br
-= form_tag books_path, id: 'per_page_form', :method => :get do
-  = select_tag :per_page, options_for_select(['10','15','20','25']), onchange: "$('#per_page_form').submit();"
+= form_tag books_path, method: :get do
+  = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS)
   | books per page
 br
 = paginate @books
