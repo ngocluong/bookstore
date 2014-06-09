@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  paginates_per 10
+  paginates_per 9
   max_paginates_per 50
   validates :title, :description, :image_url, :unit_price, :published_date, presence: true
   validates :unit_price, numericality: { greater_than_or_equal_to: 0.01 }
