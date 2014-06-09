@@ -1,40 +1,15 @@
 h1 Listing books
-
-table
-  thead
-    tr
-      th Title
-      th Description
-      th Image url
-      th Author name
-      th Publisher name
-      th Published date
-      th Unit price
-      th Total rating value
-      th Total rating count
-      th
-      th
-      th
-
-  tbody
-    - @books.each do |book|
-      tr
-        td = book.title
-        td = book.description
-        td = image_tag(book.image_url)
-        td = book.author_name
-        td = book.publisher_name
-        td = book.published_date
-        td = book.unit_price
-        td = book.total_rating_value
-        td = book.total_rating_count
-        td = link_to 'Show', book
-        td = link_to 'Edit', edit_book_path(book)
-        td = link_to 'Destroy', book, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
-
-= link_to 'New Book', new_book_path
+- @books.each do |book|
+    .col-sm-6.col-md-4
+      .thumbnail
+        = image_tag(book.image_url)
+        .caption
+          h3 = book.title
+          p Author: #{book.author_name}
+          p Publisher: #{book.publisher_name}
+          p
+            a.btn.btn-primary href="#" role="button"  Detail
+            a.btn.btn-default href="#" role="button"  Buy
 br
 = form_tag books_path, method: :get do
   = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS)

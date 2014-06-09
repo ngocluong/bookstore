@@ -4,74 +4,88 @@
 
 @import 'bootstrap';
 
-.row{
-  background: #5ABCD3;
-  height: 17mm;
-}
-
-.col-md-8{
-
-  img{
-    float: left;
-    margin-left: 20px;
-    margin-right: 20px;
+.header{
+  .row{
+    background: #5ABCD3;
+    height: 17mm;
   }
 
-  #searchpanel{
-    margin-top: 10px;
-    padding: 3px;
-    background: #FFFFFF;
-    float:left;
-    font: normal 14px "Roboto medium";
-    color: #3398B3;
+  .page-name-row{
+    background: #3398B3;
+    height: 10mm;
+    font: normal 25px "Roboto black";
+    color: #FFF;
+    padding-left: 20px;
+  }
 
-    .custom{
-      background: #FFF;
-      text-stroke: #3399B3;
-      border-radius: 0px;
-      border-color: #3398B3;
+  .col-md-8{
+
+    img{
+      float: left;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    #searchpanel{
+      margin-top: 10px;
+      padding: 3px;
+      background: #FFFFFF;
+      float:left;
       font: normal 14px "Roboto medium";
       color: #3398B3;
-    }
 
-    .dropdown-menu{
-      position: absolute;
-      border-color: #3398B3;
-      border-radius: 0px;
-    }
+      .custom{
+        background: #FFF;
+        text-stroke: #3399B3;
+        border-radius: 0px;
+        border-color: #3398B3;
+        font: normal 14px "Roboto medium";
+        color: #3398B3;
+      }
 
-    button{
-      background-color: #5ABCD3;
-      font: normal 17px "Roboto medium";
-      color: #BDE5ED;
-    }
+      .dropdown-menu{
+        position: absolute;
+        border-color: #3398B3;
+        border-radius: 0px;
+      }
 
-    .search{
-      margin: 2px;
-    }
+      button{
+        background-color: #5ABCD3;
+        font: normal 17px "Roboto medium";
+        color: #BDE5ED;
+      }
 
-    #search{
-      margin-left: 1px;
-      border: 0px;
-    }
+      .search{
+        margin: 2px;
+      }
 
-    a{
-      font: normal 14px "Roboto medium";
-      color: #3398B3;
-    }
+      #search{
+        margin-left: 1px;
+        border: 0px;
+      }
 
-    a:hover{
-      font: normal 14px "Roboto medium";
-      background-color: #5ABCD3;
-      color: #FFF;
+      a{
+        font: normal 14px "Roboto medium";
+        color: #3398B3;
+      }
+
+      a:hover{
+        font: normal 14px "Roboto medium";
+        background-color: #5ABCD3;
+        color: #FFF;
+      }
     }
+  }
+
+  .col-md-4{
+    height: 100%;
+    font: normal 17px "Roboto medium";
+    color: #BDE5ED;
   }
 }
 
 .col-md-4{
-  height: 100%;
-  font: normal 17px "Roboto medium";
-  color: #BDE5ED;
+  float: right;
 }
 
 #right-panel{
@@ -152,6 +166,10 @@
   background-color: #5ABCD3;
   border-color: #5ABCD3;
   color: #FFF;
+  margin-top: 10px;
+}
+
+.btn-default{
   margin-top: 10px;
 }
 
