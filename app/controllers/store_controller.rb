@@ -1,6 +1,6 @@
 class StoreController < ApplicationController
-  
+
   def index
-    @books = Book.all.page params[:page]
+    redirect_to books_path
   end
 end
