@@ -7,18 +7,33 @@ Given(/^I visit book listing page$/) do
 end
 
 Then(/^I should see first (\d+) books$/) do |per_page|
-  Book.first(per_page.to_i).each do |book|
-    step %{I should see "#{book.title}"}
+  first_page_books = Book.page(1).per(per_page)
+
+  first_page_books.each do |book|
+    step %{I should see "#{book.title}" immediately}
   end
-  Book.last(20 - per_page.to_i).each do |book|
+
+  Book.where.not(id: first_page_books.map(&:id)).each do |book|
     step %{I should not see "#{book.title}"}
   end
 end
 
 Then(/^I should see links to other pages$/) do
-  expect(page).to have_selector('nav.pagination')
+  step %{I should see element "#{pagination_class}"}
 end
 
-Then(/^I should see next (\d+) books$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see next (\d+) books$/) do |per_page|
+  second_page_books = Book.page(2).per(per_page)
+
+  second_page_books.each do |book|
+    step %{I should see "#{book.title}" immediately}
+  end
+
+  Book.where.not(id: second_page_books.map(&:id)).each do |book|
+    step %{I should not see "#{book.title}"}
+  end
+end
+
+When(/^I change to (\d+) books per page$/) do |per_page|
+  page.select(per_page, from: 'per_page')
 end
