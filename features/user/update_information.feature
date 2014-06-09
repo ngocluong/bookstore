@@ -1,3 +1,4 @@
+@javascript
 Feature: Update personal information
 As an authorized user
 I want to modify my personal information
