@@ -1,0 +1,4 @@
+unless Rails.env.production?
+  ENV['CAPTCHA_PUBLIC_KEY'] = '6Lcov_QSAAAAAHYa8wYkrHO-it2KLAdb9tf8TX4e'
+  ENV['CAPTCHA_PRIVATE_KEY'] = '6Lcov_QSAAAAAO4pxt8qf2WxBtGn3Hh4dIjXemUI'
+end
