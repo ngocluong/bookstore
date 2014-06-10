@@ -8,4 +8,8 @@
 require 'faker'
 
 Book.destroy_all
+Category.destroy_all
+CategoryBook.destroy_all
 FactoryGirl.create_list :book, 20
+FactoryGirl.create_list :category, 5
+FactoryGirl.create_list :category_book, 12
