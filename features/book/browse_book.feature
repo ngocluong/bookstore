@@ -15,5 +15,10 @@ Scenario: Browse all book
 Scenario: Change book per page
   When I change to 15 books per page
   Then I should see first 15 books
-  Then I press "Next ›"
+  Then I move to second page
   And I should see next 15 books
+
+Scenario: Change book per page in page 2
+  When I move to second page
+  And I change to 15 books per page
+  Then I should see first 15 books

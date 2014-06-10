@@ -2,6 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+ready = ->
   $('body').on 'change', 'select#per_page', (event) ->
     $(@).parent('form').submit()
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

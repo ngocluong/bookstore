@@ -37,3 +37,7 @@ end
 When(/^I change to (\d+) books per page$/) do |per_page|
   page.select(per_page, from: 'per_page')
 end
+
+When(/^I move to second page$/) do
+  step %{I press "Next ›"}
+end
