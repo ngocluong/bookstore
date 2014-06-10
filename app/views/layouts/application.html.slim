@@ -13,19 +13,17 @@ html
           #searchpanel
             .btn-group
               button.btn.custom data-toggle="dropdown" type="button"
-                | Action
+                | Category
                 span.caret
               ul.dropdown-menu role="menu"
-                li
-                  a href="#"  Action
-                li
-                  a href="#"  Another action
-                li
-                  a href="#"  Something else here
+                - @categories.each do |category|
+                  li
+                    = link_to category.name
             input.search type="text"
               button#search type="submit"  Go
         .col-md-4
           #right-panel
+
             = link_to "BROWSE ", store_index_path
             = render "devise/sessions/sessions"
       .page-name-row
