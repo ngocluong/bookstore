@@ -1,5 +1,5 @@
 <% if flash[:show_captcha] %>
-  $('.reCaptcha').html('<%= j(recaptcha_tags(ajax: true)) %>')
+  $('.recaptcha').html('<%= j(recaptcha_tags(ajax: true)) %>')
 <% end %>
 <% if flash[:recaptcha_error] %>
   $('#new_user .error').html('Invalid captcha')
