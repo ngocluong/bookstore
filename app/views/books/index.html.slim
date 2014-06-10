@@ -8,14 +8,14 @@ h1 Listing books
         p Author: #{book.author_name}
         p
           - book.total_rating_value.times
-            img.star src="../assets/star.png"
-        p = link_to image_tag("buy-book.png"), store_index_path
+            = image_tag '../assets/star.png', class: 'star'
+        p = link_to image_tag('buy-book.png'), store_index_path
 
 br
 .row
 = form_tag books_path, method: :get do
   | Items/page
-  = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS), class: "form-control"
+  = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS), class: 'form-control'
   = paginate @books
 br
 
