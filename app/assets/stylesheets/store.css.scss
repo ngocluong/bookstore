@@ -49,19 +49,28 @@
         border-radius: 0px;
       }
 
+      .btn-group{
+        float: left;
+      }
+
       button{
         background-color: #5ABCD3;
         font: normal 17px "Roboto medium";
+        height: 32px;
         color: #BDE5ED;
       }
 
       .search{
         margin: 2px;
+        height: 30px;
+        vertical-align: middle;
       }
 
       #search{
-        margin-left: 1px;
+        margin-right: 3px;
         border: 0px;
+        height: 32px;
+        vertical-align: middle;
       }
 
       a{
