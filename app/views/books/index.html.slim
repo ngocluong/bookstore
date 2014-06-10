@@ -4,7 +4,7 @@ h1 Listing books
     .thumbnail
       = image_tag(book.image_url)
       .caption
-        h3 = book.title
+        h4 = book.title
         p Author: #{book.author_name}
         p
           - book.total_rating_value.times
