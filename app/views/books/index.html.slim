@@ -15,7 +15,7 @@ br
 .row
 = form_tag books_path, method: :get do
   | Items/page
-  = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS), class: 'form-control'
+  = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS, params[:per_page]), class: 'form-control'
   = paginate @books
 br
 
