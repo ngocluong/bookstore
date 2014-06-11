@@ -12,6 +12,7 @@ gem 'sidekiq'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'unicorn'
+gem 'pg_search'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

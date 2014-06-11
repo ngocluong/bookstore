@@ -1,6 +1,14 @@
 class Book < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search, against: :title
+
+  has_many :category_books
+  has_many :categories, through: :category_books
+
   paginates_per 9
   max_paginates_per 50
+  PAGINATION_OPTIONS = [9, 12 , 15, 18]
+
   validates :title, :description, :image_url, :unit_price, :published_date, presence: true
   validates :unit_price, numericality: { greater_than_or_equal_to: 0.01 }
   validates :title, uniqueness: true
@@ -8,9 +16,4 @@ class Book < ActiveRecord::Base
     with: %r{\.(gif|jpg|png|jpeg)\Z}i,
     message: 'must be a URL for GIF, JPG, JPEG or PNG image'
   }
-
-  PAGINATION_OPTIONS = [9, 12 , 15, 18]
-
-  has_many :category_books
-  has_many :categories, through: :category_books
 end
