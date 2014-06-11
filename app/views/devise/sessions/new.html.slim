@@ -8,16 +8,15 @@
     div
       = f.label :email
       br/
-      = f.email_field :email, autofocus: true, class: "bluebox"
+      = f.email_field :email, autofocus: true, class: "bluebox", placeholder: 'Email'
     div
       = f.label :password
       br/
-      = f.password_field :password, autocomplete: "off", class: "bluebox"
+      = f.password_field :password, autocomplete: "off", class: "bluebox", placeholder: 'Password'
     div.recaptcha
-    - if devise_mapping.rememberable?
-      div.input-group
-        span.input-group-addon
-          = f.check_box :remember_me
-        = f.label :remember_me, class: "form-control"
-    = f.submit "Sign in",  class: "image-button"
+    div.btn-sign-in
+      - if devise_mapping.rememberable?
+          = f.label :remember_me
+          = f.check_box :remember_me, class: 'remember'
+      = f.submit "Sign in",  class: "image-button"
   = render "devise/shared/links"

@@ -27,6 +27,7 @@
     }
 
     #searchpanel{
+      width: 41%;
       margin-top: 10px;
       padding: 3px;
       background: #FFFFFF;
@@ -34,54 +35,27 @@
       font: normal 14px "Roboto medium";
       color: #3398B3;
 
-      .custom{
-        background: #FFF;
-        text-stroke: #3399B3;
-        border-radius: 0px;
-        border-color: #3398B3;
-        font: normal 14px "Roboto medium";
-        color: #3398B3;
-      }
-
-      .dropdown-menu{
-        position: absolute;
-        border-color: #3398B3;
-        border-radius: 0px;
-      }
-
       .btn-group{
         float: left;
+        width: 25%;
       }
 
       button{
         background-color: #5ABCD3;
         font: normal 17px "Roboto medium";
         height: 32px;
+        float: right;
         color: #BDE5ED;
+        margin-right: 3px;
+        border: 0px;
+        vertical-align: middle;
       }
 
       .search{
         margin: 2px;
         height: 30px;
+        width: 65%;
         vertical-align: middle;
-      }
-
-      #search{
-        margin-right: 3px;
-        border: 0px;
-        height: 32px;
-        vertical-align: middle;
-      }
-
-      a{
-        font: normal 14px "Roboto medium";
-        color: #3398B3;
-      }
-
-      a:hover{
-        font: normal 14px "Roboto medium";
-        background-color: #5ABCD3;
-        color: #FFF;
       }
     }
   }
@@ -135,6 +109,7 @@
 
   hr{
     size: 2px;
+    margin-bottom: 20px;
   }
 
   h2{
@@ -159,10 +134,41 @@
     display: inline-block;
     margin-left: 20px;
     margin-right: 20px;
+
+    .btn-sign-in{
+      vertical-align: middle;
+      padding-top: 15px;
+      padding-right: 9px;
+    }
+
+    input[type=checkbox]{
+      vertical-align: top;
+      -webkit-appearance:none;
+      width: 15px;
+      height: 15px;
+      background:white;
+      border-radius:0px;
+      margin-left: 3px;
+      border:2px solid #5ABCD3;
+    }
+
+    input[type=checkbox]:checked {
+        background: #3398B3;
+    }
+
+    .image-button{
+      background-image: image-url('sign-in.png');
+    }
   }
 
   .sign_up{
     margin-left: 20px;
+
+    .image-button{
+      margin-top: 10px;
+      float: center;
+      background-image: image-url('btn-submit.png');
+    }
   }
 
   .bluebox{
@@ -187,13 +193,13 @@
 
   .sign-up-button{
     float: right;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    margin-right: 9px;
   }
 
   .image-button{
     float: right;
     color:transparent;
-    background-image: image-url('sign-in.png');
     width: 80px;
     height: 40px;
     border: 0px;
@@ -275,12 +281,16 @@
 }
 
 #per_page{
-  display: inline;
   margin-left: 5px;
   width: 50px;
   border-color: #3398B3;
   border-radius: 0px;
   display: inline-block;
+}
+
+.book-per-page{
+  margin-top: 20px;
+  margin-left: 15px;
 }
 
 .pagination{

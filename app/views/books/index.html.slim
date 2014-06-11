@@ -13,9 +13,10 @@ h1 Listing books
 
 br
 .row
-= form_tag books_path, method: :get do
-  | Items/page
-  = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS, params[:per_page]), class: 'form-control'
-  = paginate @books
+= paginate @books
+div.book-per-page
+  = form_tag books_path, method: :get do
+    | Items/page
+    = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS, params[:per_page]), class: 'form-control'
 br
 

@@ -33,5 +33,6 @@
         br/
         = f.date_field :birthday, class: "bluebox"
       = f.hidden_field :creation_date, value: Time.now
-      div= f.submit "Sign up", class: "btn btn-primary"
       = render "devise/shared/links"
+      center
+        div= f.submit "Sign up", class: "image-button"
