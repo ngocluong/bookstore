@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :search, against: :title
+  pg_search_scope :search, against: [:title, :author_name]
 
   has_many :category_books
   has_many :categories, through: :category_books
