@@ -12,4 +12,9 @@ Category.destroy_all
 CategoryBook.destroy_all
 FactoryGirl.create_list :book, 20
 FactoryGirl.create_list :category, 5
-FactoryGirl.create_list :category_book, 12
+
+Book.find_each do |book|
+  Category.find_each do |category|
+    category.books << book if rand > 0.5
+  end
+end
