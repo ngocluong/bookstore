@@ -193,7 +193,7 @@
   .image-button{
     float: right;
     color:transparent;
-    background-image: url('/assets/btn-signin.png');
+    background-image: image-url('sign-in.png');
     width: 80px;
     height: 40px;
     border: 0px;
@@ -277,7 +277,7 @@
 #per_page{
   display: inline;
   margin-left: 5px;
-  width: 5%;
+  width: 50px;
   border-color: #3398B3;
   border-radius: 0px;
   display: inline-block;
