@@ -2,24 +2,25 @@ doctype html
 html
   head
     title BookStore
-    = stylesheet_link_tag    "application", media: "all"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
   body
     .header
       .row
         .col-md-8
-          = link_to image_tag("logo.png"), store_index_path
+          = link_to image_tag('logo.png'), store_index_path
           #searchpanel
-            = form_tag books_path, method: :get do
+            = form_tag search_path, method: :get do
               .btn-group
-                = select_tag :category, options_from_collection_for_select(@categories,'id','name' ), prompt: "All categories", class: 'form-control'
+                = select_tag :category, options_from_collection_for_select(@categories,'id','name', selected: params[:category] ), prompt: 'All categories', class: 'form-control'
               = text_field_tag 'search', nil, placeholder: 'Enter search term...', class: 'search'
-              button type="submit" Go
+              button type='submit' Go
         .col-md-4
           #right-panel
-            = link_to "BROWSE ", store_index_path
-            = render "devise/sessions/sessions"
+            = link_to 'BROWSE', store_index_path
+            div.vr
+            = render 'devise/sessions/sessions'
       .page-name-row
         | INDEX
     .container
@@ -27,9 +28,9 @@ html
       p.alert= alert
       = yield
     /! Modal
-    #sign-in-modal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+    #sign-in-modal.modal.fade aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1'
       .modal-dialog
         .modal-content
-    #sign-up-modal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+    #sign-up-modal.modal.fade aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1'
       .modal-dialog
         .modal-content
