@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$ ->
+  $('body').on 'click', 'button#search', (event) ->
+    $(@).parent('form').submit()
