@@ -1,0 +1,56 @@
+.book-show{
+  .price-image{
+    background-image: image-url('buy-book.png');
+    width: 121px;
+    height: 35px;
+  }
+
+  .dl-horizontal dt{
+    text-align: left;
+    width: 60px;
+    height: 40px;
+  }
+
+  .price{
+    padding-top: 5px;
+  }
+
+  .rate{
+    padding-top: 4px;
+  }
+
+  .dl-horizontal dd{
+    margin-left: 50px;
+    height: 40px;
+  }
+
+  .book-image{
+    width: 100%;
+    position: relative;
+  }
+
+  h3{
+    font: normal 20px "Roboto";
+    color: #2D2D2D
+  }
+
+  .star{
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+  }
+
+  .details{
+    display: flex;
+  }
+
+  hr{
+    height: 1px;
+    background: #5ABCD3;
+  }
+
+  .col-md-8{
+    margin-right: 20%;
+  }
+}

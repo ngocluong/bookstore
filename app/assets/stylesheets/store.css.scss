@@ -44,6 +44,7 @@
         background-color: #5ABCD3;
         font: normal 17px "Roboto medium";
         height: 32px;
+        width: 10%;
         float: right;
         color: #BDE5ED;
         margin-right: 3px;
@@ -54,7 +55,7 @@
       .search{
         margin: 2px;
         height: 30px;
-        width: 65%;
+        width: 60%;
         vertical-align: middle;
       }
     }
@@ -108,7 +109,7 @@
   }
 
   hr{
-    size: 2px;
+    size: 1px;
     margin-bottom: 20px;
   }
 
@@ -276,8 +277,30 @@
 
   h4{
     margin-top: 0px;
+
+    a{
+      color: #5ABCD3;
+    }
   }
  }
+}
+
+.book-price{
+  width: 121px;
+  height: 35px;
+  background-image: image-url('buy-book.png');
+
+  a{
+    padding-top: 7px;
+    display:block;
+    height: 35px;
+    padding-left: 9px;
+    color: white;
+  }
+  a:hover
+  {
+    color: white;
+  }
 }
 
 #per_page{
