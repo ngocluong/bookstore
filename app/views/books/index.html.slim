@@ -4,12 +4,14 @@ h1 Listing books
     .thumbnail
       = image_tag(book.image_url)
       .caption
-        h4 = book.title
+        h4 = link_to book.title, book
         p Author: #{book.author_name}
         p
           - book.total_rating_value.times
             = image_tag '../assets/star.png', class: 'star'
-        p = link_to image_tag('buy-book.png'), store_index_path
+        p
+          div.book-price
+            = link_to book.unit_price, store_index_path
 
 br
 .row
