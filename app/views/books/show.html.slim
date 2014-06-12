@@ -1,0 +1,48 @@
+.book-show
+  div.details
+    .col-md-2
+      = image_tag @book.image_url, class: 'book-image'
+    .col-md-8
+      h3 = @book.title
+
+      dl.dl-horizontal
+        dt
+          | By:
+        dd = @book.author_name
+        dt.price
+          | Price:
+        dd
+          div.book-price
+            = link_to @book.unit_price, store_index_path
+        dt.rate
+          | Rate:
+        dd
+          - @book.total_rating_value.times
+            = image_tag '../assets/star.png', class: 'star'
+          | (#{@book.total_rating_count})
+  hr
+  div.details
+    .col-md-2
+      |Description
+    .col-md-8
+      = @book.description
+  hr
+  div.details
+    .col-md-2
+      |Book Detail
+    .col-md-8
+      |Publisher:
+      = @book.publisher_name
+      br
+      |Publisher Date:
+      = @book.published_date
+      br
+      |Categories:
+      - @book.categories.each do |category|
+        = category.name  + ', '
+  hr
+  div.details
+    .col-md-2
+      |Reviews
+    .col-md-8
+      |under construction
