@@ -12,7 +12,7 @@ end
 
 Then(/^I should see the following messages$/) do |table|
   table.hashes.each do |hash|
-    step %{I should see "#{hash['message']}"}
+    step %{I should see "#{hash['message']}" immediately}
   end
 end
 
