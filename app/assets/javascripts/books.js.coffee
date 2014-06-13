@@ -3,5 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  $('body').on 'click', 'a#add-review', (event) ->
+    $('div.raty').raty();
   $('body').on 'change', 'select#per_page', (event) ->
     $(@).parent('form').submit()
