@@ -9,6 +9,8 @@ h1 Listing books
         p
           - book.total_rating_value.times
             = image_tag '../assets/star.png', class: 'star'
+          - if book.total_rating_value == 0
+            = image_tag '../assets/no-star.png', class: 'star'
         p
           div.book-price
             = link_to book.unit_price, store_index_path
