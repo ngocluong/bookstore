@@ -81,6 +81,12 @@
     font: normal 17px "Roboto medium";
     color: #BDE5ED;
   }
+
+  p{
+    display: inline;
+    padding-right: 10px;
+  }
+
 }
 
 .search {
@@ -159,6 +165,21 @@
 
     .image-button{
       background-image: image-url('sign-in.png');
+    }
+  }
+  .review{
+    margin-left: 20px;
+    margin-right: 20px;
+
+    textarea{
+      width: 100%;
+    }
+
+    .image-button{
+      margin-top: 10px;
+      float: center;
+      margin-bottom: 20px;
+      background-image: image-url('btn-submit.png');
     }
   }
 
