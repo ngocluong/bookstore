@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search, against: [:title, :author_name]
 
-  has_many :comments, dependent: :destroy
+  has_many :comments, -> { order(id: :desc) }, dependent: :destroy
   has_many :category_books, dependent: :destroy
   has_many :categories, through: :category_books
 
