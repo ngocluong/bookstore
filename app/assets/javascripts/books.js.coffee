@@ -3,7 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('body').on 'click', 'a#add-review', (event) ->
-    $('div.raty').raty();
+  $('body').on 'shown.bs.modal', '#add-review-modal', (event) ->
+    $('#add-review-modal .raty').raty()
   $('body').on 'change', 'select#per_page', (event) ->
     $(@).parent('form').submit()
+  $(".show-raty").raty (
+    score: -> this.score,
+    readOnly: -> true
+  )
