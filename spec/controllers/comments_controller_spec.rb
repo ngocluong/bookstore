@@ -1,15 +1,22 @@
 require 'spec_helper'
 
 describe CommentsController do
-  let!(:book) { create :book }
-  let!(:user) { create :user}
+  let(:book) { create :book }
+  let(:user) { create :confirm_user}
   let(:comment_attributes) { attributes_for :comment, book_id: book.id, user_id: user.id }
+
+  shared_context "login user" do
+    before do
+      sign_in user
+    end
+  end
 
   def create_comment
     post :create, comment: comment_attributes
   end
 
-  context "GET new" do
+  context 'GET new' do
+    include_context 'login user'
     let(:new_comment) { assigns[:comment] }
 
     before do
@@ -23,6 +30,7 @@ describe CommentsController do
   end
 
   context "POST create" do
+    include_context "login user"
     before do
       create_comment
     end
@@ -37,12 +45,12 @@ describe CommentsController do
       end
 
       it 'should show message successfully' do
-        flash[:notice].should eq('Thank you for your contribution')
+        expect(flash[:notice]).to eq('Thank you for your contribution')
       end
     end
 
-    context "can not create new comment" do
-      let(:comment_attributes) { { something: 'something' } }
+    context 'Invalid comment attribute' do
+      let(:comment_attributes) { { something: 'something', book_id: 1 } }
 
       it 'fails to create comment' do
         expect do
