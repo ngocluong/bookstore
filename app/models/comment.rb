@@ -3,6 +3,9 @@ class Comment < ActiveRecord::Base
   belongs_to :book
   # after_save :update_rating_average
 
+  paginates_per 9
+  max_paginates_per 50
+
   validates :rating, numericality: { greater_than_or_equal_to: 0 }
   validates :content, presence: true
 
