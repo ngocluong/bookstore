@@ -19,7 +19,9 @@ br
 .row
 = paginate @books
 div.book-per-page
-  = form_tag books_path, method: :get do
+  = form_tag search_index_path, method: :get do
+    = hidden_field_tag :category_id, params[:category_id]
+    = hidden_field_tag :q, params[:q]
     | Items/page
     = select_tag :per_page, options_for_select(Book::PAGINATION_OPTIONS, params[:per_page]), class: 'form-control'
 br
