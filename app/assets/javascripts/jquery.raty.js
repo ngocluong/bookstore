@@ -41,9 +41,9 @@
           methods._adjustPrecision.call(this);
         }
 
-        methods._createrating.call(this);
-        methods._apply.call(this, this.opt.rating);
-        methods._target.call(this, this.opt.rating);
+        methods._createScore.call(this);
+        methods._apply.call(this, this.opt.score);
+        methods._target.call(this, this.opt.score);
 
         if (this.opt.readOnly) {
           methods._lock.call(this);
@@ -58,7 +58,7 @@
     },
 
     _adjustCallback: function() {
-      var options = ['number', 'readOnly', 'rating', 'ratingName', 'target'];
+      var options = ['number', 'readOnly', 'score', 'scoreName', 'target'];
 
       for (var i = 0; i < options.length; i++) {
         if (typeof this.opt[options[i]] === 'function') {
@@ -81,7 +81,7 @@
 
     _adjustPrecision: function() {
       this.opt.half       = true;
-      this.opt.targetType = 'rating';
+      this.opt.targetType = 'score';
     },
 
     _adjustStarType: function() {
@@ -94,15 +94,15 @@
       }
     },
 
-    _apply: function(rating) {
-      methods._fill.call(this, rating);
+    _apply: function(score) {
+      methods._fill.call(this, score);
 
-      if (rating) {
-        if (rating > 0) {
-          this.rating.val(methods._between(rating, 0, this.opt.number));
+      if (score) {
+        if (score > 0) {
+          this.score.val(methods._between(score, 0, this.opt.number));
         }
 
-        methods._roundStars.call(this, rating);
+        methods._roundStars.call(this, score);
       }
     },
 
@@ -128,10 +128,10 @@
       that.stars.on('click.raty', function(evt) {
         var star = $(this);
 
-        that.rating.val((that.opt.half || that.opt.precision) ? that.self.data('rating') : (this.alt || star.data('alt')));
+        that.score.val((that.opt.half || that.opt.precision) ? that.self.data('score') : (this.alt || star.data('alt')));
 
         if (that.opt.click) {
-          that.opt.click.call(that, +that.rating.val(), evt);
+          that.opt.click.call(that, +that.score.val(), evt);
         }
       });
     },
@@ -140,7 +140,7 @@
       var that = this;
 
       that.cancel.on('click.raty', function(evt) {
-        that.rating.removeAttr('value');
+        that.score.removeAttr('value');
 
         if (that.opt.click) {
           that.opt.click.call(that, null, evt);
@@ -152,13 +152,13 @@
       var that = this;
 
       that.self.on('mouseleave.raty', function(evt) {
-        var rating = +that.rating.val() || undefined;
+        var score = +that.score.val() || undefined;
 
-        methods._apply.call(that, rating);
-        methods._target.call(that, rating, evt);
+        methods._apply.call(that, score);
+        methods._target.call(that, score, evt);
 
         if (that.opt.mouseout) {
-          that.opt.mouseout.call(that, rating, evt);
+          that.opt.mouseout.call(that, score, evt);
         }
       });
     },
@@ -176,9 +176,9 @@
         methods._setIcon.call(that, this, icon);
 
         if (that.opt.mouseout) {
-          var rating = +that.rating.val() || undefined;
+          var score = +that.score.val() || undefined;
 
-          that.opt.mouseout.call(that, rating, evt);
+          that.opt.mouseout.call(that, score, evt);
         }
       });
     },
@@ -188,20 +188,20 @@
           action = that.opt.half ? 'mousemove.raty' : 'mouseover.raty';
 
       that.stars.on(action, function(evt) {
-        var rating = methods._getratingByPosition.call(that, evt, this);
+        var score = methods._getScoreByPosition.call(that, evt, this);
 
-        methods._fill.call(that, rating);
+        methods._fill.call(that, score);
 
         if (that.opt.half) {
-          methods._roundStars.call(that, rating);
+          methods._roundStars.call(that, score);
 
-          that.self.data('rating', rating);
+          that.self.data('score', score);
         }
 
-        methods._target.call(that, rating, evt);
+        methods._target.call(that, score, evt);
 
         if (that.opt.mouseover) {
-          that.opt.mouseover.call(that, rating, evt);
+          that.opt.mouseover.call(that, score, evt);
         }
       });
     },
@@ -231,8 +231,8 @@
       });
     },
 
-    _buildratingField: function() {
-      return $('<input />', { name: this.opt.ratingName, type: 'hidden' }).appendTo(this);
+    _buildScoreField: function() {
+      return $('<input />', { name: this.opt.scoreName, type: 'hidden' }).appendTo(this);
     },
 
     _createCancel: function() {
@@ -255,10 +255,10 @@
       this.cancel = cancel;
     },
 
-    _createrating: function() {
-      var rating = $(this.opt.targetrating);
+    _createScore: function() {
+      var score = $(this.opt.targetScore);
 
-      this.rating = rating.length ? rating : methods._buildratingField.call(this);
+      this.score = score.length ? score : methods._buildScoreField.call(this);
     },
 
     _createStars: function() {
@@ -289,14 +289,14 @@
       $.error(message);
     },
 
-    _fill: function(rating) {
+    _fill: function(score) {
       var hash = 0;
 
       for (var i = 1; i <= this.stars.length; i++) {
         var
           icon,
           star   = this.stars[i - 1],
-          turnOn = methods._turnOn.call(this, i, rating);
+          turnOn = methods._turnOn.call(this, i, score);
 
         if (this.opt.iconRange && this.opt.iconRange.length > hash) {
           var irange = this.opt.iconRange[hash];
@@ -322,8 +322,8 @@
       return turnOn ? irange.on || this.opt.starOn : irange.off || this.opt.starOff;
     },
 
-    _getratingByPosition: function(evt, icon) {
-      var rating = parseInt(icon.alt || icon.getAttribute('data-alt'), 10);
+    _getScoreByPosition: function(evt, icon) {
+      var score = parseInt(icon.alt || icon.getAttribute('data-alt'), 10);
 
       if (this.opt.half) {
         var
@@ -331,13 +331,13 @@
           percent = parseFloat((evt.pageX - $(icon).offset().left) / size);
 
         if (this.opt.precision) {
-          rating = rating - 1 + percent;
+          score = score - 1 + percent;
         } else {
-          rating = rating - 1 + (percent > 0.5 ? 1 : 0.5);
+          score = score - 1 + (percent > 0.5 ? 1 : 0.5);
         }
       }
 
-      return rating;
+      return score;
     },
 
     _getSize: function() {
@@ -356,24 +356,24 @@
       return size;
     },
 
-    _turnOn: function(i, rating) {
-      return this.opt.single ? (i === rating) : (i <= rating);
+    _turnOn: function(i, score) {
+      return this.opt.single ? (i === score) : (i <= score);
     },
 
-    _getHint: function(rating) {
-      var hint = this.opt.hints[rating - 1];
+    _getHint: function(score) {
+      var hint = this.opt.hints[score - 1];
 
-      return hint === '' ? '' : hint || rating;
+      return hint === '' ? '' : hint || score;
     },
 
     _lock: function() {
-      var rating = parseInt(this.rating.val(), 10), // TODO: 3.1 >> [['1'], ['2'], ['3', '.1', '.2']]
-          hint  = rating ? methods._getHint.call(this, rating) : this.opt.noRatedMsg;
+      var score = parseInt(this.score.val(), 10), // TODO: 3.1 >> [['1'], ['2'], ['3', '.1', '.2']]
+          hint  = score ? methods._getHint.call(this, score) : this.opt.noRatedMsg;
 
       this.style.cursor   = '';
       this.title          = hint;
 
-      this.rating.prop('readonly', true);
+      this.score.prop('readonly', true);
       this.stars.prop('title', hint);
 
       if (this.cancel) {
@@ -384,11 +384,11 @@
     },
 
     _nameForIndex: function(i) {
-      return this.opt.rating && this.opt.rating >= i ? 'starOn' : 'starOff';
+      return this.opt.score && this.opt.score >= i ? 'starOn' : 'starOff';
     },
 
-    _roundStars: function(rating) {
-      var rest = (rating % 1).toFixed(2);
+    _roundStars: function(score) {
+      var rest = (score % 1).toFixed(2);
 
       if (rest > this.opt.round.down) {                      // Up:   [x.76 .. x.99]
         var name = 'starOn';
@@ -401,7 +401,7 @@
 
         var
           icon = this.opt[name],
-          star = this.stars[Math.ceil(rating) - 1];
+          star = this.stars[Math.ceil(score) - 1];
 
         methods._setIcon.call(this, star, icon);
       }                                                      // Full down: [x.00 .. x.25]
@@ -411,19 +411,19 @@
       star[this.opt.starType === 'img' ? 'src' : 'className'] = this.opt.path + icon;
     },
 
-    _setTarget: function(target, rating) {
-      if (rating) {
-        rating = this.opt.targetFormat.toString().replace('{rating}', rating);
+    _setTarget: function(target, score) {
+      if (score) {
+        score = this.opt.targetFormat.toString().replace('{score}', score);
       }
 
       if (target.is(':input')) {
-        target.val(rating);
+        target.val(score);
       } else {
-        target.html(rating);
+        target.html(score);
       }
     },
 
-    _target: function(rating, evt) {
+    _target: function(score, evt) {
       if (this.opt.target) {
         var target = $(this.opt.target);
 
@@ -433,25 +433,25 @@
 
         var mouseover = evt && evt.type === 'mouseover';
 
-        if (rating === undefined) {
-          rating = this.opt.targetText;
-        } else if (rating === null) {
-          rating = mouseover ? this.opt.cancelHint : this.opt.targetText;
+        if (score === undefined) {
+          score = this.opt.targetText;
+        } else if (score === null) {
+          score = mouseover ? this.opt.cancelHint : this.opt.targetText;
         } else {
           if (this.opt.targetType === 'hint') {
-            rating = methods._getHint.call(this, Math.ceil(rating));
+            score = methods._getHint.call(this, Math.ceil(score));
           } else if (this.opt.precision) {
-            rating = parseFloat(rating).toFixed(1);
+            score = parseFloat(score).toFixed(1);
           }
 
           var mousemove = evt && evt.type === 'mousemove';
 
           if (!mouseover && !mousemove && !this.opt.targetKeep) {
-            rating = this.opt.targetText;
+            score = this.opt.targetText;
           }
         }
 
-        methods._setTarget.call(this, target, rating);
+        methods._setTarget.call(this, target, score);
       }
     },
 
@@ -459,7 +459,7 @@
       this.style.cursor = 'pointer';
       this.removeAttribute('title');
 
-      this.rating.removeAttr('readonly');
+      this.score.removeAttr('readonly');
 
       this.self.data('readonly', false);
 
@@ -477,23 +477,23 @@
         var el = $(this);
 
         if (el.data('readonly') !== true) {
-          methods[click ? 'click' : 'rating'].call(el, null);
+          methods[click ? 'click' : 'score'].call(el, null);
 
-          this.rating.removeAttr('value');
+          this.score.removeAttr('value');
         }
       });
     },
 
-    click: function(rating) {
+    click: function(score) {
       return this.each(function() {
         if ($(this).data('readonly') !== true) {
-          methods._apply.call(this, rating);
+          methods._apply.call(this, score);
 
           if (this.opt.click) {
-            this.opt.click.call(this, rating, $.Event('click'));
+            this.opt.click.call(this, score, $.Event('click'));
           }
 
-          methods._target.call(this, rating);
+          methods._target.call(this, score);
         }
       });
     },
@@ -511,25 +511,25 @@
       });
     },
 
-    getrating: function() {
-      var rating = [],
+    getScore: function() {
+      var score = [],
           value ;
 
       this.each(function() {
-        value = this.rating.val();
+        value = this.score.val();
 
-        rating.push(value ? +value : undefined);
+        score.push(value ? +value : undefined);
       });
 
-      return (rating.length > 1) ? rating : rating[0];
+      return (score.length > 1) ? score : score[0];
     },
 
-    move: function(rating) {
+    move: function(score) {
       return this.each(function() {
         var
-          integer  = parseInt(rating, 10),
+          integer  = parseInt(score, 10),
           opt      = $(this).data('options'),
-          decimal  = (+rating).toFixed(1).split('.')[1];
+          decimal  = (+score).toFixed(1).split('.')[1];
 
         if (integer >= opt.number) {
           integer = opt.number - 1;
@@ -570,10 +570,10 @@
       return methods.set.call(this, {});
     },
 
-    rating: function() {
+    score: function() {
       var self = $(this);
 
-      return arguments.length ? methods.setrating.apply(self, arguments) : methods.getrating.call(self);
+      return arguments.length ? methods.setScore.apply(self, arguments) : methods.getScore.call(self);
     },
 
     set: function(options) {
@@ -586,11 +586,11 @@
       });
     },
 
-    setrating: function(rating) {
+    setScore: function(score) {
       return this.each(function() {
         if ($(this).data('readonly') !== true) {
-          methods._apply.call(this, rating);
-          methods._target.call(this, rating);
+          methods._apply.call(this, score);
+          methods._target.call(this, score);
         }
       });
     }
@@ -627,8 +627,8 @@
     precision    : false,
     readOnly     : false,
     round        : { down: 0.25, full: 0.6, up: 0.76 },
-    rating        : undefined,
-    ratingName    : 'rating',
+    score        : undefined,
+    scoreName    : 'score',
     single       : false,
     space        : true,
     starHalf     : 'star-half.png',
@@ -636,9 +636,9 @@
     starOn       : '/assets/star-on.png',
     starType     : 'img',
     target       : undefined,
-    targetFormat : '{rating}',
+    targetFormat : '{score}',
     targetKeep   : false,
-    targetrating  : undefined,
+    targetScore  : undefined,
     targetText   : '',
     targetType   : 'hint'
   };
