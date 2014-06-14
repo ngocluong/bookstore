@@ -1,0 +1,15 @@
+#comment
+  - @comments.each do |comment|
+    .row
+      .col-xs-6.col-md-4
+        = comment.content
+      .col-xs-6.col-md-4
+        .show-raty data-score= comment.rating
+      .col-xs-6.col-md-4
+        = comment.created_at.to_date
+      .col-xs-6.col-md-4
+        = comment.user.full_name
+  br
+  .row
+  = paginate @comments
+

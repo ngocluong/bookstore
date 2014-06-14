@@ -36,9 +36,8 @@ describe CommentsController do
         end
       end
 
-      it 'should redirect to this book page' do
-        expect(response).to render_template :show
-        # flash[:notice].should eql('Thank you for your contribution')
+      it 'should show message successfully' do
+        flash[:notice].should eq('Thank you for your contribution')
       end
     end
 
