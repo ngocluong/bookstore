@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @comments = @book.comments.page(params[:page]).per(params[:per_page]).includes(:user)
   end
 
   private
