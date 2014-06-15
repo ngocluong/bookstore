@@ -4,7 +4,9 @@
 
 $ ->
   $('body').on 'shown.bs.modal', '#add-review-modal', (event) ->
-    $('#add-review-modal .raty').raty()
+    $('#add-review-modal .raty').raty(
+      score: 1
+    )
   $('body').on 'change', 'select#per_page', (event) ->
     $(@).parent('form').submit()
   $(".show-raty").raty (
