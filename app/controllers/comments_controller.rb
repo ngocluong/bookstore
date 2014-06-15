@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   end
 
   def normalize_params
-    params[:comment][:rating] ||= params[:comment].delete(:score)
-    params[:user_id] = current_user.id
+    params[:comment][:rating] ||= params.delete(:score)
+    params[:comment][:user_id] = current_user.id
   end
 end
