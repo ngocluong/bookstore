@@ -9,3 +9,7 @@ end
 def pagination_class
   @pagination_class ||= 'ul.pagination'
 end
+
+def add_review_modal_id
+  @add_review_modal_id ||= '#add-review-modal'
+end
