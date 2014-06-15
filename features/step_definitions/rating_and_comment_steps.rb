@@ -1,24 +1,29 @@
 Given(/^I want to add some comment$/) do
+  @comment = 'this is a good book'
   step %{I press "ADD REVIEW"}
 end
 
 Given(/^I already login$/) do
-  step %{I already have an account}
-  step %{I am on the Signin page}
-  step %{I sign in with valid details}
+  @user = create :confirm_user
+  login_as @user, scope: :user
 end
 
 When(/^I add a some comment$/) do
-  step %{I fill in "context" with "this is a good book"}
-  step %{I press "ADD REVIEW"}
+  within add_review_modal_id do
+    step %{I wait for 1 seconds}
+    step %{I fill in "comment_content" with "#{@comment}"}
+    step %{I press "ADD REVIEW"}
+  end
 end
 
 Then(/^I will see my comment$/) do
-  step %{I should see "this is a good book" immediately}
+  step %{I should see "#{@comment}"}
 end
 
 When(/^I leave an empty content$/) do
-  step %{I press "ADD REVIEW"}
+  within add_review_modal_id do
+    step %{I press "ADD REVIEW"}
+  end
 end
 
 When(/^I log out$/) do
