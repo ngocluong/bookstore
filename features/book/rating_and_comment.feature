@@ -19,8 +19,8 @@ Scenario: Add comment successfully
 Scenario: Add comment without content
   When I leave an empty content
   Then I should see the following messages
-    |message                  |
-    |Content cannot be blank  |
+    |message                   |
+    |Content can't be blank    |
 
 Scenario: Add comment but not login
   When I log out
