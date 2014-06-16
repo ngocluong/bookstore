@@ -6,6 +6,7 @@ describe Book do
 	it { should have_many(:category_books).dependent(:destroy) }
 	it { should have_many(:comments).dependent(:destroy) }
 	it { should have_many(:categories).through(:category_books) }
+	it { should have_many :line_items }
 
 	[:title, :description, :image_url, :unit_price, :published_date].each do |attr|
 	  it { should validate_presence_of attr }
