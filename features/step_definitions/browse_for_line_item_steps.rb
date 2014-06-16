@@ -22,3 +22,7 @@ end
 When(/^I add this book in my cart$/) do
   step %{I press "#{@book.unit_price}"}
 end
+
+When(/^I show invalid cart$/) do
+  visit(cart_path('something'))
+end

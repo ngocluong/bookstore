@@ -30,3 +30,9 @@ Scenario: Add book into cart from book detail page
     |Add book to cart successfully  |
   And I will see this book in my cart
 
+
+Scenario: Access invalid cart
+  When I show invalid cart 
+  Then I should see the following messages
+    |message                        |
+    |Invalid cart                   |
