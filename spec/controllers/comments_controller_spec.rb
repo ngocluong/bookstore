@@ -50,7 +50,7 @@ describe CommentsController do
     end
 
     context 'Invalid comment attribute' do
-      let(:comment_attributes) { { something: 'something', book_id: 1 } }
+      let(:comment_attributes) { { something: 'something', book_id: book.id } }
 
       it 'fails to create comment' do
         expect do
