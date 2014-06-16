@@ -10,7 +10,7 @@ end
 
 When(/^I add a some comment$/) do
   within add_review_modal_id do
-    step %{I wait for 1 seconds}
+    step %{I should see element "#{raty_div}"}
     step %{I fill in "comment_content" with "#{@comment}"}
     step %{I press "ADD REVIEW"}
   end

@@ -13,3 +13,7 @@ end
 def add_review_modal_id
   @add_review_modal_id ||= '#add-review-modal'
 end
+
+def raty_div
+  @raty_div ||= 'div.raty'
+end
