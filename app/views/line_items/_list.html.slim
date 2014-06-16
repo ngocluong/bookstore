@@ -1,0 +1,11 @@
+#line_items
+  - @cart.line_items.each do |line_item|
+    .row
+      .col-xs-6.col-md-4
+        = line_item.book.title
+      .col-xs-6.col-md-4
+        = line_item.quantity
+      .col-xs-6.col-md-4
+        = line_item.book.unit_price
+      .col-xs-6.col-md-4
+        = number_to_currency(line_item.total_price)
