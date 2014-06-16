@@ -1,10 +1,5 @@
 #line_items{
 
-  hr{
-    height: 1px;
-    background: #5ABCD3;
-  }
-
   .book-image{
     width: 100%;
     position: relative;
@@ -33,5 +28,19 @@
     width: 41px;
     height: 41px;
     text-align: center;
+  }
+}
+
+.cart{
+
+  hr{
+    height: 1px;
+    background: #5ABCD3;
+  }
+
+  #total-price{
+    padding-left: 17%;
+    color: red;
+    font-weight:bold;
   }
 }

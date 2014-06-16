@@ -1,2 +1,11 @@
-- if !@cart.line_items.nil?
-  = render 'line_items/list'
+.cart
+  - if !@cart.line_items.nil?
+    = render 'line_items/list'
+    .col-md-6
+      center
+        | Total
+    #total-price.col-md-6
+      = @cart.total_price 
+    br
+    hr
+
