@@ -4,11 +4,15 @@ describe CommentsController do
   let(:book) { create :book }
   let(:user) { create :confirm_user}
   let(:comment_attributes) { attributes_for :comment, book_id: book.id, user_id: user.id }
-
   shared_context "login user" do
     before do
       sign_in user
     end
+  end
+
+  def average_calculation
+    @rating_average = (comment_attributes[:rating] + book.total_rating_count * book.total_rating_value) / (book.total_rating_count + 1)
+    @total_count = book.total_rating_count + 1
   end
 
   def create_comment
@@ -31,11 +35,13 @@ describe CommentsController do
 
   context "POST create" do
     include_context "login user"
-    before do
-      create_comment
-    end
 
     context "create new comment successfully" do
+      before do
+        average_calculation
+        create_comment
+      end
+
       let(:new_comment) { Comment.last }
 
       it 'creates new comment with correct attributes' do
@@ -47,9 +53,18 @@ describe CommentsController do
       it 'should show message successfully' do
         expect(flash[:notice]).to eq('Thank you for your contribution')
       end
+
+      it 'should update rating average and total rating count' do
+        expect(book.reload.total_rating_value).to eq @rating_average
+        expect(book.total_rating_count).to eq @total_count
+      end
     end
 
     context 'Invalid comment attribute' do
+      before do
+        create_comment
+      end
+
       let(:comment_attributes) { { something: 'something', book_id: book.id } }
 
       it 'fails to create comment' do
