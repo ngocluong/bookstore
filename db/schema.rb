@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613022409) do
+ActiveRecord::Schema.define(version: 20140616022832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(version: 20140613022409) do
     t.float    "unit_price",         default: 0.01
     t.integer  "total_rating_value", default: 0
     t.integer  "total_rating_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,6 +63,16 @@ ActiveRecord::Schema.define(version: 20140613022409) do
 
   add_index "comments", ["book_id"], name: "index_comments_on_book_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "line_items", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["book_id"], name: "index_line_items_on_book_id", using: :btree
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
