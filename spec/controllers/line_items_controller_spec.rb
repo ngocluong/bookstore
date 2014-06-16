@@ -39,9 +39,5 @@ describe LineItemsController do
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
-
-    context 'create new line item with quantity in addition' do
-
-    end
   end
 end
