@@ -26,7 +26,7 @@ describe LineItemsController do
       end
 
       it 'shows message successfully' do
-        expect(flash[:notice]).to eq('Line item was successfully created.')
+        expect(flash[:notice]).to eq('Add book to cart successfully')
       end
     end
 
