@@ -1,11 +1,14 @@
 #line_items
   - @cart.line_items.each do |line_item|
-    .row
-      .col-xs-6.col-md-4
+    .line-item
+      #img.col-md-1
+        = image_tag line_item.book.image_url, class: 'book-image'
+      .col-md-7
         = line_item.book.title
-      .col-xs-6.col-md-4
-        = line_item.quantity
-      .col-xs-6.col-md-4
+      #price.col-md-2
         = line_item.book.unit_price
-      .col-xs-6.col-md-4
-        = number_to_currency(line_item.total_price)
+      .col-md-1
+        = text_field_tag :quantity, nil, value: line_item.quantity, class: 'quantity'
+      .col-md-1
+        = image_tag '../assets/delete.png'
+    hr
