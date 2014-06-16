@@ -43,4 +43,12 @@
     color: red;
     font-weight:bold;
   }
+
+  .check-out-image{
+    color:transparent;
+    width: 120px;
+    height: 40px;
+    border: 0px;
+    background-image: image-url('check-out.png');
+  }
 }
