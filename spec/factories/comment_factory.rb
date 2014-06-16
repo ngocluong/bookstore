@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :comment do
-    rating { rand(0..5) }
+    rating { rand(1..5) }
     content { Faker::Lorem.sentence }
     book
     user
