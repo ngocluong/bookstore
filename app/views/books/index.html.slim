@@ -13,7 +13,7 @@ h1 Listing books
             = image_tag '../assets/no-star.png', class: 'star'
         p
           div.book-price
-            = link_to book.unit_price, store_index_path
+            = link_to book.unit_price, line_items_path(book_id: book.id), method: :post
 
 br
 .row
