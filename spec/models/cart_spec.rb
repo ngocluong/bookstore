@@ -12,7 +12,6 @@ describe Cart do
       let(:current_item) { cart.add_book(book.id) }
 
       it 'increases current item quantity' do
-        byebug
         expect(current_item.quantity).to eq(line_item.quantity + 1)
       end
     end
@@ -20,7 +19,6 @@ describe Cart do
     context 'current item does not exist' do
 
       it 'builds new current item' do
-        byebug
         expect(cart.add_book(book.id)).to be_new_record
       end
     end
