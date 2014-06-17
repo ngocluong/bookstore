@@ -11,7 +11,7 @@ describe BooksController do
         get :index
       end
 
-      it 'render all books' do
+      it 'renders all books' do
         expect(assigns[:books]).to eq books
       end
     end

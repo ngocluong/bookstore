@@ -44,7 +44,7 @@ describe BooksController do
       get :show, id: books.first.id
     end
 
-    it 'return book' do
+    it 'returns book' do
       expect(assigns[:book]).to eq books.first
     end
   end

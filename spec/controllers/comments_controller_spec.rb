@@ -45,11 +45,11 @@ describe CommentsController do
         end
       end
 
-      it 'should show message successfully' do
+      it 'shows message successfully' do
         expect(flash[:notice]).to eq('Thank you for your contribution')
       end
 
-      it 'should update rating average and total rating count' do
+      it 'updates rating average and total rating count' do
         expect(book.reload.total_rating_value).to eq @rating_average
         expect(book.total_rating_count).to eq @total_count
       end

@@ -33,7 +33,7 @@ describe SearchController do
 
       context 'Search with invalid book title' do
 
-        it 'notice and render all books' do
+        it 'shows notice and render all books' do
           expect(search).to redirect_to(books_path)
           expect(flash[:notice]).to eq('Can not find books which have title or author like this')
         end

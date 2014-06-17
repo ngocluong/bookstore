@@ -69,7 +69,7 @@ describe LineItemsController do
       let(:quantity) { 'vv' }
       let(:line_item_attributes) { { quantity: quantity } }
 
-      it 'keep old value' do
+      it 'keeps old value' do
         expect do
           update_line_item
         end.not_to change { line_item.reload.attributes }
