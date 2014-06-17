@@ -45,7 +45,7 @@
       |Reviews
     .col-md-8
       = render 'comments/link'
-      - if @comments
+      - if @comments.present?
         = render 'comments/list'
       #add-review-modal.modal.fade aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1'
         .modal-dialog
