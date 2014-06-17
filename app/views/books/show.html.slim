@@ -39,14 +39,14 @@
       br
       |Categories:
       - @book.categories.each do |category|
-        = category.name  + ', '
+        = "#{category.name}, "
   hr
   div.details
     .col-md-2
       |Reviews
     .col-md-8
       = render 'comments/link'
-      - if !@comments.nil?
+      - if @comments
         = render 'comments/list'
       #add-review-modal.modal.fade aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1'
         .modal-dialog
