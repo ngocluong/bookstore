@@ -12,11 +12,11 @@ describe Book do
 	  it { should validate_presence_of attr }
 	end
 
-	["abc", "image.doc", "image.h"].each do |invalid|
+	['abc', 'image.doc', 'image.h'].each do |invalid|
 	  it { should_not allow_value(invalid).for(:image_url) }
 	end
 
-	["image.png", "image.jpg", "image.gif", "image.jpeg"].each do |valid|
+	['image.png', 'image.jpg', 'image.gif', 'image.jpeg'].each do |valid|
 	  it { should allow_value(valid).for(:image_url) }
 	end
 end

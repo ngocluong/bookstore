@@ -9,7 +9,7 @@ $ ->
     )
   $('body').on 'change', 'select#per_page', (event) ->
     $(@).parent('form').submit()
-  $(".show-raty").raty (
+  $('.show-raty').raty (
     score: -> $(this).attr "data-score",
     readOnly: -> true
   )

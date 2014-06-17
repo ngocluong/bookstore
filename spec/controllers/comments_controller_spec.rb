@@ -22,16 +22,16 @@ describe CommentsController do
       get :new
     end
 
-    it "renders new comment" do
+    it 'renders new comment' do
       expect(new_comment).to be_a(Comment)
       expect(new_comment).to be_new_record
     end
   end
 
-  context "POST create" do
-    include_context "login user"
+  context 'POST create' do
+    include_context 'login user'
 
-    context "create new comment successfully" do
+    context 'create new comment successfully' do
       before do
         average_calculation
         create_comment
