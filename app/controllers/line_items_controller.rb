@@ -1,6 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
+  before_action :set_line_item, only: [:update]
 
   def create
     book = Book.find(params[:book_id])
@@ -12,4 +13,21 @@ class LineItemsController < ApplicationController
       redirect_to books_path, notice: @line_item.errors.full_messages.to_sentence
     end
   end
+
+  def update
+    if @line_item.update(line_item_params)
+      redirect_to cart_path(@line_item.cart), notice: 'Update successfully'
+    else
+      redirect_to cart_path(@line_item.cart), notice: @line_item.errors.full_messages.to_sentence
+    end
+  end
+
+  private
+    def set_line_item
+      @line_item = LineItem.find(params[:id])
+    end
+
+    def line_item_params
+      params.require(:line_item).permit(:quantity)
+    end
 end
