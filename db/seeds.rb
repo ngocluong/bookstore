@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
 
+FactoryGirl.reload
+
 Book.destroy_all
 Category.destroy_all
 CategoryBook.destroy_all

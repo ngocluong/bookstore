@@ -14,6 +14,8 @@ gem 'kaminari-bootstrap'
 gem 'unicorn'
 gem 'pg_search'
 gem 'faker', require: false
+gem 'factory_girl_rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
@@ -41,7 +43,6 @@ gem 'recaptcha', require: 'recaptcha/rails'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
   gem 'webrat'
   gem 'letter_opener'
   gem 'byebug'
