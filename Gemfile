@@ -13,7 +13,7 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'unicorn'
 gem 'pg_search'
-
+gem 'faker', require: false
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
@@ -53,7 +53,6 @@ group :production do
 end
 
 group :test do
-  gem 'faker'
   gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'capybara'
