@@ -27,7 +27,7 @@ Then(/^I should see "(.*?)" immediately$/) do |content|
 end
 
 Then(/^I should not see "(.*?)"$/) do |content|
-    !page.has_content? content
+  !page.has_content? content
 end
 
 Then(/^I should see element "(.*?)"$/) do |element|
