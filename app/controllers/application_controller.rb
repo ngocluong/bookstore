@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
 
   private
   def load_categories
-    @categories = Category.all
+    @categories = Category.all.order(:sort_order)
   end
 end
