@@ -2,12 +2,15 @@ require 'spec_helper'
 
 describe LineItemsController do
   let(:book) { create :book }
-  let(:line_item_attributes) { attributes_for :line_item_with_quantity, book: book.id }
+  let(:line_item_attributes) { attributes_for :line_items, book: book.id }
 
   def create_line_item
     post :create, book_id: book_id
   end
 
+  def update_line_item
+    put :update, {}
+  end
   context 'POST create' do
     context 'creates new line item successfully' do
       let(:book_id) { book.id }

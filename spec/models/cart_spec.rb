@@ -8,7 +8,7 @@ describe Cart do
 
   context '#add_book' do
     context 'book item exists' do
-      let!(:line_item) { create :line_item_with_quantity, cart: cart, book: book }
+      let!(:line_item) { create :line_item, cart: cart, book: book }
       let(:current_item) { cart.add_book(book.id) }
 
       it 'increases current item quantity' do
@@ -25,7 +25,7 @@ describe Cart do
   end
 
   context '#total_price' do
-    let!(:line_items) { create_list :line_item_with_quantity, 3, cart: cart }
+    let!(:line_items) { create_list :line_item, 3, cart: cart }
 
     it 'calculates total price' do
       expect(cart.total_price).to eq(line_items.map(&:total_price).sum)
