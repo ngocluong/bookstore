@@ -1,6 +1,6 @@
 BookStore::Application.routes.draw do
   resources :carts, only: [:show]
-  resources :line_items, only: [:create, :update]
+  resources :line_items, only: [:create, :update, :destroy]
   resources :books, only: [:index, :show]
   resources :search, only: [:index]
   resources :comments, only: [:new, :create]

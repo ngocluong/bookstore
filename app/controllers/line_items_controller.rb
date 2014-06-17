@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
-  before_action :set_line_item, only: [:update]
+  before_action :set_line_item, only: [:update, :destroy]
 
   def create
     book = Book.find(params[:book_id])
@@ -22,6 +22,10 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @line_item.destroy
+    redirect_to cart_path(@line_item.cart), notice: 'Remove successfully'
+  end
   private
     def set_line_item
       @line_item = LineItem.find(params[:id])

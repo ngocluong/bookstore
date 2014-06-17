@@ -13,6 +13,10 @@ describe LineItemsController do
     put :update, { id: line_item.id, line_item: line_item_attributes}
   end
 
+  def delete_line_item
+    delete :destroy, { id: line_item_id }
+  end
+
   context 'POST create' do
     context 'creates new line item successfully' do
       let(:book_id) { book.id }
@@ -73,6 +77,28 @@ describe LineItemsController do
         expect do
           update_line_item
         end.not_to change { line_item.reload.attributes }
+      end
+    end
+  end
+
+  context 'DELETE destroy' do
+    context "Delete successfully" do
+      let(:line_item_id) { line_item.id }
+
+      it 'descrease amount of line item' do
+        expect do
+          delete_line_item
+        end.to change { LineItem.count }.by(-1)
+      end
+    end
+
+    context "Delete unsuccessfully" do
+      let(:line_item_id) { -1 }
+
+      it 'raises record not found error' do
+        expect do
+          delete_line_item
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end
