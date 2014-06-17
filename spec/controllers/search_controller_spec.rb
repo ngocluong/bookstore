@@ -5,6 +5,7 @@ describe SearchController do
   context 'GET new' do
     let (:books) { create_list :book, 2 }
     let (:categories) { create_list :category, 2 }
+    let (:first_book_title) { books.first.title }
 
     before do
       books.each do |book|
@@ -14,10 +15,11 @@ describe SearchController do
 
     context 'Search result have some books' do
       before do
-        get :index, { q: books.first.title, category_id: categories.first.id }
+        let (:first_category_id) { categories.first.id }
+        get :index, { q: first_book_title, category_id: first_category_id }
       end
 
-      it 'render first book' do
+      it 'renders first book' do
         expect(assigns[:books]).to include(books.first)
         expect(assigns[:books]).not_to include(books.last)
       end
@@ -25,12 +27,13 @@ describe SearchController do
 
     context 'search get no result' do
       def search
-        get :index, { q: books.first.title, category_id: categories.last.id }
+        let (:last_category_id) { categories.last.id }
+        get :index, { q: first_book_title, category_id: last_category_id }
       end
 
       context 'Search with invalid book title' do
         it 'notice and render all books' do
-          expect(search).to redirect_to('/books')
+          expect(search).to redirect_to(books_path)
           expect(flash[:notice]).to eq('Can not find books which have title or author like this')
         end
       end
