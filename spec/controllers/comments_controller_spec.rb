@@ -4,11 +4,6 @@ describe CommentsController do
   let(:book) { create :book }
   let(:user) { create :confirm_user}
   let(:comment_attributes) { attributes_for :comment, book_id: book.id, user_id: user.id }
-  shared_context "login user" do
-    before do
-      sign_in user
-    end
-  end
 
   def average_calculation
     @rating_average = (comment_attributes[:rating] + book.total_rating_count * book.total_rating_value) / (book.total_rating_count + 1)
