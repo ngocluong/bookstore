@@ -14,8 +14,9 @@ describe SearchController do
     end
 
     context 'Search result have some books' do
+      let (:first_category_id) { categories.first.id }
+
       before do
-        let (:first_category_id) { categories.first.id }
         get :index, { q: first_book_title, category_id: first_category_id }
       end
 
@@ -26,8 +27,9 @@ describe SearchController do
     end
 
     context 'search get no result' do
+      let (:last_category_id) { categories.last.id }
+
       def search
-        let (:last_category_id) { categories.last.id }
         get :index, { q: first_book_title, category_id: last_category_id }
       end
 
