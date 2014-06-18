@@ -69,6 +69,7 @@ describe OrdersController do
         order_attributes.each do |key, value|
           expect(new_order.send(key)).to eq value
         end
+        expect(new_order.user_id).to eq user.id
       end
 
       it 'destroys this cart' do

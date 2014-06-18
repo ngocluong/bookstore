@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.new(order_params)
     @order.add_line_items_from_cart(@cart)
 
     if @order.save
