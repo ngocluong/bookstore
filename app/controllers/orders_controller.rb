@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
       redirect_to books_path, notice: 'Thank you for your order'
     else
-      render action: 'new', notice: @order.errors.full_messages.to_sentence
+      render action: 'new'
     end
   end
 
