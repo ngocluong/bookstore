@@ -82,8 +82,12 @@ describe LineItemsController do
   end
 
   context 'DELETE destroy' do
-    context "Delete successfully" do
+    context 'Delete successfully' do
       let(:line_item_id) { line_item.id }
+
+      before do
+        session[:cart_code] = line_item.cart.code
+      end
 
       it 'descrease amount of line item' do
         expect do
@@ -92,8 +96,25 @@ describe LineItemsController do
       end
     end
 
-    context "Delete unsuccessfully" do
+    context 'Delete with cart is not present' do
+      let(:line_item_id) { line_item.id }
+
+      before do
+        delete_line_item
+      end
+
+      it 'redirects to books path with notice' do
+        expect(response).to redirect_to(books_path)
+        expect(flash[:notice]).to eq('Cart is not present')
+      end
+    end
+
+    context 'Delete unsuccessfully' do
       let(:line_item_id) { -1 }
+
+      before do
+        session[:cart_code] = line_item.cart.code
+      end
 
       it 'raises record not found error' do
         expect do
