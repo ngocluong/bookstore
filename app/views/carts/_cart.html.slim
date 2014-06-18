@@ -1,0 +1,18 @@
+h3 Confirm your order
+.cart
+  - @cart.line_items.each do |line_item|
+    .line-item
+      .col-md-7
+        = line_item.book.title
+      .col-md-3
+        = line_item.book.unit_price
+      .col-md-2
+        = line_item.quantity
+      br
+  hr
+  .col-md-7
+    center
+      | Total
+  #total.col-md-3
+    = @cart.total_price
+  .col-md-2
