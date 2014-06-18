@@ -1,5 +1,5 @@
 @javascript
-Feature: Chagne quantity in shopping cart
+Feature: Change quantity in shopping cart
 As an unauthorized user
 I want to change quantity of books in my shopping cart
 
