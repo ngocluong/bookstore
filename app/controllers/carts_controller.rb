@@ -7,11 +7,11 @@ class CartsController < ApplicationController
 
   private
     def set_cart
-      @cart = Cart.find(params[:id])
+      @cart = Cart.find_by_code(params[:id])
     end
 
     def validate_cart_id
-      if params[:id].to_i != session[:cart_id]
+      if params[:id] != session[:cart_code]
         redirect_to books_path, notice: 'Invalid cart'
       end
     end
