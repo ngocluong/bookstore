@@ -3,6 +3,7 @@ require 'spec_helper'
 describe LineItem do
   it { should belong_to :cart }
   it { should belong_to :book }
+  it { should belong_to :order }
 
   context '#total_price' do
     let(:line_item) { create :line_item }
