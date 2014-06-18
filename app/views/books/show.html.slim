@@ -18,7 +18,7 @@
           | Rate:
         dd
           - @book.total_rating_value.times
-            = image_tag '../assets/star.png', class: 'star'
+            = image_tag 'star.png', class: 'star'
           | (#{@book.total_rating_count})
   hr
   div.details

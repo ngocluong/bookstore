@@ -8,9 +8,9 @@ h1 Listing books
         p Author: #{book.author_name}
         p
           - book.total_rating_value.times
-            = image_tag '../assets/star.png', class: 'star'
+            = image_tag 'star.png', class: 'star'
           - if book.total_rating_value == 0
-            = image_tag '../assets/no-star.png', class: 'star'
+            = image_tag 'no-star.png', class: 'star'
         p
           div.book-price
             = link_to book.unit_price, line_items_path(book_id: book.id), method: :post
