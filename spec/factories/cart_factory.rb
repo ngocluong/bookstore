@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :cart do
+    code { Devise.friendly_token }
   end
 end

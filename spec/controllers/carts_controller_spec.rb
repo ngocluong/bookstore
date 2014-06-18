@@ -6,8 +6,8 @@ describe CartsController do
   context 'GET show' do
     context 'Show valid cart' do
       before do
-        session[:cart_id] = cart.id
-        get :show, id: cart.id
+        session[:cart_code] = cart.code
+        get :show, id: cart.code
       end
 
       it 'return cart' do

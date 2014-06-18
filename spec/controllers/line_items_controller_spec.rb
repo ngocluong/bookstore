@@ -27,7 +27,7 @@ describe LineItemsController do
       end
 
       it 'creates cart session' do
-        expect(session[:cart_id]).to eq new_line_item.cart_id
+        expect(session[:cart_code]).to eq new_line_item.cart.code
       end
 
       it 'creates new line with correct attributes' do
