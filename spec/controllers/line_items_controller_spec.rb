@@ -64,7 +64,7 @@ describe LineItemsController do
       end
 
       it 'redirects to cart page show successful notice' do
-        expect(response).to redirect_to(cart_path(line_item.cart))
+        expect(response).to redirect_to(cart_path(line_item.cart.code))
         expect(flash[:notice]).to eq('Update successfully')
       end
     end
