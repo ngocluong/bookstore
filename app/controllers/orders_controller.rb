@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
   private
   def authorize
     unless user_signed_in?
-      redirect_to books_path, notice: 'You need to sign in inorder to order'
+      redirect_to books_path, notice: 'You need to sign in inorder to check out'
     end
   end
 

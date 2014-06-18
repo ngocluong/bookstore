@@ -35,7 +35,7 @@ describe OrdersController do
 
       it 'redirect to book path with notice' do
         expect(response).to redirect_to(books_path)
-        expect(flash[:notice]).to eq('You need to sign in inorder to order')
+        expect(flash[:notice]).to eq('You need to sign in inorder to check out')
       end
     end
 
@@ -111,7 +111,7 @@ describe OrdersController do
 
       it 'redirect to book path with notice' do
         expect(response).to redirect_to(books_path)
-        expect(flash[:notice]).to eq('You need to sign in inorder to order')
+        expect(flash[:notice]).to eq('You need to sign in inorder to check out')
       end
     end
   end
