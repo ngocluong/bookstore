@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       Cart.find_by_code(session[:cart_code]).destroy
       session[:cart_code] = nil
 
-      redirect_to books_path, notice: 'Thank you to order'
+      redirect_to books_path, notice: 'Thank you for your order'
     else
       render action: 'new', notice: @order.errors.full_messages.to_sentence
     end

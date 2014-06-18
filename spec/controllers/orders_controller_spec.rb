@@ -81,7 +81,7 @@ describe OrdersController do
 
       it 'redirect to book path with successful notice' do
         expect(response).to redirect_to(books_path)
-        expect(flash[:notice]).to eq('Thank you to order')
+        expect(flash[:notice]).to eq('Thank you for your order')
       end
     end
 
