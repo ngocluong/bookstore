@@ -8,10 +8,10 @@ class Cart < ActiveRecord::Base
   end
 
   def total_price
-    line_items.to_a.sum {|item| item.total_price}
+    line_items.joins(:book).sum('books.unit_price * line_items.quantity')
   end
 
   def total_books
-    line_items.to_a.sum {|item| item.quantity}
+    line_items.sum('line_items.quantity')
   end
 end
