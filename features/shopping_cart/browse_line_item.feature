@@ -1,3 +1,4 @@
+@javascript
 Feature: Add book to shopping cart
 As an unauthorized user
 I want to add book for shopping cart
@@ -32,7 +33,7 @@ Scenario: Add book into cart from book detail page
 
 
 Scenario: Access invalid cart
-  When I show invalid cart 
+  When I show invalid cart
   Then I should see the following messages
     |message                        |
     |Invalid cart                   |
