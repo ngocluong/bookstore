@@ -1,5 +1,5 @@
 #line_items
-  - @cart.line_items.each do |line_item|
+  - @line_items.each do |line_item|
     .line-item
       #img.col-md-1
         = image_tag line_item.book.image_url, class: 'book-image'

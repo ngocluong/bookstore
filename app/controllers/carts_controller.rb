@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   def show
+    @line_items = @cart.line_items.includes(:book)
   end
 
   private
