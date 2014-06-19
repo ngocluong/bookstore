@@ -1,0 +1,19 @@
+.order
+  - if @orders.empty?
+    | You dont have any order
+  - else
+    - @orders.each do |order|
+      - byebug
+      - order.created_at
+      hr
+      - order.line_items.each do |line_item|
+        .line-item
+          .col-md-7
+            = line_item.book.title
+          .col-md-3
+            = line_item.book.unit_price
+          .col-md-2
+            = line_item.quantity
+          br
+      hr
+
