@@ -24,8 +24,7 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
-    cart = Cart.find_by_code(session[:cart_code])
-    cart.line_items.where(line_items: {id: params[:id]}).destroy_all
+    LineItem.includes(:cart).where(carts: { code: session[:cart_code] }, line_items: { id: params[:id] }).destroy_all
     redirect_to cart_path(@line_item.cart.code), notice: 'Remove successfully'
   end
 
