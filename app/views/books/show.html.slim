@@ -38,7 +38,7 @@
       = @book.published_date
       br
       |Categories:
-      = @book.categories.pluck(:name).join(', ')
+      = @book.get_all_categories
   hr
   div.details
     .col-md-2

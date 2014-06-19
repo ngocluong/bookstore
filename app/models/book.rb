@@ -19,4 +19,8 @@ class Book < ActiveRecord::Base
     with: %r{\.(gif|jpg|png|jpeg)\Z}i,
     message: 'must be a URL for GIF, JPG, JPEG or PNG image'
   }
+
+  def get_all_categories
+    categories.pluck(:name).join(', ')
+  end
 end
