@@ -36,7 +36,10 @@ When(/^I change my password$/) do
 end
 
 Then(/^I sign out$/) do
-  step %{I press "SIGN OUT"}
+  find('img.user-image').click
+  within '.dropdown-menu' do
+    step %{I press "Sign out"}
+  end
   step %{I am on the Signin page}
 end
 
