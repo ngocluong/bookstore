@@ -15,9 +15,8 @@ html
           #right-panel
             p
               = link_to 'BROWSE', store_index_path, class: 'browse'
-            p
-              -if !session[:cart_code].nil?
-                = link_to image_tag('cart.png'), cart_path(id: session[:cart_code]), class: 'user-image'
+            p.cart
+              = render 'line_items/cart_link'
             = render 'devise/sessions/sessions'
       .page-name-row
         | INDEX

@@ -1,0 +1,2 @@
+-if !session[:cart_code].nil?
+  = link_to image_tag('cart.png'), cart_path(id: session[:cart_code]), class: 'cart-image', id: 'CART'

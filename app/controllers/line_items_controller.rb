@@ -9,9 +9,9 @@ class LineItemsController < ApplicationController
     @line_item = @cart.add_book(book.id)
 
     if @line_item.save
-      redirect_to books_path, notice: 'Add book to cart successfully'
+      flash[:notice] = 'Add book to cart successfully'
     else
-      redirect_to books_path, notice: @line_item.errors.full_messages.to_sentence
+      flash[:error] = @line_item.errors.full_messages.to_sentence
     end
   end
 
