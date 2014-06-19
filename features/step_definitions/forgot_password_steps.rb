@@ -27,6 +27,7 @@ end
 
 When(/^My password is updated$/) do
   step %{I sign out}
+  step %{I am on the Signin page}
   within sign_in_modal_id do
     step %{I fill in "Email" with "#{@user.email}"}
     step %{I fill in "Password" with "newpassword"}

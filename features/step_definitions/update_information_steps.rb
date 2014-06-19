@@ -40,7 +40,6 @@ Then(/^I sign out$/) do
   within '.dropdown-menu' do
     step %{I press "Sign out"}
   end
-  step %{I am on the Signin page}
 end
 
 Then(/^I can login with my new password$/) do
