@@ -52,11 +52,7 @@ Then(/^I can login with my new password$/) do
      |messages              |
      |Signed in successfully|
    })
-  within '#right-panel' do
-    wait_until do
-      page.has_link?('SIGN OUT') && page.has_link?('EDIT')
-    end
-  end
+  step %{I should see element "#{user_p}"}
 end
 
 When(/^I fill in the Edit page with invalid phone format$/) do

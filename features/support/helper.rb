@@ -17,3 +17,7 @@ end
 def raty_div
   @raty_div ||= 'div.raty'
 end
+
+def user_p
+  @user_p ||= 'p#sign-in'
+end
