@@ -40,7 +40,7 @@ class LineItemsController < ApplicationController
 
     def validate_cart_session
       if !session[:cart_code].present?
-        redirect_to books_path(), notice: 'Cart is not present'
+        redirect_to books_path, notice: 'Cart is not present'
       end
     end
 end
