@@ -14,10 +14,10 @@ html
         .col-md-4
           #right-panel
             p
-              -if !session[:cart_code].nil?
-                = link_to 'CART', cart_path(id: session[:cart_code])
+              = link_to 'BROWSE', store_index_path, class: 'browse'
             p
-              = link_to 'BROWSE', store_index_path
+              -if !session[:cart_code].nil?
+                = link_to image_tag('cart.png'), cart_path(id: session[:cart_code]), class: 'user-image'
             = render 'devise/sessions/sessions'
       .page-name-row
         | INDEX
