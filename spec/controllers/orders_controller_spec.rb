@@ -10,6 +10,21 @@ describe OrdersController do
     post :create, order: order_attributes
   end
 
+  context 'GET index' do
+    context 'load all post orders belong to user' do
+      include_context 'login user'
+      let(:order) { create :order, user: user}
+
+      before do
+        get :index
+      end
+
+      it 'renders all order belong to current user' do
+        expect(assigns[:orders]).to include(order)
+      end
+    end
+  end
+
   context 'GET new' do
     let(:new_order) { assigns[:order] }
 
@@ -35,7 +50,7 @@ describe OrdersController do
 
       it 'redirect to book path with notice' do
         expect(response).to redirect_to(books_path)
-        expect(flash[:notice]).to eq('You need to sign in inorder to check out')
+        expect(flash[:notice]).to eq('You need to sign in')
       end
     end
 
@@ -112,7 +127,7 @@ describe OrdersController do
 
       it 'redirect to book path with notice' do
         expect(response).to redirect_to(books_path)
-        expect(flash[:notice]).to eq('You need to sign in inorder to check out')
+        expect(flash[:notice]).to eq('You need to sign in')
       end
     end
   end
