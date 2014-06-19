@@ -6,7 +6,7 @@ describe LineItemsController do
   let!(:line_item) { create :line_item, cart: cart }
 
   def create_line_item
-    post :create, book_id: book_id
+    xhr :post, :create, book_id: book_id
   end
 
   def update_line_item
