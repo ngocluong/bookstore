@@ -2,18 +2,23 @@
   - if @orders.empty?
     | You dont have any order
   - else
-    - @orders.each do |order|
-      - byebug
-      - order.created_at
-      hr
-      - order.line_items.each do |line_item|
-        .line-item
-          .col-md-7
-            = line_item.book.title
-          .col-md-3
-            = line_item.book.unit_price
-          .col-md-2
-            = line_item.quantity
-          br
-      hr
+    #accordion.panel-group
+      - @orders.each do |order|
+        #custom-collapse.panel
+          #panel-heading
+            h4.panel-title
+              a data-parent="#accordion" data-toggle="collapse" href="#collapse_#{order.id}"
+                = order.created_at
+        .panel-collapse.collapse id='collapse_#{order.id}'
+          .panel-body
+            - order.line_items.each do |line_item|
+              .line-item
+                .col-md-7
+                  = line_item.book.title
+                .col-md-3
+                  = line_item.book.unit_price
+                .col-md-2
+                  = line_item.quantity
+                br
+            hr
 
