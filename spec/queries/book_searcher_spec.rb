@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe BookSearcher do
-  def book_searcher_init(options = {})
-    BookSearcher.new(options.slice(:q, :category_id, :page, :per_page))
-  end
-
   let (:books) { create_list :book, 2 }
   let (:categories) { create_list :category, 2 }
   let (:first_book_title) { books.first.title }
