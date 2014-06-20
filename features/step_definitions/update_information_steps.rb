@@ -44,6 +44,7 @@ end
 
 Then(/^I can login with my new password$/) do
   step %{I sign out}
+  step %{I am on the Signin page}
   step %{I fill in "Email" with "#{@user.email}"}
   step %{I fill in "user_password" with "#{@new_user_information[:password]}"}
   step %{I press "Sign in"}
