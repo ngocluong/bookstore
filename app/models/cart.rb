@@ -1,5 +1,6 @@
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
+  before_create :set_cart_code
 
   def add_book(book_id)
     current_line_item = line_items.where(book_id: book_id).first_or_initialize
@@ -13,5 +14,10 @@ class Cart < ActiveRecord::Base
 
   def total_books
     line_items.sum('line_items.quantity')
+  end
+
+  private
+  def set_cart_code
+    self.code = Devise.friendly_token
   end
 end

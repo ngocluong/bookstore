@@ -4,8 +4,8 @@ module CurrentCart
   private
     def set_cart
       @cart = Cart.find_by_code(session[:cart_code])
-      if !@cart.present?
-        @cart = Cart.create(code: Devise.friendly_token)
+      if @cart.blank?
+        @cart = Cart.create()
         session[:cart_code] = @cart.code
       end
     end
