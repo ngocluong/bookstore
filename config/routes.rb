@@ -1,4 +1,6 @@
 BookStore::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :carts, only: [:show]
   resources :orders, only: [:index, :new, :create]
   resources :line_items, only: [:create, :update, :destroy]
