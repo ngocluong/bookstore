@@ -12,7 +12,7 @@ describe BooksController do
       end
 
       it 'renders all books' do
-        expect(assigns[:books]).to eq books
+        expect(assigns[:books].to_set).to eq books.to_set
       end
     end
   end
@@ -26,7 +26,7 @@ describe BooksController do
     end
 
     it 'assigns paginated books' do
-      expect(assigns[:books]).to eq Book.first(per_page)
+      expect(assigns[:books].to_set).to eq Book.first(per_page).to_set
     end
   end
 end
