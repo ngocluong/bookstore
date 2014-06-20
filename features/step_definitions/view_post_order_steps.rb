@@ -15,3 +15,6 @@ Then(/^I should see all my post order$/) do
   end
 end
 
+When(/^should not see post order link$/) do
+  step %{I should not see element "#{user_p}"}
+end

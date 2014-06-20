@@ -15,7 +15,4 @@ Scenario: View all my post order
 
 Scenario: View post order without login
   When I sign out
-  And view my post order
-  Then I should see the following messages
-    |message                        |
-    |You need to sign in            |
+  And should not see post order link

@@ -35,3 +35,7 @@ Then(/^I should see element "(.*?)"$/) do |element|
     page.has_selector? element, visible: true
   end
 end
+
+Then(/^I should not see element "(.*?)"$/) do |element|
+  !page.has_selector? element
+end
