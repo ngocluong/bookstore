@@ -11,7 +11,7 @@
                 = order.created_at
         .panel-collapse.collapse id='collapse_#{order.id}'
           .panel-body
-            - order.line_items.each do |line_item|
+            - order.line_items.includes(:book).each do |line_item|
               .line-item
                 .col-md-7
                   = line_item.book.title
