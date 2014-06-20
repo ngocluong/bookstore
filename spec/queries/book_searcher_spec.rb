@@ -13,7 +13,7 @@ describe BookSearcher do
 
   before do
     books.each do |book|
-        categories.first.books << book
+      categories.first.books << book
     end
   end
 
