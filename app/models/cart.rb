@@ -9,14 +9,18 @@ class Cart < ActiveRecord::Base
   end
 
   def total_price
-    line_items.joins(:book).sum('books.unit_price * line_items.quantity')
+    calculator.total_price
   end
 
   def total_books
-    line_items.sum('line_items.quantity')
+    calculator.total_books
   end
 
   private
+  def calculator
+    @calculator ||= Order::Calculator.new(line_items: line_items)
+  end
+
   def set_cart_code
     self.code = Devise.friendly_token
   end

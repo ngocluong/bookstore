@@ -10,4 +10,17 @@ class Order < ActiveRecord::Base
       line_items << item
     end
   end
+
+  def total_price
+    calculator.total_price
+  end
+
+  def total_books
+    calculator.total_books
+  end
+
+  private
+  def calculator
+    @calculator ||= Calculator.new(line_items: line_items)
+  end
 end

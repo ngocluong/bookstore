@@ -26,17 +26,19 @@ describe Cart do
 
   context '#total_price' do
     let!(:line_items) { create_list :line_item, 3, cart: cart }
+    let(:calculator) { Order::Calculator.new(line_items: LineItem.all) }
 
     it 'calculates total price' do
-      expect(cart.total_price).to eq(line_items.map(&:total_price).sum)
+      expect(cart.total_price).to eq(calculator.total_price)
     end
   end
 
   context '#total_books' do
     let!(:line_items) { create_list :line_item, 3, cart: cart }
+    let(:calculator) { Order::Calculator.new(line_items: LineItem.all) }
 
     it 'calculates total books' do
-      expect(cart.total_books).to eq(line_items.map(&:quantity).sum)
+      expect(cart.total_books).to eq(calculator.total_books)
     end
   end
 end
