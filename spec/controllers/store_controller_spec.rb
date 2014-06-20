@@ -19,7 +19,7 @@ describe BooksController do
 
   context 'pagination' do
     let(:per_page) { Book.default_per_page }
-    let!(:books) { create_list :book, per_page * 2 }
+    let!(:books) { create_list :book, per_page + 1 }
 
     before do
       get :index
