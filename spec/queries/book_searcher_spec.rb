@@ -18,7 +18,7 @@ describe BookSearcher do
     context 'Search books with valid books title' do
       let(:options) { { q: first_book_title } }
 
-      it 'return first book' do
+      it 'returns first book' do
         expect(searcher.result).to include(books.first)
       end
     end
@@ -26,7 +26,7 @@ describe BookSearcher do
     context 'Search books with valid author' do
       let(:options) { { q: first_book_author } }
 
-      it 'return first book' do
+      it 'returns first book' do
         expect(searcher.result).to include(books.first)
       end
     end
@@ -34,7 +34,7 @@ describe BookSearcher do
     context 'Search with category in addition' do
       let(:options) { { q: first_book_author, category_id: first_category_id } }
 
-      it 'return first book' do
+      it 'returns first book' do
         expect(searcher.result).to include(books.first)
       end
     end
