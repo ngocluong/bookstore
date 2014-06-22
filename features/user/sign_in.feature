@@ -26,3 +26,10 @@ Scenario: Log in with incorrect email or password
   |message                    |
   |Invalid email or password. |
 
+@omniauth_test
+Scenario: Log in successfully
+  When I sign in with valid Facebook credential
+  Then I should see the following messages
+    |message                                          |
+    |Successfully authenticated from Facebook account.|
+  And I should be logged in
