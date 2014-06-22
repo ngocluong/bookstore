@@ -19,4 +19,12 @@ describe Book do
 	['image.png', 'image.jpg', 'image.gif', 'image.jpeg'].each do |valid|
 		it { should allow_value(valid).for(:image_url) }
 	end
+
+	context '#category_names' do
+	    let!(:book) { create :book }
+
+	    it 'gets all categories names' do
+	      expect(book.category_names).to eq(book.categories.pluck(:name).join(', '))
+	    end
+	  end
 end

@@ -20,7 +20,7 @@ class Book < ActiveRecord::Base
     message: 'must be a URL for GIF, JPG, JPEG or PNG image'
   }
 
-  def get_all_categories
+  def category_names
     categories.pluck(:name).join(', ')
   end
 end
