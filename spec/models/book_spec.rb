@@ -21,10 +21,10 @@ describe Book do
 	end
 
 	context '#category_names' do
-	    let!(:book) { create :book }
+    let!(:book) { create :book }
 
-	    it 'gets all categories names' do
-	      expect(book.category_names).to eq(book.categories.pluck(:name).join(', '))
-	    end
-	  end
+    it 'gets all categories names' do
+      expect(book.category_names).to eq(book.categories.pluck(:name).join(', '))
+    end
+  end
 end
