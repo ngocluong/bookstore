@@ -7,7 +7,6 @@ describe BookSearcher do
   let (:first_book_author) { books.first.author_name }
   let (:first_category_id) { categories.first.id }
   let(:searcher) { BookSearcher.new(options) }
-  let(:options) { {} }
 
   before do
     books.each do |book|
@@ -43,8 +42,7 @@ describe BookSearcher do
 
   context 'Book searcher return empty' do
     context 'Search with invalid book title' do
-      let (:query) { 'something else'}
-      let(:options) { { q: query } }
+      let(:options) { { q: 'something else' } }
 
       it 'returns empty' do
         expect(searcher.result).to be_empty
@@ -52,7 +50,7 @@ describe BookSearcher do
     end
 
     context 'Search with available title but not contain in category' do
-      let (:last_category_id) { categories.last.id }
+      let(:last_category_id) { categories.last.id }
       let(:options) { { q: first_book_title, category_id: last_category_id } }
 
       it 'returns empty' do
