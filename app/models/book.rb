@@ -23,4 +23,8 @@ class Book < ActiveRecord::Base
   def category_names
     categories.pluck(:name).join(', ')
   end
+
+  def rating_average
+    total_rating_value / total_rating_count
+  end
 end

@@ -16,7 +16,7 @@
         dt.rate
           | Rate:
         dd
-          - @book.total_rating_value.times
+          - @book.rating_average.times
             = image_tag 'star.png', class: 'star'
           | (#{@book.total_rating_count})
         div#share-link          

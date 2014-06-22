@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :book
-  after_save :update_rating_average
+  after_save :update_total_rating
 
   paginates_per 9
   max_paginates_per 50
@@ -10,9 +10,9 @@ class Comment < ActiveRecord::Base
   validates :content, presence: true
 
   private
-  def update_rating_average
+  def update_total_rating
     book = Book.find_by_id(book_id)
-    book.total_rating_value = (rating + book.total_rating_count * book.total_rating_value) / (book.total_rating_count + 1)
+    book.total_rating_value += rating
     book.total_rating_count += 1
     book.save
   end

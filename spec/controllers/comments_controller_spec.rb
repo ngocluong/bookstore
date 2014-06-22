@@ -6,7 +6,7 @@ describe CommentsController do
   let(:comment_attributes) { attributes_for :comment, book_id: book.id, user_id: user.id }
 
   def average_calculation
-    @rating_average = (comment_attributes[:rating] + book.total_rating_count * book.total_rating_value) / (book.total_rating_count + 1)
+    @rating_average = book.total_rating_value + comment_attributes[:rating]
     @total_count = book.total_rating_count + 1
   end
 
