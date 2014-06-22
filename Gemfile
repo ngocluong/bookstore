@@ -17,6 +17,8 @@ gem 'faker', require: false
 gem 'factory_girl_rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+gem 'omniauth-facebook'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
