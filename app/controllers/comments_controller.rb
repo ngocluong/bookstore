@@ -10,10 +10,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to book_path(@comment.book), notice: 'Thank you for your contribution'
+      notice = 'Thank you for your contribution'
     else
-      redirect_to book_path(params[:comment][:book_id]), notice: @comment.errors.full_messages.to_sentence
+      notice = @comment.errors.full_messages.to_sentence
     end
+    redirect_to book_path(@comment.book), notice: notice
   end
 
   private
