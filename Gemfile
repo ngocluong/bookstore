@@ -18,6 +18,7 @@ gem 'factory_girl_rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'omniauth-facebook'
+gem 'stripe'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
