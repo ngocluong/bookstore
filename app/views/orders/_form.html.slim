@@ -18,6 +18,12 @@
   .form-group
     = f.label :address, class: 'col-sm-3 control-label'
     .col-sm-9
-      = f.text_field :address, autofocus: true, class: 'form-control', placeholder: 'Please enter yoru email'
+      = f.text_field :address, autofocus: true, class: 'form-control', placeholder: 'Please enter your email'
+  .form-group
+    = f.label :Paywithcard, 'Pay with credit card', class: 'col-sm-3 control-label'
+    .col-sm-9
+      = render 'orders/payment'
   center
     = f.submit 'Proceed', class: 'proceed-image'
+    = hidden_field_tag :token
+
