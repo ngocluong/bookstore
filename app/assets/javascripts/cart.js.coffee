@@ -12,7 +12,6 @@ $ ->
       $('input#token').val(token.id)
       $('button#customButton').attr('disabled','disabled');
       $('button#customButton').css('background', 'green')
-      $('button#customButton').inneHTML('verified')
   )
 
   # Use the token to create the charge with a server-side script.
