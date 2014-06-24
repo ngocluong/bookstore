@@ -11,6 +11,8 @@ class Book < ActiveRecord::Base
   has_many :category_books, dependent: :destroy
   has_many :categories, through: :category_books
 
+  after_update :clear_book_cache
+  after_create :clear_book_cache
 
   validates :title, :description, :image_url, :unit_price, :published_date, presence: true
   validates :unit_price, numericality: { greater_than_or_equal_to: 0.01 }
@@ -26,5 +28,11 @@ class Book < ActiveRecord::Base
 
   def rating_average
     total_rating_value / total_rating_count
+  end
+
+  private
+  def clear_book_cache
+    Book::IndexCachier.new.clear_cache
+    Book::ShowCachier.clear_cache(id: id)
   end
 end

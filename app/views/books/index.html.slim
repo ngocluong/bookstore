@@ -1,5 +1,5 @@
 h1 Listing books
-- @books.each do |book|
+- @books_data[:paginated_data].each do |book|
   .col-sm-6.col-md-4
     .thumbnail
       = image_tag(book.image_url)
@@ -17,7 +17,7 @@ h1 Listing books
 
 br
 .row
-= paginate @books
+= paginate @books_data[:paginated_info]
 div.book-per-page
   = form_tag search_index_path, method: :get do
     = hidden_field_tag :category_id, params[:category_id]

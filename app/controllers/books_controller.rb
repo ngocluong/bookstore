@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show]
 
   def index
-    @books = Book.page(params[:page]).per(params[:per_page])
+    @books_data = Book::IndexCachier.fetch_books(page: params[:page], per_page: params[:per_page])
   end
 
   def show
@@ -11,6 +11,6 @@ class BooksController < ApplicationController
 
   private
   def set_book
-    @book = Book.find(params[:id])
+    @book = Book::ShowCachier.fetch_books(id: params[:id])
   end
 end
