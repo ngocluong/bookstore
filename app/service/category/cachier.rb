@@ -9,7 +9,7 @@ class Category
     end
 
     def clear_cache
-      Rails.cache.delete(cache_key)
+      Rails.cache.delete(cache_key) if Rails.cache.read(cache_key).present?
     end
 
     private
