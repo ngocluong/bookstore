@@ -26,6 +26,10 @@ class Book < ActiveRecord::Base
     categories.pluck(:name).join(', ')
   end
 
+  def to_param
+    "#{id} #{title}".parameterize
+  end
+
   def rating_average
     total_rating_value / total_rating_count
   end
