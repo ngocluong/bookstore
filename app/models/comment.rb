@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   paginates_per 9
   max_paginates_per 50
 
-  validates :rating, numericality: { greater_than_or_equal_to: 1 }
+  validates :rating, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   validates :content, presence: true
 
   private
