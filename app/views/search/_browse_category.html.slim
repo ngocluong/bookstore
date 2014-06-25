@@ -1,0 +1,7 @@
+p#browse_categories
+  .dropdown
+    .browse data-toggle="dropdown"
+      | BROWSE
+    ul.dropdown-menu#dropdown-list aria-labelledby="dLabel" role="menu"
+      - @categories.each do |category|
+        li = link_to category[0], search_index_path(category_id: category[1])

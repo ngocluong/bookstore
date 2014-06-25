@@ -14,7 +14,7 @@ html
         .col-md-4
           #right-panel
             p
-              = link_to 'BROWSE', store_index_path, class: 'browse'
+              = render 'search/browse_category'
             p.cart
               = render 'line_items/cart_link'
             = render 'devise/sessions/sessions'
