@@ -1,7 +1,12 @@
 doctype html
 html
   head
-    title BookStore
+    title
+      = yield(:title)
+    meta charset="UTF-8"
+    meta name="description" content=('In Betweener Book Store provides a large selection of books and categories. We can buy books and pay through cash or credit card. Moreover, users can comment and rate for books')
+    meta name="description" content=('Book Store, Buy Books, Books Description')
+
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -19,7 +24,7 @@ html
               = render 'line_items/cart_link'
             = render 'devise/sessions/sessions'
       .page-name-row
-        | INDEX
+        = yield(:page_name)
     .container
       p.notice= notice
       p.alert= alert

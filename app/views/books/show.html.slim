@@ -1,9 +1,11 @@
+- provide(:title, "In Betweener books - #{@book.title} by #{@book.author_name}")
+- provide(:page_name, "#{@book.title}")
 .book-show
   div.details
     .col-md-2
       = image_tag @book.image_url, class: 'book-image'
     .col-md-8
-      h3 = @book.title 
+      h3 = @book.title
       dl.dl-horizontal
         dt
           | By:
@@ -12,14 +14,14 @@
           | Price:
         dd
           div.book-price
-            = link_to @book.unit_price, line_items_path(book_id: @book.id), method: :post, remote: true
+            = link_to @book.unit_price, line_items_path(book_id: @book.id), method: :post, remote: true, noindex: true
         dt.rate
           | Rate:
         dd
           - @book.rating_average.times
             = image_tag 'star.png', class: 'star'
           | (#{@book.total_rating_count})
-        div#share-link          
+        div#share-link
   hr
   div.details
     .col-md-2
