@@ -2,9 +2,8 @@ class SearchController < ApplicationController
   before_filter :validate_query, only: [:index]
 
   def index
-    @books = BookSearcher.new(params.slice(:q, :category_id, :page, :per_page)).result
-
-    if @books.total_pages == 0
+    @books_data = BookSearcher.new(params.slice(:q, :category_id, :page, :per_page)).result
+    if @books_data[:paginated_info][:total_pages] == 0
       redirect_to books_path, notice: 'Can not find books which have title or author like this'
     else
       render '/books/index'

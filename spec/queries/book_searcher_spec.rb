@@ -19,7 +19,7 @@ describe BookSearcher do
       let(:options) { { q: first_book_title } }
 
       it 'returns first book' do
-        expect(searcher.result).to include(books.first)
+        expect(searcher.result[:paginated_data]).to include(books.first)
       end
     end
 
@@ -27,7 +27,7 @@ describe BookSearcher do
       let(:options) { { q: first_book_author } }
 
       it 'returns first book' do
-        expect(searcher.result).to include(books.first)
+        expect(searcher.result[:paginated_data]).to include(books.first)
       end
     end
 
@@ -35,7 +35,7 @@ describe BookSearcher do
       let(:options) { { q: first_book_author, category_id: first_category_id } }
 
       it 'returns first book' do
-        expect(searcher.result).to include(books.first)
+        expect(searcher.result[:paginated_data]).to include(books.first)
       end
     end
   end
@@ -45,7 +45,7 @@ describe BookSearcher do
       let(:options) { { q: 'something else' } }
 
       it 'returns empty' do
-        expect(searcher.result).to be_empty
+        expect(searcher.result[:paginated_data]).to be_empty
       end
     end
 
@@ -54,7 +54,7 @@ describe BookSearcher do
       let(:options) { { q: first_book_title, category_id: last_category_id } }
 
       it 'returns empty' do
-        expect(searcher.result).to be_empty
+        expect(searcher.result[:paginated_data]).to be_empty
       end
     end
   end

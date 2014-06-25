@@ -34,5 +34,6 @@ class Book < ActiveRecord::Base
   def clear_book_cache
     Book::IndexCachier.new.clear_cache
     Book::ShowCachier.clear_cache(id: id)
+    Book::SearchCachier.new.clear_search_cache
   end
 end

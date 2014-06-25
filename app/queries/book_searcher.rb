@@ -9,8 +9,6 @@ class BookSearcher
   end
 
   def result
-    books = Book.search(query)
-    books = books.joins(:categories).where(categories: { id: category_id }) if category_id.present?
-    books.page(page).per(per_page)
+    Book::SearchCachier.search_books(page: page, per_page: per_page, query: query, category_id: category_id)
   end
 end
