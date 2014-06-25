@@ -4,6 +4,7 @@ describe BooksController do
   def paginated_books_array(options = {})
     Kaminari.paginate_array(books).page(options.fetch(:page, 0)).per(options.fetch(:per_page, per_page))
   end
+
   let!(:books) { create_list :book, per_page + 1 }
   let(:per_page) { Book.default_per_page }
 
@@ -39,12 +40,15 @@ describe BooksController do
   end
 
   context 'GET show' do
+    let!(:comment) { create :comment, book: books.first }
+
     before do
       get :show, id: books.first.id
     end
 
     it 'returns book' do
       expect(assigns[:book]).to eq books.first
+      expect(assigns[:comments][:paginated_data]).to include(comment)
     end
   end
 end

@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @comments = @book.comments.page(params[:page]).per(params[:per_page]).includes(:user)
+    @comments = Comment::Cachier.fetch_comments(page: params[:page], book: @book)
   end
 
   private
