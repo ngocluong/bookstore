@@ -21,7 +21,7 @@ class Book
     end
 
     def destroy
-      Rails.cache.delete(cache_key)
+      Rails.cache.delete(cache_key) unless Rails.cache.read(cache_key).nil?
     end
 
     private
