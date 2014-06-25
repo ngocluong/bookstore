@@ -42,7 +42,7 @@ class Book
 
     private
     def cache_key
-      "search_#{category_id}_#{query}"
+      "search_#{category_id}_#{query}_#{page}_#{per_page}"
     end
 
     def search_cache_keys
