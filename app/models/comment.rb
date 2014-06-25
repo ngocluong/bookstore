@@ -11,9 +11,8 @@ class Comment < ActiveRecord::Base
 
   private
   def update_total_rating
-    book = Book.find_by_id(book_id)
     book.total_rating_value += rating
-    book.total_rating_count += 1
+    book.increment(:total_rating_count)
     book.save
   end
 end
