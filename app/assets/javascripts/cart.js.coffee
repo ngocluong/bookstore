@@ -10,7 +10,7 @@ $ ->
     key: "pk_test_hWPuCZ7m1AtIAsa2oVuP6vE7"
     token: (token) ->
       $('input#token').val(token.id)
-      $('button#customButton').attr('disabled','disabled');
+      $('button#customButton').attr('disabled','disabled')
       $('button#customButton').css('background', 'green')
   )
 

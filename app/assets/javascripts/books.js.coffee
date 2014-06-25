@@ -4,17 +4,16 @@
 
 $ ->
   $('body').on 'shown.bs.modal', '#add-review-modal', (event) ->
-    $('#add-review-modal .raty').raty(
+    $('#add-review-modal .raty').raty
       score: 1
-    )
+
   $('body').on 'change', 'select#per_page', (event) ->
     $(@).parent('form').submit()
-  $('.show-raty').raty (
+  $('.show-raty').raty
     score: -> $(this).attr 'data-score',
     readOnly: -> true
-  )
-  new Share('#share-link',
+
+  new Share '#share-link',
     networks:
       email:
         enabled: false
-  )
