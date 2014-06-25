@@ -36,11 +36,11 @@ class Book
       end
     end
 
+    private
     def add_search_cache_key
       Rails.cache.write(search_list_key, (search_cache_keys << cache_key).uniq)
     end
 
-    private
     def cache_key
       "search_#{category_id}_#{query}_#{page}_#{per_page}"
     end
