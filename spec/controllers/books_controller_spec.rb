@@ -14,9 +14,8 @@ describe BooksController do
 
     context 'not specify page' do
       let(:params) { {} }
-
       it 'assigns paginated books' do
-        expect(assigns[:books]).to match_array(paginated_books_array)
+        expect(assigns[:books_data][:paginated_data]).to match_array(paginated_books_array)
       end
     end
 
@@ -25,7 +24,7 @@ describe BooksController do
       let(:params) { { page: page } }
 
       it 'assigns paginated books' do
-        expect(assigns[:books]).to match_array(paginated_books_array(page: page))
+        expect(assigns[:books_data][:paginated_data]).to match_array(paginated_books_array(page: page))
       end
     end
 
@@ -34,7 +33,7 @@ describe BooksController do
       let(:params) { { per_page: per_page} }
 
       it 'assigns paginated books' do
-        expect(assigns[:books]).to match_array(paginated_books_array(per_page: per_page))
+        expect(assigns[:books_data][:paginated_data]).to match_array(paginated_books_array(per_page: per_page))
       end
     end
   end

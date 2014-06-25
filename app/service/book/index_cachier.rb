@@ -24,8 +24,10 @@ class Book
     end
 
     def clear_cache
-      Rails.cache.read(book_list_key).each do |book_key|
-        Rails.cache.delete(book_key)
+      if Rails.cache.read(book_list_key).present?
+        Rails.cache.read(book_list_key).each do |book_key|
+          Rails.cache.delete(book_key)
+        end
       end
     end
 
