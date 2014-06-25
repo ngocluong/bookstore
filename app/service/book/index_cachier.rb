@@ -28,6 +28,7 @@ class Book
         Rails.cache.read(book_list_key).each do |book_key|
           Rails.cache.delete(book_key)
         end
+        Rails.cache.delete(book_list_key)
       end
     end
 
