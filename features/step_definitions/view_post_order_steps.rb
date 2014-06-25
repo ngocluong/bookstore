@@ -4,9 +4,9 @@ end
 
 When(/^view my post order$/) do
   find('img.user-image').click
-    within '.dropdown-menu' do
-      step %{I press "Post Orders"}
-    end
+  within '.dropdown-menu' do
+    step %{I press "Post Orders"}
+  end
 end
 
 Then(/^I should see all my post order$/) do
