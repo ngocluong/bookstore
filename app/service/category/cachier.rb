@@ -9,7 +9,7 @@ class Category
     end
 
     def clear_cache
-      Rails.cache.delete(cache_key) if Rails.cache.read(cache_key).present?
+      ClearCacheWorker.perform_async(cache_key) unless Rails.cache.read(cache_key).nil?
     end
 
     private

@@ -28,12 +28,7 @@ class Book
     end
 
     def clear_search_cache
-      if Rails.cache.read(search_list_key).present?
-        Rails.cache.read(search_list_key).each do |search_key|
-          Rails.cache.delete(search_key)
-        end
-        Rails.cache.delete(search_list_key)
-      end
+      ClearListCacheWorker.perform_async(search_list_key) if Rails.cache.read(search_list_key).present?
     end
 
     private

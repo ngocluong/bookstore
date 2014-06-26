@@ -28,23 +28,12 @@ class Comment
     end
 
     def destroy
-      if Rails.cache.read(comment_list_key).present?
-        Rails.cache.read(comment_list_key).each do |comment_key|
-          Rails.cache.delete(comment_key) if comment_key.start_with?("comment_#{book.id}")
-        end
-        Rails.cache.write(comment_list_key, delete_comment_cache_keys)
-      end
+      ClearListCacheWorker.perform_async(comment_list_key) if Rails.cache.read(comment_list_key).present?
     end
 
     private
     def add_comment_cache_key
       Rails.cache.write(comment_list_key, (comment_cache_keys << cache_key).uniq)
-    end
-
-    def delete_comment_cache_keys
-      Rails.cache.read(comment_list_key).delete_if do |comment_key|
-        comment_key.start_with?("comment_#{book.id}") ? true : false
-      end
     end
 
     def comment_cache_keys
