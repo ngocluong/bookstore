@@ -3,7 +3,7 @@ p#browse_categories
     .browse.visible-lg data-toggle='dropdown'
       | BROWSE
     .browse.hidden-lg data-toggle='dropdown'
-      = image_tag 'browse.png', class: 'user-image'
+      = image_tag 'browse.png', class: 'browse-image'
     ul.dropdown-menu#dropdown-list aria-labelledby="dLabel" role="menu"
       - @categories.each do |category|
         li = link_to category[0], search_index_path(category_id: category[1])
