@@ -1,4 +1,4 @@
-@javascript
+@javascript @clear_cache
 Feature: Add book to shopping cart
 As an unauthorized user
 I want to add book for shopping cart

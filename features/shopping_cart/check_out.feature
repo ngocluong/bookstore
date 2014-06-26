@@ -1,4 +1,4 @@
-@javascript
+@javascript @clear_cache
 Feature: Check out shopping cart
 As an authorized user
 I want to check out

@@ -9,6 +9,7 @@ Given(/^I already login$/) do
 end
 
 When(/^I add a some comment$/) do
+  Rails.cache.clear
   within add_review_modal_id do
     step %{I should see element "#{raty_div}"}
     step %{I fill in "comment_content" with "#{@comment}"}

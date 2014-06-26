@@ -78,11 +78,14 @@ Before('@omniauth_test') do
     }
   })
 end
- 
+
 After('@omniauth_test') do
   OmniAuth.config.test_mode = false
 end
-#
+
+Before('@clear_cache') do
+  Rails.cache.clear
+end
 
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.

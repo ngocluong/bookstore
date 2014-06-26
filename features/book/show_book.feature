@@ -1,3 +1,4 @@
+@clear_cache
 Feature: Show book detail
 As an unauthorized user
 I want to show details of one book

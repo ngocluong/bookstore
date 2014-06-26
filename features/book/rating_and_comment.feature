@@ -1,4 +1,4 @@
-@javascript
+@javascript @clear_cache
 Feature: Rating and comment
 As an authorized user
 I want to add comment for book

@@ -1,4 +1,4 @@
-@javascript
+@javascript @clear_cache
 Feature: Change quantity in shopping cart
 As an unauthorized user
 I want to change quantity of books in my shopping cart

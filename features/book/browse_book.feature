@@ -1,3 +1,4 @@
+@clear_cache
 Feature: Browse for book
 As an unauthorized user
 I want to browse for books
