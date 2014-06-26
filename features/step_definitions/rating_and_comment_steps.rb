@@ -1,6 +1,5 @@
 Given(/^I want to add some comment$/) do
   @comment = 'this is a good book'
-  step %{I press "ADD REVIEW"}
 end
 
 Given(/^I already login$/) do
@@ -10,6 +9,7 @@ end
 
 When(/^I add a some comment$/) do
   Rails.cache.clear
+  step %{I press "ADD REVIEW"}
   within add_review_modal_id do
     step %{I should see element "#{raty_div}"}
     step %{I fill in "comment_content" with "#{@comment}"}
@@ -22,6 +22,7 @@ Then(/^I will see my comment$/) do
 end
 
 When(/^I leave an empty content$/) do
+  step %{I press "ADD REVIEW"}
   within add_review_modal_id do
     step %{I press "ADD REVIEW"}
   end
