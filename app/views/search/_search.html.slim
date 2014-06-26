@@ -1,6 +1,8 @@
-#searchpanel
+#searchpanel.hidden-sm.hidden-xs
   = form_tag search_index_path, method: :get do
     .btn-group
-      = select_tag :category_id, options_for_select(@categories, params[:category_id]), prompt: 'All categories', class: 'form-control'
+      = select_tag :category_id, options_for_select(@categories, params[:category_id]), prompt: 'All categories', class: 'form-control visible-lg'
     = text_field_tag :q, nil, placeholder: 'Enter search term...', class: 'search', value: params[:q]
-    button type='submit' Go
+    button.visible-lg type='submit' Go
+    button.search-image.hidden-lg type='submit'
+

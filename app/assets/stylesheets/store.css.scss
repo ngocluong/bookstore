@@ -39,6 +39,13 @@
       font: normal 14px "Roboto medium";
       color: #3398B3;
 
+      .search-image{
+        background: white;
+        width: 22px;
+        height: 23px;
+        background-image: image-url('search.png');
+      }
+
       .btn-group{
         float: left;
         width: 25%;
@@ -77,9 +84,12 @@
 }
 
 #right-panel{
-  position:absolute;
-  left: 25%;
   top: 25%;
+  padding-top: 10px;
+
+  #browse_categories{
+    margin-bottom: 0px;
+  }
 
   a{
     padding-top: 3px;
@@ -113,7 +123,6 @@
   div{
     display: -webkit-inline-box;
     padding-right: 10px;
-    vertical-align: baseline;
   }
 
   .browse{
@@ -376,6 +385,7 @@
 
 .dropdown{
   display:  inline;
+  vertical-align: middle
 }
 
 .user-image{
