@@ -12,7 +12,7 @@
     hr
     - if !current_user.nil?
       center
-        = button_to 'Check Out', store_path, method: :get, class: 'check-out-image'
+        = button_to 'Check Out', new_order_path, method: :get, class: 'check-out-image'
     - else
       | Please sign in to check out
 

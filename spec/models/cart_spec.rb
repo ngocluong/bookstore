@@ -31,4 +31,12 @@ describe Cart do
       expect(cart.total_price).to eq(line_items.map(&:total_price).sum)
     end
   end
+
+  context '#total_books' do
+    let!(:line_items) { create_list :line_item, 3, cart: cart }
+
+    it 'calculates total books' do
+      expect(cart.total_books).to eq(line_items.map(&:quantity).sum)
+    end
+  end
 end
