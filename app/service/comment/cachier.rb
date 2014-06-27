@@ -19,7 +19,7 @@ class Comment
       Rails.cache.fetch(cache_key) do
         add_comment_cache_key
         paginated_comments = book.comments.page(page).includes(:user)
-        paginated_info =  OpenStruct.new(current_page: paginated_comments.current_page, total_pages: paginated_comments.total_pages, per_page: paginated_comments.limit_value)
+        paginated_info = PaginationInfoBuilder.build_pagination_info(data: paginated_comments)
         {
           paginated_info: paginated_info,
           paginated_data: paginated_comments.to_a

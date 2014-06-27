@@ -19,7 +19,7 @@ class Book
         paginated_books = query.present? ? Book.search(query) : Book.all
         paginated_books = paginated_books.joins(:categories).where(categories: { id: category_id }) if category_id.present?
         paginated_books = paginated_books.page(page).per(per_page)
-        paginated_info =  OpenStruct.new(current_page: paginated_books.current_page, total_pages: paginated_books.total_pages, per_page: paginated_books.limit_value)
+        paginated_info = PaginationInfoBuilder.build_pagination_info(data: paginated_books)
         {
           paginated_info: paginated_info,
           paginated_data: paginated_books.to_a
