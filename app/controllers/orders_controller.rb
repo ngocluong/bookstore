@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       if params[:token].present?
-        create_charge
+        Order::StripeBuilder.create_charge(token: params[:token], order: @order)
       end
       Cart.find_by_code(session[:cart_code]).destroy
       session[:cart_code] = nil
@@ -39,20 +39,5 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:name, :address, :email, :pay_type, :token)
-  end
-
-  def create_charge
-    token = params[:token]
-    @order.credit_card_number = token
-    @order.save
-    begin
-      charge = Stripe::Charge.create(
-        amount: (@order.total_price * 100).to_i,
-        currency: "usd",
-        card: token
-      )
-    rescue Stripe::CardError => e
-      @order.errors << e.message
-    end
   end
 end
