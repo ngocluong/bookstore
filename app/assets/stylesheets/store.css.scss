@@ -378,6 +378,10 @@
   display: inline-block;
 }
 
+.thumbnail .caption h4 a{
+  font-size: 80%;
+}
+
 .book-per-page{
   margin-top: 20px;
   margin-left: 15px;
@@ -416,7 +420,7 @@
 
 #dropdown-list{
   background-color: #BDE5ED;
-  top: 30px;
+  top: 33px;
 
   a{
     font: normal 17px "Roboto medium";
@@ -432,7 +436,7 @@
 .dropdown-menu li:first-child a:after {
   content: '';
   position: absolute;
-  left: 14px;
+  left: 148px;
   top: -7px;
   width: 0;
   height: 0;
@@ -441,6 +445,9 @@
   border-bottom: 8px solid #BDE5ED;
 }
 
+.user-dropdown li:first-child a:after {
+  left: 123px;
+}
 #custom-close{
   opacity: 1;
   background: white;
