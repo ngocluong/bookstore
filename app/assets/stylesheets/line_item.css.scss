@@ -1,0 +1,56 @@
+#line_items{
+
+  .book-image{
+    width: 100%;
+    position: relative;
+  }
+
+  .line-item{
+    display: flex;
+  }
+  .col-md-7, .col-md-2{
+    padding-top: 28px;
+  }
+
+  #img{
+    padding-top: 0px;
+  }
+
+  .col-md-1{
+    padding-top: 15px;
+  }
+
+  #price{
+    color: red;
+  }
+
+  .quantity{
+    width: 41px;
+    height: 41px;
+    text-align: center;
+    border-color: #3398B3;
+    border-radius: 0px;
+  }
+}
+
+.cart{
+
+  hr{
+    height: 1px;
+    background: #5ABCD3;
+  }
+
+  #total-price{
+    padding-left: 17%;
+    color: red;
+    font-weight:bold;
+  }
+
+  .check-out-image{
+    color:transparent;
+    width: 120px;
+    height: 40px;
+    border: 0px;
+    background-image: image-url('check-out.png');
+  }
+}

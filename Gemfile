@@ -9,6 +9,12 @@ gem 'pg'
 gem 'devise'
 gem 'devise-async'
 gem 'sidekiq'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+gem 'unicorn'
+gem 'pg_search'
+gem 'faker', require: false
+gem 'factory_girl_rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -37,15 +43,17 @@ gem 'recaptcha', require: 'recaptcha/rails'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
   gem 'webrat'
   gem 'letter_opener'
   gem 'byebug'
   gem 'quiet_assets'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :test do
-  gem 'faker'
   gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'capybara'

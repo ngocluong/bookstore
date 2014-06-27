@@ -8,6 +8,7 @@ require 'cucumber/rails'
 require 'email_spec/cucumber'
 require 'cucumber/rspec/doubles'
 require 'simplecov'
+require 'faker'
 SimpleCov.start 'rails'
 if ENV['CIRCLE_ARTIFACTS']
   require 'simplecov'

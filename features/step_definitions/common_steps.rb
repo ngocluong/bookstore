@@ -12,7 +12,7 @@ end
 
 Then(/^I should see the following messages$/) do |table|
   table.hashes.each do |hash|
-    step %{I should see "#{hash['message']}"}
+    step %{I should see "#{hash['message']}" immediately}
   end
 end
 
@@ -20,6 +20,14 @@ Then(/^I should see "(.*?)"$/) do |content|
   wait_until do
     page.has_content? content
   end
+end
+
+Then(/^I should see "(.*?)" immediately$/) do |content|
+  page.has_content? content
+end
+
+Then(/^I should not see "(.*?)"$/) do |content|
+  !page.has_content? content
 end
 
 Then(/^I should see element "(.*?)"$/) do |element|

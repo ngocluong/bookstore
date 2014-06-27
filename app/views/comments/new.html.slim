@@ -1,0 +1,13 @@
+.header
+  h2 REVIEW
+.review
+  = form_for @comment do |f|
+    div.raty
+    div
+     = f.label :review
+     br/
+     = f.text_area :content
+    center
+      = f.hidden_field :book_id, value: params[:book_id]
+      div= f.submit 'ADD REVIEW',  class: 'image-button'
+

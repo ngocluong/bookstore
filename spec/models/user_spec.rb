@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe User do
+  it { should have_many(:comments).dependent(:destroy) }
+
   [:phone, :full_name, :birthday].each do |attr|
     it { should validate_presence_of attr }
   end

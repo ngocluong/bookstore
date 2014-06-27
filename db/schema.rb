@@ -11,10 +11,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605092903) do
+ActiveRecord::Schema.define(version: 20140618021352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "image_url",          default: "default.png"
+    t.string   "author_name",        default: "N/A"
+    t.string   "publisher_name",     default: "N/A"
+    t.date     "published_date"
+    t.float    "unit_price",         default: 0.01
+    t.integer  "total_rating_value", default: 0
+    t.integer  "total_rating_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "code"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "category_books", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "category_books", ["book_id"], name: "index_category_books_on_book_id", using: :btree
+  add_index "category_books", ["category_id"], name: "index_category_books_on_category_id", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.integer  "rating"
+    t.text     "content"
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["book_id"], name: "index_comments_on_book_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "line_items", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quantity",   default: 1
+  end
+
+  add_index "line_items", ["book_id"], name: "index_line_items_on_book_id", using: :btree
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

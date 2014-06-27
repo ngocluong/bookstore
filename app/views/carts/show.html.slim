@@ -1,0 +1,18 @@
+.cart
+  - if @cart.line_items.empty?
+    | Empty Cart
+  -else
+    = render 'line_items/list'
+    .col-md-6
+      center
+        | Total
+    #total-price.col-md-6
+      = @cart.total_price
+    br
+    hr
+    - if !current_user.nil?
+      center
+        = button_to 'Check Out', store_path, method: :get, class: 'check-out-image'
+    - else
+      | Please sign in to check out
+

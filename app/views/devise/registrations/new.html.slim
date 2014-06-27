@@ -1,5 +1,4 @@
 .header
-  = image_tag("book.png")
   h2 Please Sign up
 
 .sign_up
@@ -11,27 +10,28 @@
       div
         = f.label :email
         br/
-        = f.email_field :email, autofocus: true, class: "bluebox"
+        = f.email_field :email, autofocus: true, class: 'bluebox'
       div
         = f.label :password
         br/
-        = f.password_field :password, autocomplete: "off", class: "bluebox"
+        = f.password_field :password, autocomplete: 'off', class: 'bluebox'
       div
         = f.label :password_confirmation
         br/
-        = f.password_field :password_confirmation, autocomplete: "off", class: "bluebox"
+        = f.password_field :password_confirmation, autocomplete: 'off', class: 'bluebox'
       div
         = f.label :full_name
         br/
-        = f.text_field :full_name, class: "bluebox"
+        = f.text_field :full_name, class: 'bluebox'
       div
         = f.label :phone
         br/
-        = f.text_field :phone, class: "bluebox"
+        = f.text_field :phone, class: 'bluebox'
       div
         = f.label :birthday
         br/
-        = f.date_field :birthday, class: "bluebox"
+        = f.date_field :birthday, class: 'bluebox'
       = f.hidden_field :creation_date, value: Time.now
-      div= f.submit "Sign up", class: "btn btn-primary"
-      = render "devise/shared/links"
+      = render 'devise/shared/links'
+      center
+        div= f.submit 'Sign up', class: 'image-button'
