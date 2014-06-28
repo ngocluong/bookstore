@@ -31,11 +31,11 @@ class Comment
       ClearListCacheWorker.perform_async(comment_list_key) if Rails.cache.read(comment_list_key).present?
     end
 
-    private
     def add_comment_cache_key
       Rails.cache.write(comment_list_key, (comment_cache_keys << cache_key).uniq)
     end
 
+    private
     def comment_cache_keys
       Rails.cache.fetch(comment_list_key) { [] }
     end
