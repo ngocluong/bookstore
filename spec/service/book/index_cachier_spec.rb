@@ -15,23 +15,27 @@ describe Book::IndexCachier do
     ClearListCacheWorker.new.perform(book_list_key) if Rails.cache.read(book_list_key).present?
   end
 
+  def fetch_book
+    Book::IndexCachier.fetch_books
+  end
+
   before do
     Rails.cache.clear
   end
 
   describe '.fetch_books' do
-    it 'fetch paginated data' do
-      expect(Book::IndexCachier.fetch_books[:paginated_data]).to match_array(paginated_books_array)
+    it 'fetches paginated data' do
+      expect(fetch_book[:paginated_data]).to match_array(paginated_books_array)
     end
 
-    it 'fetchs paginated info' do
-      expect(Book::IndexCachier.fetch_books[:paginated_info]).to eq(PaginationInfoBuilder.build_pagination_info(data: paginated_books_array))
+    it 'fetches paginated info' do
+      expect(fetch_book[:paginated_info]).to eq(PaginationInfoBuilder.build_pagination_info(data: paginated_books_array))
     end
   end
 
   describe '#clear_cache' do
     before do
-      Book::IndexCachier.fetch_books
+      fetch_book
       clear_cache
     end
 
@@ -45,7 +49,7 @@ describe Book::IndexCachier do
       index_cachier.add_book_cache_key
     end
 
-    it 'Adds record to Rails cache' do
+    it 'adds record to Rails cache' do
       expect(Rails.cache.read(book_list_key)).to include(cache_key)
     end
   end

@@ -15,6 +15,7 @@ describe BooksController do
 
     context 'not specify page' do
       let(:params) { {} }
+
       it 'assigns paginated books' do
         expect(assigns[:books_data][:paginated_data]).to match_array(paginated_books_array)
       end
@@ -41,13 +42,14 @@ describe BooksController do
 
   context 'GET show' do
     let!(:comment) { create :comment, book: books.first }
+    let(:first_book) { books.first }
 
     before do
-      get :show, id: books.first.id
+      get :show, id: first_book.id
     end
 
     it 'returns book' do
-      expect(assigns[:book]).to eq books.first
+      expect(assigns[:book]).to eq first_book
       expect(assigns[:comments][:paginated_data]).to include(comment)
     end
   end

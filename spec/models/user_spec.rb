@@ -10,20 +10,34 @@ describe User do
   context 'phone number validation' do
     let(:user) { build :user }
 
-    context 'valid phone number' do
+    context 'not from facebook' do
+      context 'valid phone number' do
 
-      it 'is valid' do
-        expect(user).to be_valid
+        it 'is valid' do
+          expect(user).to be_valid
+        end
+      end
+
+      context 'invalid phone number' do
+        before do
+          user.phone = '111-111-11a2'
+        end
+
+        it 'is invalid' do
+          expect(user).to be_invalid
+        end
       end
     end
 
-    context 'invalid phone number' do
+    context 'from facebook' do
       before do
-        user.phone = '111-111-11a2'
+        user.provider = 'facebook'
+        user.uid = 'uid'
+        user.phone = 'invalid'
       end
 
-      it 'is invalid' do
-        expect(user).to be_invalid
+      it 'ignores phone number validation' do
+        expect(user).to be_valid
       end
     end
   end

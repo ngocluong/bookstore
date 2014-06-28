@@ -14,15 +14,16 @@ describe SearchController do
     end
 
     context 'Search result have some books' do
-      let (:first_category_id) { categories.first.id }
+      let(:first_category_id) { categories.first.id }
+      let(:paginated_data) { assigns[:books_data][:paginated_data] }
 
       before do
         get :index, { q: first_book_title, category_id: first_category_id }
       end
 
       it 'renders first book' do
-        expect(assigns[:books_data][:paginated_data]).to include(books.first)
-        expect(assigns[:books_data][:paginated_data]).not_to include(books.last)
+        expect(paginated_data).to include(books.first)
+        expect(paginated_data).not_to include(books.last)
       end
     end
 

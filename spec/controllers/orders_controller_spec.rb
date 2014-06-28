@@ -29,10 +29,10 @@ describe OrdersController do
     let(:new_order) { assigns[:order] }
 
     context 'Get new order successfully' do
+      include_context 'has_cart'
       include_context 'login user'
 
       before do
-        session[:cart_code] = line_item.cart.code
         get :new
       end
 
@@ -43,8 +43,9 @@ describe OrdersController do
     end
 
     context 'Get new order without login' do
+      include_context 'has_cart'
+
       before do
-        session[:cart_code] = line_item.cart.code
         get :new
       end
 
@@ -69,6 +70,8 @@ describe OrdersController do
   end
 
   context 'POST create' do
+    include_context 'has_cart'
+
     context 'create order successfully' do
       include_context 'login user'
 
@@ -76,7 +79,6 @@ describe OrdersController do
       let(:new_order) { Order.last }
 
       before do
-        session[:cart_code] = line_item.cart.code
         create_order
       end
 
@@ -88,14 +90,14 @@ describe OrdersController do
       end
 
       it 'destroys this cart' do
-        expect(Cart.all).not_to include(cart)
+        expect(Cart).not_to exist(id: cart.id)
       end
 
       it 'sets cart session to nil' do
         expect(session[:cart_code]).to be_nil
       end
 
-      it 'redirect to book path with successful notice' do
+      it 'redirects to book path with successful notice' do
         expect(response).to redirect_to(books_path)
         expect(flash[:notice]).to eq('Thank you for your order')
       end
@@ -105,10 +107,6 @@ describe OrdersController do
       include_context 'login user'
 
       let(:order_attributes) { { something: 'something'} }
-
-      before do
-        session[:cart_code] = line_item.cart.code
-      end
 
       it 'fails to create new order' do
         expect do
@@ -121,7 +119,6 @@ describe OrdersController do
       let(:order_attributes) { attributes_for :order }
 
       before do
-        session[:cart_code] = line_item.cart.code
         create_order
       end
 

@@ -1,21 +1,17 @@
 require 'spec_helper'
 
 describe CommentsController do
+  include_context 'login user'
+
   let(:book) { create :book }
   let(:user) { create :confirm_user}
   let(:comment_attributes) { attributes_for :comment, book_id: book.id, user_id: user.id }
-
-  def average_calculation
-    @rating_average = book.total_rating_value + comment_attributes[:rating]
-    @total_count = book.total_rating_count + 1
-  end
 
   def create_comment
     post :create, comment: comment_attributes
   end
 
   context 'GET new' do
-    include_context 'login user'
     let(:new_comment) { assigns[:comment] }
 
     before do
@@ -29,11 +25,11 @@ describe CommentsController do
   end
 
   context 'POST create' do
-    include_context 'login user'
-
     context 'create new comment successfully' do
+      let!(:rating_average) { book.total_rating_value + comment_attributes[:rating] }
+      let!(:total_count) { book.total_rating_count + 1 }
+
       before do
-        average_calculation
         create_comment
       end
 
@@ -50,17 +46,17 @@ describe CommentsController do
       end
 
       it 'updates rating average and total rating count' do
-        expect(book.reload.total_rating_value).to eq @rating_average
-        expect(book.total_rating_count).to eq @total_count
+        expect(book.reload.total_rating_value).to eq rating_average
+        expect(book.total_rating_count).to eq total_count
       end
     end
 
     context 'Invalid comment attribute' do
+      let(:comment_attributes) { { something: 'something', book_id: book.id } }
+
       before do
         create_comment
       end
-
-      let(:comment_attributes) { { something: 'something', book_id: book.id } }
 
       it 'fails to create comment' do
         expect do

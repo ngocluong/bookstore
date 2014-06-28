@@ -86,11 +86,9 @@ describe LineItemsController do
 
   context 'DELETE destroy' do
     context 'Delete successfully' do
-      let(:line_item_id) { line_item.id }
+      include_context 'has_cart'
 
-      before do
-        session[:cart_code] = line_item.cart.code
-      end
+      let(:line_item_id) { line_item.id }
 
       it 'descreases amount of line item' do
         expect do
@@ -113,11 +111,9 @@ describe LineItemsController do
     end
 
     context 'Delete unsuccessfully' do
-      let(:line_item_id) { -1 }
+      include_context 'has_cart'
 
-      before do
-        session[:cart_code] = line_item.cart.code
-      end
+      let(:line_item_id) { -1 }
 
       it 'raises record not found error' do
         expect do
