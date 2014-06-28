@@ -67,3 +67,5 @@ group :test do
   gem 'email_spec'
   gem 'simplecov', '~> 0.7.1', require: false
 end
+
+ruby '2.1.0'
