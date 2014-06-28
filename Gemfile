@@ -44,6 +44,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'slim-rails'
 
 gem 'recaptcha', require: 'recaptcha/rails'
+gem 'image_optim'
+gem 'image_optim_bin'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -55,6 +57,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'heroku-deflater'
 end
 
 group :test do

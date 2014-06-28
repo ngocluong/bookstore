@@ -6,9 +6,7 @@ html
     meta charset="UTF-8"
     meta name="description" content=('In Betweener Book Store provides a large selection of books and categories. We can buy books and pay through cash or credit card. Moreover, users can comment and rate for books')
     meta name="description" content=('Book Store, Buy Books, Books Description')
-
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
     = csrf_meta_tags
   body
     .header
@@ -36,3 +34,4 @@ html
     #sign-up-modal.modal.fade aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1'
       .modal-dialog
         .modal-content
+  = javascript_include_tag 'application', async: true
