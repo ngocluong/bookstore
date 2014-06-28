@@ -31,5 +31,6 @@ BookStore::Application.configure do
   config.action_mailer.perform_deliveries = true
   ActionMailer::Base.raise_delivery_errors = true
   config.action_mailer.delivery_method = :letter_opener
+  config.cache_store = :file_store, Rails.root.join('tmp')
 end
 

@@ -1,25 +1,36 @@
+- provide(:title, "In Betweener books - #{@book.title} by #{@book.author_name}")
+- provide(:page_name, "#{@book.title}")
 .book-show
   div.details
-    .col-md-2
+    .col-md-2.hidden-xs
       = image_tag @book.image_url, class: 'book-image'
-    .col-md-8
-      h3 = @book.title 
-      dl.dl-horizontal
-        dt
+    .col-md-8.col-xs-12
+      h3 = @book.title
+      div.row.visible-xs
+        .col-xs-8
+          = image_tag @book.image_url, class: 'book-image-small'
+      br
+      div.row
+        .col-md-2.col-xs-2
           | By:
-        dd = @book.author_name
-        dt.price
+        .col-md-6.col-xs-8
+          = @book.author_name
+      br
+      div.row
+        .col-md-2.col-xs-2
           | Price:
-        dd
+        .col-md-6.col-xs-8
           div.book-price
-            = link_to @book.unit_price, line_items_path(book_id: @book.id), method: :post, remote: true
-        dt.rate
+            = link_to @book.unit_price, line_items_path(book_id: @book.id), method: :post, remote: true, noindex: true
+      br
+      div.row
+        .col-md-2.col-xs-2
           | Rate:
-        dd
+        .col-md-6.col-xs-8
           - @book.rating_average.times
             = image_tag 'star.png', class: 'star'
           | (#{@book.total_rating_count})
-        div#share-link          
+      div#share-link
   hr
   div.details
     .col-md-2

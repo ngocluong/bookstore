@@ -19,5 +19,5 @@ def raty_div
 end
 
 def user_p
-  @user_p ||= 'p#sign-in'
+  @user_p ||= 'div#sign-in'
 end

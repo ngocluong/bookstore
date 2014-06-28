@@ -6,7 +6,13 @@
   }
 
   .line-item{
-    display: flex;
+    display:-webkit-flex;
+    display:-webkit-box;
+    display:-moz-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    flex-direction:row;
   }
   .col-md-7, .col-md-2{
     padding-top: 28px;

@@ -19,9 +19,11 @@ class OrdersController < ApplicationController
     @order.add_line_items_from_cart(@cart)
 
     if @order.save
+      if params[:token].present?
+        Order::StripeBuilder.create_charge(token: params[:token], order: @order)
+      end
       Cart.find_by_code(session[:cart_code]).destroy
       session[:cart_code] = nil
-
       redirect_to books_path, notice: 'Thank you for your order'
     else
       render action: 'new'
@@ -36,6 +38,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:name, :address, :email, :pay_type)
+    params.require(:order).permit(:name, :address, :email, :pay_type, :token)
   end
 end

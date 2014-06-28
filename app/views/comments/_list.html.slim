@@ -1,5 +1,5 @@
 #comment
-  - @comments.each do |comment|
+  - @comments[:paginated_data].each do |comment|
     .row
       .col-xs-6.col-md-4
         = comment.content
@@ -11,5 +11,5 @@
         = comment.user.full_name
   br
   .row
-  = paginate @comments
+  = paginate @comments[:paginated_info]
 

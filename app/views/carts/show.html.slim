@@ -1,3 +1,5 @@
+- provide(:title, "In Betweener books - Your Books Cart")
+- provide(:page_name, "Cart")
 .cart
   - if @line_items.empty?
     | Empty Cart
@@ -13,7 +15,7 @@
     hr
     - if !current_user.nil?
       center
-        = button_to 'Check Out', new_order_path, method: :get, class: 'check-out-image'
+        = button_to 'Check Out', new_order_path, method: :get, class: 'check-out-image', noindex: true
     - else
       | Please sign in to check out
 

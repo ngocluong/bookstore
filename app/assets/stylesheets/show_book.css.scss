@@ -20,7 +20,11 @@
   }
 
   #share-link{
-    margin-top: 20px;
+    margin-top: 4%;
+  }
+
+  #share-link-sx{
+
   }
 
   .price-image{
@@ -37,6 +41,7 @@
 
   .price{
     padding-top: 5px;
+    display: flex;
   }
 
   .rate{
@@ -53,6 +58,11 @@
     position: relative;
   }
 
+  .book-image-small{
+    width: 58%;
+    position: relative;
+  }
+
   h3{
     font: normal 20px "Roboto";
     color: #2D2D2D
@@ -66,15 +76,17 @@
   }
 
   .details{
-    display: flex;
+    display:-webkit-flex;
+    display:-webkit-box;
+    display:-moz-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    flex-direction:row;
   }
 
   hr{
     height: 1px;
     background: #5ABCD3;
-  }
-
-  .col-md-8{
-    margin-right: 20%;
   }
 }

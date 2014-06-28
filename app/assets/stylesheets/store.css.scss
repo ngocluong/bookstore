@@ -18,6 +18,10 @@
     padding-left: 20px;
   }
 
+  .browse{
+    display: inline-block;
+  }
+
   .col-md-8{
 
     img{
@@ -34,6 +38,13 @@
       float:left;
       font: normal 14px "Roboto medium";
       color: #3398B3;
+
+      .search-image{
+        background: white;
+        width: 22px;
+        height: 23px;
+        background-image: image-url('search.png');
+      }
 
       .btn-group{
         float: left;
@@ -73,9 +84,16 @@
 }
 
 #right-panel{
-  position:absolute;
-  left: 25%;
   top: 25%;
+  padding-top: 10px;
+
+  #browse_categories{
+    margin-bottom: 0px;
+  }
+
+  .browse-text{
+    padding-top: 10px;
+  }
 
   a{
     padding-top: 3px;
@@ -83,10 +101,32 @@
     color: #BDE5ED;
   }
 
-  p{
+  #total-books{
     display: inline;
-    padding-right: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    vertical-align: top;
+    background: #EDAA5A;
+    color: white;
+    -webkit-border-radius: 50%;
+    margin-right: -60px;
+    position: relative;
+  }
+
+  .cart{
+    display: inline;
     vertical-align: baseline;
+    padding-left: 10px;
+  }
+
+  .cart-image{
+    padding-left: 23px;
+    padding-right: 9px;
+  }
+
+  div{
+    display: -webkit-inline-box;
+    padding-right: 10px;
   }
 
   .browse{
@@ -338,6 +378,10 @@
   display: inline-block;
 }
 
+.thumbnail .caption h4 a{
+  font-size: 80%;
+}
+
 .book-per-page{
   margin-top: 20px;
   margin-left: 15px;
@@ -349,6 +393,7 @@
 
 .dropdown{
   display:  inline;
+  vertical-align: middle
 }
 
 .user-image{
@@ -356,7 +401,7 @@
   padding-right: 9px;
 }
 
-.cart-image{
+.browse-image{
   padding-left: 9px;
   padding-right: 9px;
 }
@@ -375,7 +420,7 @@
 
 #dropdown-list{
   background-color: #BDE5ED;
-  top: 30px;
+  top: 33px;
 
   a{
     font: normal 17px "Roboto medium";
@@ -391,11 +436,27 @@
 .dropdown-menu li:first-child a:after {
   content: '';
   position: absolute;
-  left: 14px;
+  left: 148px;
   top: -7px;
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 8px solid #BDE5ED;
+}
+
+.user-dropdown li:first-child a:after {
+  left: 123px;
+}
+#custom-close{
+  opacity: 1;
+  background: white;
+  height: 25px;
+  width: 25px;
+  -webkit-border-radius: 50%;
+  margin-top: -10px;
+  margin-right: -10px;
+  color: #3398B3;
+  border-color: #3398B3;
+  vertical-align: middle;
 }

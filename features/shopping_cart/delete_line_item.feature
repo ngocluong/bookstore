@@ -1,4 +1,4 @@
-@javascript
+@javascript @clear_cache
 Feature: Delete item in shopping cart
 As an unauthorized user
 I want to delete book item in my shopping cart

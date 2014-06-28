@@ -21,8 +21,8 @@ describe SearchController do
       end
 
       it 'renders first book' do
-        expect(assigns[:books]).to include(books.first)
-        expect(assigns[:books]).not_to include(books.last)
+        expect(assigns[:books_data][:paginated_data]).to include(books.first)
+        expect(assigns[:books_data][:paginated_data]).not_to include(books.last)
       end
     end
 
