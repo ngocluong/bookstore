@@ -10,6 +10,11 @@ $ ->
   $('body').on 'change', 'select#per_page', (event) ->
     $(@).parent('form').submit()
   $('.show-raty').raty (
-    score: -> $(this).attr "data-score",
+    score: -> $(this).attr 'data-score',
     readOnly: -> true
+  )
+  new Share('#share-link',
+    networks:
+      email:
+        enabled: false
   )

@@ -92,7 +92,7 @@ describe LineItemsController do
         session[:cart_code] = line_item.cart.code
       end
 
-      it 'descrease amount of line item' do
+      it 'descreases amount of line item' do
         expect do
           delete_line_item
         end.to change { LineItem.count }.by(-1)

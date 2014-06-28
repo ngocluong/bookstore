@@ -41,3 +41,10 @@ end
 Then(/^I should be logged in$/) do
   step %{I should see element "#{user_p}"}
 end
+
+When(/^I sign in with valid Facebook credential$/) do
+  within sign_in_modal_id do
+    step %{I press "Sign in with Facebook"}
+  end
+end
+

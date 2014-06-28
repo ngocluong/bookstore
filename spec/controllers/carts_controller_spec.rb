@@ -10,7 +10,7 @@ describe CartsController do
         get :show, id: cart.code
       end
 
-      it 'return cart' do
+      it 'returns cart' do
         expect(assigns[:cart]).to eq cart
       end
     end

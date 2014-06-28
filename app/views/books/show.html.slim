@@ -3,8 +3,7 @@
     .col-md-2
       = image_tag @book.image_url, class: 'book-image'
     .col-md-8
-      h3 = @book.title
-
+      h3 = @book.title 
       dl.dl-horizontal
         dt
           | By:
@@ -17,9 +16,10 @@
         dt.rate
           | Rate:
         dd
-          - @book.total_rating_value.times
+          - @book.rating_average.times
             = image_tag 'star.png', class: 'star'
           | (#{@book.total_rating_count})
+        div#share-link          
   hr
   div.details
     .col-md-2
@@ -38,7 +38,7 @@
       = @book.published_date
       br
       |Categories:
-      = @book.get_all_categories
+      = @book.category_names
   hr
   div.details
     .col-md-2

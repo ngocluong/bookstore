@@ -1,0 +1,167 @@
+// SASS variable overrides must be declared before loading up Active Admin's styles.
+//
+// To view the variables that Active Admin provides, take a look at
+// `app/assets/stylesheets/active_admin/mixins/_variables.css.scss` in the
+// Active Admin source.
+//
+// For example, to change the sidebar width:
+// $sidebar-width: 242px;
+
+// Active Admin's got SASS!
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+#header{
+  background: #5ABCD3;
+  text-shadow: none;
+
+  h1{
+    color: #BDE5ED;
+  }
+
+  ul.tabs > li.current > a {
+    background: #BDE5ED;
+    color: #3398B3;
+  }
+
+  a, a:link{
+    color: #BDE5ED;
+  }
+  ul.tabs > li:hover > a{
+    background: #BDE5ED;
+    color: #3398B3;
+  }
+}
+
+#title_bar{
+  background: #3398B3;
+  color: white;
+  text-shadow: none;
+
+  .breadcrumb a, .breadcrumb a:link, .breadcrumb a:visited, .breadcrumb a:active{
+    color: white;
+  }
+
+  h2{
+    color: white;
+  }
+}
+
+table.index_table th{
+  background: #BDE5ED;
+  color: black;
+}
+
+table.index_table th.sorted-asc, table.index_table th.sorted-desc{
+  color: black;
+  background: #5ABCD3;
+}
+
+table{
+  color: black;
+  border-color: black;
+}
+
+table.index_table th{
+  color: black;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+table.index_table th a, table.index_table th a:link, table.index_table th a:visited{
+  color: black;
+}
+
+#title_bar .action_items span.action_item > a, #title_bar .action_items span.action_item > .dropdown_menu > a{
+  color: white;
+  border-color: #E98D23;
+  text-shadow: none;
+  box-shadow: 0px 2px 0px #E98D23;
+  background: #EDAA5A;
+}
+
+#title_bar .action_items span.action_item > a:not(.disabled):hover, #title_bar .action_items span.action_item > .dropdown_menu > a:not(.disabled):hover{
+  background: #E98D23;
+}
+
+.sidebar_section > h3{
+  background: #3398B3;
+}
+
+.section > h3, .panel > h3{
+  text-shadow: none;
+  color: white;
+}
+
+.sidebar_section{
+  background-color: #BDE5ED;
+}
+
+form input[type=submit]{
+  text-shadow: none;
+  color: white;
+  border-color: #E98D23;
+  box-shadow: 0px 2px 0px #E98D23;
+  background: #EDAA5A;
+}
+
+form input[type=submit]:not(.disabled):hover{
+  color: white;
+  border-color: #E98D23;
+  box-shadow: 0px 2px 0px #E98D23;
+  background: #EDAA5A;
+}
+
+form.filter_form a.clear_filters_btn{
+  text-shadow: none;
+  color: white;
+  border-color: #3398B3;
+  box-shadow: 0px 2px 0px #3398B3;
+  background: #5ABCD3;
+}
+
+form.filter_form a.clear_filters_btn:not(.disabled):hover{
+  color: white;
+  border-color: #3398B3;
+  box-shadow: 0px 2px 0px #3398B3;
+  background: #5ABCD3;
+}
+
+a.table_tools_button, .table_tools .dropdown_menu_button{
+  background: #BDE5ED;
+  color: black;
+  box-shadow: 0px 2px 0px #3398B3;
+}
+
+form fieldset.buttons li.cancel a, form fieldset.actions li.cancel a{
+  text-shadow: none;
+  color: white;
+  border-color: #3398B3;
+  box-shadow: 0px 2px 0px #3398B3;
+  background: #5ABCD3;
+}
+
+form fieldset.buttons li.cancel a:not(.disabled):hover, form fieldset.actions li.cancel a:not(.disabled):hover{
+  background: #5ABCD3;
+  color: white;
+  box-shadow: 0px 2px 0px #3398B3;
+}
+
+form fieldset legend span{
+  background: #3398B3;
+  text-shadow: none;
+  color: white;
+}
+
+form fieldset.inputs{
+  background: #BDE5ED;
+}
+
+form fieldset ol > li label{
+  color: #3398B3;
+}
+
+form fieldset ol > li label abbr{
+  color: #3398B3;
+}

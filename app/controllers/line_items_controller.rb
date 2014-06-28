@@ -16,10 +16,11 @@ class LineItemsController < ApplicationController
 
   def update
     if @line_item.update(line_item_params)
-      redirect_to cart_path(@line_item.cart.code), notice: 'Update successfully'
+      notice = 'Update successfully'
     else
-      redirect_to cart_path(@line_item.cart.code), notice: @line_item.errors.full_messages.to_sentence
+      notice = @line_item.errors.full_messages.to_sentence
     end
+    redirect_to cart_path(@line_item.cart.code), notice: notice
   end
 
   def destroy

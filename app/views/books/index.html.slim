@@ -7,7 +7,7 @@ h1 Listing books
         h4 = link_to book.title, book
         p Author: #{book.author_name}
         p
-          - book.total_rating_value.times
+          - book.rating_average.times
             = image_tag 'star.png', class: 'star'
           - if book.total_rating_value == 0
             = image_tag 'no-star.png', class: 'star'

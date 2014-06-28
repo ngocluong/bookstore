@@ -48,7 +48,7 @@ describe OrdersController do
         get :new
       end
 
-      it 'redirect to book path with notice' do
+      it 'redirects to book path with notice' do
         expect(response).to redirect_to(books_path)
         expect(flash[:notice]).to eq('You need to sign in')
       end
@@ -61,7 +61,7 @@ describe OrdersController do
         get :new
       end
 
-      it 'redirect to book path with notice' do
+      it 'redirects to book path with notice' do
         expect(response).to redirect_to(books_path)
         expect(flash[:notice]).to eq('Your cart is empty')
       end
@@ -110,7 +110,7 @@ describe OrdersController do
         session[:cart_code] = line_item.cart.code
       end
 
-      it 'fail to create new order' do
+      it 'fails to create new order' do
         expect do
           create_order
         end.not_to change { Order.count }
@@ -125,7 +125,7 @@ describe OrdersController do
         create_order
       end
 
-      it 'redirect to book path with notice' do
+      it 'redirects to book path with notice' do
         expect(response).to redirect_to(books_path)
         expect(flash[:notice]).to eq('You need to sign in')
       end

@@ -67,6 +67,21 @@ end
 After('@recaptcha') do
   Recaptcha.configuration.skip_verify_env << 'test'
 end
+
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:facebook, {
+    :uid => '12345',
+    :info => {
+      :email => "someone@example.com",
+      :name => 'Someone'
+    }
+  })
+end
+ 
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+end
 #
 
 # Possible values are :truncation and :transaction
