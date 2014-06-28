@@ -1,6 +1,6 @@
 require 'timeout'
 
-Capybara.default_wait_time = 20
+Capybara.default_wait_time = 30
 
 def wait_until(timeout = Capybara.default_wait_time)
   Timeout.timeout(timeout) do
