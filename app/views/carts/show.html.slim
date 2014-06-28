@@ -1,8 +1,9 @@
 .cart
-  - if @cart.line_items.empty?
+  - if @line_items.empty?
     | Empty Cart
-  -else
+  - else
     = render 'line_items/list'
+
     .col-md-6
       center
         | Total

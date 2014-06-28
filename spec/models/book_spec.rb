@@ -9,14 +9,14 @@ describe Book do
 	it { should have_many :line_items }
 
 	[:title, :description, :image_url, :unit_price, :published_date].each do |attr|
-	  it { should validate_presence_of attr }
+		it { should validate_presence_of attr }
 	end
 
 	['abc', 'image.doc', 'image.h'].each do |invalid|
-	  it { should_not allow_value(invalid).for(:image_url) }
+		it { should_not allow_value(invalid).for(:image_url) }
 	end
 
 	['image.png', 'image.jpg', 'image.gif', 'image.jpeg'].each do |valid|
-	  it { should allow_value(valid).for(:image_url) }
+		it { should allow_value(valid).for(:image_url) }
 	end
 end

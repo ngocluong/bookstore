@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
+  belongs_to :user
 
   validates :name, :address, :email, presence: true
 
@@ -8,5 +9,18 @@ class Order < ActiveRecord::Base
       item.cart_id = nil
       line_items << item
     end
+  end
+
+  def total_price
+    calculator.total_price
+  end
+
+  def total_books
+    calculator.total_books
+  end
+
+  private
+  def calculator
+    @calculator ||= Calculator.new(line_items: line_items)
   end
 end

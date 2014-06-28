@@ -36,12 +36,15 @@ When(/^I change my password$/) do
 end
 
 Then(/^I sign out$/) do
-  step %{I press "SIGN OUT"}
-  step %{I am on the Signin page}
+  find('img.user-image').click
+  within '.dropdown-menu' do
+    step %{I press "Sign out"}
+  end
 end
 
 Then(/^I can login with my new password$/) do
   step %{I sign out}
+  step %{I am on the Signin page}
   step %{I fill in "Email" with "#{@user.email}"}
   step %{I fill in "user_password" with "#{@new_user_information[:password]}"}
   step %{I press "Sign in"}
@@ -49,11 +52,7 @@ Then(/^I can login with my new password$/) do
      |messages              |
      |Signed in successfully|
    })
-  within '#right-panel' do
-    wait_until do
-      page.has_link?('SIGN OUT') && page.has_link?('EDIT')
-    end
-  end
+  step %{I should see element "#{user_p}"}
 end
 
 When(/^I fill in the Edit page with invalid phone format$/) do

@@ -1,21 +1,27 @@
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
+  before_create :set_cart_code
 
   def add_book(book_id)
-    current_item = line_items.find_by(book_id: book_id)
-   if current_item
-     current_item.quantity += 1
-   else
-     current_item = line_items.build(book_id: book_id)
-   end
-   current_item
+    current_line_item = line_items.where(book_id: book_id).first_or_initialize
+    current_line_item.increment(:quantity)
+    current_line_item
   end
 
   def total_price
-    line_items.to_a.sum {|item| item.total_price}
+    calculator.total_price
   end
 
   def total_books
-    line_items.to_a.sum {|item| item.quantity}
+    calculator.total_books
+  end
+
+  private
+  def calculator
+    @calculator ||= Order::Calculator.new(line_items: line_items)
+  end
+
+  def set_cart_code
+    self.code = Devise.friendly_token
   end
 end

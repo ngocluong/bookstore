@@ -13,7 +13,7 @@
           | Price:
         dd
           div.book-price
-            = link_to @book.unit_price, line_items_path(book_id: @book.id), method: :post
+            = link_to @book.unit_price, line_items_path(book_id: @book.id), method: :post, remote: true
         dt.rate
           | Rate:
         dd
@@ -38,7 +38,7 @@
       = @book.published_date
       br
       |Categories:
-      = @book.categories.pluck(:name).join(', ')
+      = @book.get_all_categories
   hr
   div.details
     .col-md-2

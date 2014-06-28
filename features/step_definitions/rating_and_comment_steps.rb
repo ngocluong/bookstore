@@ -28,5 +28,6 @@ end
 
 When(/^I log out$/) do
   step %{I sign out}
+  step %{I am on the Signin page}
   step %{I show book of one book}
 end

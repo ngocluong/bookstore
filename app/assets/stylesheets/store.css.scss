@@ -78,6 +78,7 @@
   top: 25%;
 
   a{
+    padding-top: 3px;
     font: normal 17px "Roboto medium";
     color: #BDE5ED;
   }
@@ -85,6 +86,11 @@
   p{
     display: inline;
     padding-right: 10px;
+    vertical-align: baseline;
+  }
+
+  .browse{
+    vertical-align: -webkit-baseline-middle;
   }
 
 }
@@ -341,6 +347,20 @@
   float: right;
 }
 
+.dropdown{
+  display:  inline;
+}
+
+.user-image{
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.cart-image{
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
 #new_order{
 
   .proceed-image{
@@ -351,4 +371,31 @@
     border: 0px;
     background-image: image-url('proceed.png');
   }
+}
+
+#dropdown-list{
+  background-color: #BDE5ED;
+  top: 30px;
+
+  a{
+    font: normal 17px "Roboto medium";
+    color: #3398B3;
+  }
+
+  a:hover{
+    background: #5ABCD3;
+    color: white;
+  }
+}
+
+.dropdown-menu li:first-child a:after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: -7px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid #BDE5ED;
 }

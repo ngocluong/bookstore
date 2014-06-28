@@ -1,0 +1,33 @@
+.order
+  - if @orders.empty?
+    | You dont have any order
+  - else
+    #accordion.panel-group
+      - @orders.each do |order|
+        #custom-collapse.panel
+          #panel-heading
+            h4.panel-title
+              a data-parent="#accordion" data-toggle="collapse" href="#collapse_#{order.id}"
+                = order.created_at
+        .panel-collapse.collapse id='collapse_#{order.id}'
+          .panel-body
+            - order.line_items.includes(:book).each do |line_item|
+              .line-item
+                .col-md-7
+                  = line_item.book.title
+                .col-md-3
+                  = line_item.book.unit_price
+                .col-md-2
+                  = line_item.quantity
+                br
+            hr
+            .col-md-7
+              center
+                | Total
+            #total.col-md-3
+              = order.total_price
+            .col-md-2
+              = order.total_books
+
+
+

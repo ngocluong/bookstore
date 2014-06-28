@@ -14,10 +14,9 @@ html
         .col-md-4
           #right-panel
             p
-              -if !session[:cart_code].nil?
-                = link_to 'CART', cart_path(id: session[:cart_code])
-            p
-              = link_to 'BROWSE', store_index_path
+              = link_to 'BROWSE', store_index_path, class: 'browse'
+            p.cart
+              = render 'line_items/cart_link'
             = render 'devise/sessions/sessions'
       .page-name-row
         | INDEX

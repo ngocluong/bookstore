@@ -3,6 +3,10 @@ class OrdersController < ApplicationController
   before_action :authorize
   before_action :set_cart, only: [:new, :create]
 
+  def index
+    @orders = current_user.orders
+  end
+
   def new
     if @cart.line_items.empty?
       redirect_to books_path, notice: 'Your cart is empty'
@@ -11,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.new(order_params)
     @order.add_line_items_from_cart(@cart)
 
     if @order.save
@@ -27,7 +31,7 @@ class OrdersController < ApplicationController
   private
   def authorize
     unless user_signed_in?
-      redirect_to books_path, notice: 'You need to sign in inorder to check out'
+      redirect_to books_path, notice: 'You need to sign in'
     end
   end
 

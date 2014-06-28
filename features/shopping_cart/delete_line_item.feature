@@ -16,5 +16,3 @@ Scenario: Delete one of book items
     |message                        |
     |Remove successfully            |
   And This book will removed
-
-

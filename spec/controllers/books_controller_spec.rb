@@ -4,7 +4,7 @@ describe BooksController do
   def paginated_books_array(options = {})
     Kaminari.paginate_array(books).page(options.fetch(:page, 0)).per(options.fetch(:per_page, per_page))
   end
-  let!(:books) { create_list :book, per_page * 2 }
+  let!(:books) { create_list :book, per_page + 1 }
   let(:per_page) { Book.default_per_page }
 
   context 'GET index' do
@@ -16,7 +16,7 @@ describe BooksController do
       let(:params) { {} }
 
       it 'assigns paginated books' do
-        expect(assigns[:books]).to eq(paginated_books_array)
+        expect(assigns[:books].to_set).to eq(paginated_books_array.to_set)
       end
     end
 
@@ -25,7 +25,7 @@ describe BooksController do
       let(:params) { { page: page } }
 
       it 'assigns paginated books' do
-        expect(assigns[:books]).to eq(paginated_books_array(page: page))
+        expect(assigns[:books].to_set).to eq(paginated_books_array(page: page).to_set)
       end
     end
 
@@ -34,7 +34,7 @@ describe BooksController do
       let(:params) { { per_page: per_page} }
 
       it 'assigns paginated books' do
-        expect(assigns[:books]).to eq(paginated_books_array(per_page: per_page))
+        expect(assigns[:books].to_set).to eq(paginated_books_array(per_page: per_page).to_set)
       end
     end
   end

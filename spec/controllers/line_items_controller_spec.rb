@@ -6,7 +6,7 @@ describe LineItemsController do
   let!(:line_item) { create :line_item, cart: cart }
 
   def create_line_item
-    post :create, book_id: book_id
+    xhr :post, :create, book_id: book_id
   end
 
   def update_line_item
@@ -42,10 +42,13 @@ describe LineItemsController do
     context 'creates new line item with invalid book id' do
       let(:book_id) { -1 }
 
+      before do
+        create_line_item
+      end
+
       it 'raises record not found error' do
-        expect do
-          create_line_item
-        end.to raise_error(ActiveRecord::RecordNotFound)
+        expect(response).to redirect_to(books_path)
+        expect(flash[:notice]).to eq('Invalid book')
       end
     end
   end
