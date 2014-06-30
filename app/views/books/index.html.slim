@@ -4,7 +4,7 @@ h1 Listing books
 - @books_data[:paginated_data].each do |book|
     .col-sm-6.col-md-4.col-xs-12
       .thumbnail
-        = image_tag(book.image_url)
+        = cl_image_tag(book.image_url)
         .caption
           h4 = link_to book.title, book
           p Author: #{book.author_name}

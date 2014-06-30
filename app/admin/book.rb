@@ -1,21 +1,30 @@
 ActiveAdmin.register Book do
+
   permit_params :title, :description, :image_url,
                 :author_name, :publisher_name,
                 :published_date, :unit_price,
                 :total_rating_value, :total_rating_count
 
+  form do |f|
+    f.inputs "Book Details" do
+      f.input :title
+      f.input :description
+      f.input :image_url, as: :file
+      f.input :author_name
+      f.input :publisher_name
+      f.input :published_date
+      f.input :unit_price
+    end
+    f.actions
+  end
 
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
+  controller do
+    before_action :upload_book_image, only: [:update]
 
+    def upload_book_image
+      uploaded_file = params[:book][:image_url]
+      Cloudinary::Uploader.upload(uploaded_file.path, public_id:  uploaded_file.original_filename.slice(0,uploaded_file.original_filename.index('.')))
+      params[:book][:image_url] = uploaded_file.original_filename
+    end
+  end
 end
