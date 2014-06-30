@@ -16,7 +16,7 @@ gem 'pg_search'
 gem 'faker', require: false
 gem 'factory_girl_rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
-
+gem 'social-share-button'
 gem 'omniauth-facebook'
 gem 'stripe'
 

@@ -30,7 +30,8 @@
           - @book.rating_average.times
             = image_tag 'star.png', class: 'star'
           | (#{@book.total_rating_count})
-      div#share-link
+      div.shareable
+        = social_share_button_tag(@book.title)
   hr
   div.details
     .col-md-2
