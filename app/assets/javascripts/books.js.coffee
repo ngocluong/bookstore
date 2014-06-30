@@ -13,7 +13,3 @@ $ ->
     score: -> $(this).attr 'data-score',
     readOnly: -> true
 
-  new Share '#share-link',
-    networks:
-      email:
-        enabled: false
