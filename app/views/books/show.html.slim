@@ -3,12 +3,12 @@
 .book-show
   div.details
     .col-md-2.hidden-xs
-      = image_tag @book.image_url, class: 'book-image'
+      = cl_image_tag(@book.image_url)
     .col-md-8.col-xs-12
       h3 = @book.title
       div.row.visible-xs
         .col-xs-8
-          = image_tag @book.image_url, class: 'book-image-small'
+          = cl_image_tag(@book.image_url)
       br
       div.row
         .col-md-2.col-xs-2
