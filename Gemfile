@@ -57,6 +57,8 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'heroku-deflater'
+  gem 'dalli'
+  gem 'kgio'
 end
 
 group :test do
